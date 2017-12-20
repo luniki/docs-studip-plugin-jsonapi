@@ -10,9 +10,19 @@ Es gibt verschiedene Arten von Ordnern, die sich in der Regel darin
 unterscheiden, wer sie sehen kann und wer Lese- und/oder
 Schreibzugriff auf diese Ordner hat.
 
-## Dateibereich in Veranstaltungen
+## Schemata
 
-```javascript
+### Type "documents"
+
+TODO
+
+### Type "document-folders"
+
+TODO
+
+## GET /courses/{id}/documents
+
+```shell
 TODO
 ```
 
@@ -68,150 +78,10 @@ mit der ID der Veranstaltung über diesen Endpoint den Wurzelordner der Veransta
 
 ### HTTP Request
 
-`GET https://example.com/jsonapi/courses/{id}/files`
+`GET https://example.com/jsonapi/courses/{id}/documents`
 
 ### URL-Parameter
 
 Parameter |  Beschreibung
 --------- | -------
 id        | die ID der Veranstaltung
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<%#
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/jsonapi/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/jsonapi/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
-## Was man mit einem FileRef machen kann
-
-  * [X] herunterladen (sendfile.php via FileRef)
-  * [X] infos erhalten (name, beschreibung, owner, dates, größe, terms)
-  * [X] bearbeiten (name, beschreibung, terms)
-  * [ ] aktualisieren (dateiname übernehmen; weitere vorkommen
-    aktualisieren) ([[file:~/Sync/Projects/studip/goe-git/lib/filesystem/FileManager.php::public%20static%20function%20updateFileRef(][FileManager::updateFileRef]]
-  * [ ] verschieben
-  * [ ] kopieren
-  * [X] löschen
-
-
-Dateien werden initial immer verlinkt.
-
-Erst, wenn es relevant wird (bearbeiten, aktualisieren, löschen) wird
-der Nutzer gefragt, ob Verlinkung oder Kopie gewünscht ist. Nur
-Besitzer darf aktualisieren.
-
-Wenn ein Dritter mit der Datei etwas tut (inklusive Kopieren), dann
-wird eine echte Kopie angelegt und der Dritte als Besitzer eingetragen
-
-Ordner werden immer kopiert (darin liegende Dateien verlinkt)
-
-beim Hochladen einer Datei mit vorhandenem Namen wird nachgefragt was
-gemacht werden soll
-
-Aktualisieren im Bearbeiten-Dialog
-
-es gibt keine vom Dateinamen abweichenden Titel mehr
-%>
