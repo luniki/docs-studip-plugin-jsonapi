@@ -1,20 +1,14 @@
-# Errors
+# Fehler
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+Die Stud.IP-JSON:API verwendet die Fehler-Codes, die auch in der <a
+href="http://jsonapi.org/format">JSON-API-Spezifikation</a> verwendet
+werden.
 
-The Kittn API uses the following error codes:
 
-
-Error Code | Meaning
+Fehler Code | Bedeutung
 ---------- | -------
-400 | Bad Request -- Your request sucks.
-401 | Unauthorized -- Your API key is wrong.
-403 | Forbidden -- The kitten requested is hidden for administrators only.
-404 | Not Found -- The specified kitten could not be found.
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
-410 | Gone -- The kitten requested has been removed from our servers.
-418 | I'm a teapot.
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+401 | Unauthorized – Sie haben nicht die erforderliche Berechtigung.
+403 | Forbidden – Die gewünschte Operation steht nicht zur Verfügung.
+404 | Not Found – Die gewünschte Ressource oder Relation konnte nicht gefunden werden.
+409 | Conflict  – Beim Anlegen oder Ändern von Ressourcen oder Relationen werden Beschränkungen im Stud.IP verletzt. Beispiel: Eine Ressource falschen Typs soll einer Relation hinzugefügt werden.
+500 | Internal Server Error – Es gibt ein Problem auf dem Server. Versuchen Sie es später erneut!

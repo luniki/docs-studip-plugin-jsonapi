@@ -103,7 +103,8 @@ html, body {
   }
 
   .logo {
-    margin-bottom: $logo-margin;
+    margin: $logo-margin auto;
+    max-width: 80%;
   }
 
   .search-results {

@@ -1,0 +1,100 @@
+# Nutzer
+
+Die Nutzer der Stud.IP-Installationen können mit den folgenden Routen
+abgefragt werden.
+
+## Schema
+
+Alle Nutzer werden in Stud.IP mit diesem Schema abgebildet. Die `id`
+entspricht der in Stud.IP verwendeten `user_id`. Der Typ ist `users`.
+
+### Attribute
+
+Attribut | Beschreibung
+-------- | ------------
+username | der Nutzername
+formatted-name | der formatierte Echtname des Nutzers
+family-name | der Nachname des Nutzers
+given-name | der Vorname des Nutzers
+name-prefix | evtl. vorangestellte Titel
+name-suffix | evtl. nachgestellte Titel
+
+### Relationen
+
+<aside class="notice">
+    Nicht alle Relationen sind für jeden Betrachter zugänglich.
+</aside>
+
+Relation         | Beschreibung
+--------         | ------------
+activitystream   | ein Link zum `activity stream` des Nutzers
+blubber-postings | die Blubber des Nutzers
+contacts         | die Kontakte des Nutzers
+courses          | die Veranstaltungen der Nutzers
+
+
+## GET /users
+
+<aside class="notice">
+    Diese Route können aktuell nur Nutzer der Rechtestufe "root" verwenden. Andere
+    Rechtestufen erhalten einen Fehler-Code 403.
+</aside>
+
+```shell
+curl --request GET \
+    --url https://example.com/api/users \
+    --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`"
+```
+
+> Der Request liefert JSON ähnlich wie dieses:
+
+<%= partial "includes/json/get_users" %>
+
+Dieser Endpoint liefert alle Nutzer im Stud.IP, die der
+JSON:API-Nutzer mit seinen ``credentials`` auch im Stud.IP selbst
+sehen darf. Die Ausgabe erfolgt paginiert und kann durch Angabe von
+Offset und Limit weitergeblättert werden.
+
+### HTTP Request
+
+`GET http://example.com/api/users`
+
+### Query-Parameter
+
+Parameter    | Default | Beschreibung
+---------    | ------- | ------------
+page[offset] | 0       | der Offset
+page[limit]  | 30      | das Limit
+
+### Authorisierung
+
+Diese Route kann nur von Nutzern der Rechtestufe "root" verwendet werden.
+
+
+
+## GET /users/me
+
+```shell
+curl --request GET \
+    --url https://example.com/api/users/me \
+    --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`"
+```
+
+> Der Request liefert JSON ähnlich wie dieses:
+
+<%= partial "includes/json/get_own_user" %>
+
+Mit diesem Endpoint bekommt man denjenigen Stud.IP Nutzer, der
+authorisiert auf diesen Endpoint zugreift – also sich selbst.
+
+### HTTP Request
+
+`GET http://example.com/api/users/me`
+
+### Query-Parameter
+
+Es werden keine Query-Parameter unterstützt.
+
+### Authorisierung
+
+Diese Route kann von jedem authorisierten Nutzer verwendet werden.
