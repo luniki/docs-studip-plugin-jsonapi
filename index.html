@@ -243,7 +243,10 @@
             <a href="#dateibereich" class="toc-h1 toc-link" data-title="Dateibereich">Dateibereich</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#dateibereich-in-veranstaltungen" class="toc-h2 toc-link" data-title="Dateibereich in Veranstaltungen">Dateibereich in Veranstaltungen</a>
+                    <a href="#schemata" class="toc-h2 toc-link" data-title="Schemata">Schemata</a>
+                  </li>
+                  <li>
+                    <a href="#get-courses-id-documents" class="toc-h2 toc-link" data-title="GET /courses/{id}/documents">GET /courses/{id}/documents</a>
                   </li>
               </ul>
           </li>
@@ -502,7 +505,11 @@ Dateien und Ordner befinden können.</p>
 <p>Es gibt verschiedene Arten von Ordnern, die sich in der Regel darin
 unterscheiden, wer sie sehen kann und wer Lese- und/oder
 Schreibzugriff auf diese Ordner hat.</p>
-<h2 id='dateibereich-in-veranstaltungen'>Dateibereich in Veranstaltungen</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">TODO</span>
+<h2 id='schemata'>Schemata</h2><h3 id='type-quot-documents-quot'>Type &quot;documents&quot;</h3>
+<p>TODO</p>
+<h3 id='type-quot-document-folders-quot'>Type &quot;document-folders&quot;</h3>
+<p>TODO</p>
+<h2 id='get-courses-id-documents'>GET /courses/{id}/documents</h2><pre class="highlight shell tab-shell"><code>TODO
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -553,7 +560,7 @@ Schreibzugriff auf diese Ordner hat.</p>
 <p>Wenn in einer Veranstaltung der Dateibereich aktiviert ist, erhält man
 mit der ID der Veranstaltung über diesen Endpoint den Wurzelordner der Veranstaltung.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://example.com/jsonapi/courses/{id}/files</code></p>
+<p><code>GET https://example.com/jsonapi/courses/{id}/documents</code></p>
 <h3 id='url-parameter'>URL-Parameter</h3>
 <table><thead>
 <tr>
@@ -566,10 +573,6 @@ mit der ID der Veranstaltung über diesen Endpoint den Wurzelordner der Veransta
 <td>die ID der Veranstaltung</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 <h1 id='fehler'>Fehler</h1>
 <p>Die Stud.IP-JSON:API verwendet die Fehler-Codes, die auch in der <a
 href="http://jsonapi.org/format">JSON-API-Spezifikation</a> verwendet
