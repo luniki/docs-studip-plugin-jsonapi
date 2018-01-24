@@ -1,80 +1,129 @@
+# Dateibereich v3.5
 
-# Dateibereich
+<aside class="warning">Dieser Abschnitt gilt für die Stud.IP v3.5. Ab Stud.IP v4.0 gibt es einen neuen Dateibereich.</aside>
 
-In Stud.IP hat jeder Nutzer, jede Einrichtung und jede Veranstaltung
-einen eigenen Dateibereich. Dateibereiche sind (spezielle) Ordner.
-Ordner können Dateien und Ordner enthalten, in denen sich wiederum
-Dateien und Ordner befinden können.
+In Stud.IP hat jede Einrichtung und jede Veranstaltung einen eigenen
+Dateibereich. Dateibereiche sind (spezielle) Ordner. Ordner können
+Dateien und Ordner enthalten, in denen sich wiederum Dateien und
+Ordner befinden können.
 
 Es gibt verschiedene Arten von Ordnern, die sich in der Regel darin
 unterscheiden, wer sie sehen kann und wer Lese- und/oder
 Schreibzugriff auf diese Ordner hat.
 
-## Schemata
+Im Dateibereich von Stud.IP v3.5 werden drei Arten von Entitäten
+verwendet. Es gibt Dokumente (type=documents), Ordner
+(type=document-folders) und Lizenzen (type=document-licenses).
 
-### Type "documents"
 
-TODO
+## Schema "documents"
 
-### Type "document-folders"
+In Stud.IP kann man Dokumente auf zwei Weisen einbinden. Zum einen
+können Dokumente hochgeladen werden. Zum anderen kann auch einfach
+eine URL hinterlegt werden, die via Stud.IP-Proxy an die Nutzer
+herausgegeben wird.
 
-TODO
+TODO: download-link, url
 
-## GET /courses/{id}/documents
+### Attribute
+
+Attribut    | Beschreibung
+--------    | ------------
+name        | Name des Dokuments
+description | Beschreibung des Dokuments
+filename    | Dateiname des Dokuments
+mkdate      | Anlegedatum
+chdate      | Datum der letzten Änderung
+filesize    | Größe der Datei in Bytes
+downloads   | Anzahl der bisherigen Downloads
+priority    | Ordnungsnummer; dient der Sortierung in Stud.IP
+
+### Relationen
+
+Derzeit können die Relationen nur ausgelesen, aber nicht verändert werden.
+
+ Relation | Beschreibung
+--------  | ------------
+license   | die Lizenz des Dokuments
+owner     | der Besitzer des Dokuments
+parent    | Speicherort des Dokuments; entweder ein Ordner oder eine Nachricht
+range     | Link zum Dateibereich, in dem sich das Dokument befindet; entweder eine Veranstaltung oder eine Einrichtung
+
+## Schema "document-folders"
+
+Ordner enthalten Dokumente und können im Zugriff beschränkt werden
+
+### Attribute
+
+Attribut    | Beschreibung
+--------    | ------------
+name        | Name des Ordners
+description | Beschreibung des Ordners
+permission  | Zugriffsbeschränkung des Ordners; ein String, der maximal aus "frwx" besteht
+mkdate      | Anlegedatum
+chdate      | Datum der letzten Änderung
+priority    | Ordnungsnummer; dient der Sortierung in Stud.IP
+
+Die Zugriffsbeschränkung ist als String kodiert, ähnlich wie im Dateisystem eines Betriebsystems. Maximal besteht es aus den Buchstaben "frwx". Dabei bedeuten die Buchstaben folgendes:
+
+Buchstabe | Bedeutung
+--------- | ---------
+f         | Ordner erstellen (Alle Nutzer können Ordner erstellen)
+r         | Lesen (Dateien können heruntergeladen werden)
+w         | Schreiben (Dateien können heraufgeladen werden)
+x         | Sichtbarkeit (Ordner wird angezeigt)
+
+### Relationen
+
+Derzeit können die Relationen nur ausgelesen, aber nicht verändert werden.
+
+Relation         | Beschreibung
+---------------- | ------------
+documents        | die im Ordner liegenden Dokumente
+document-folders | der im Ordner liegenden Ordner
+owner            | der Besitzer des Ordners
+parent           | der übergeordnete Ordner des Ordners, falls es einen gibt
+range            | Link zum Dateibereich, in dem sich das Dokument befindet; entweder eine Veranstaltung oder eine Einrichtung
+
+## Schema "document-licenses"
+
+Dokumenten können Lizenzen zugeordnet sein.
+
+Attribut            | Beschreibung
+------------------- | ------------
+name                | Name der Lizenz
+description         | Beschreibung der Lizenz
+student-description | TODO
+protected           | TODO
+
+Lizenzen haben keine Relationen.
+
+
+## Alle Dokumente einer Veranstaltung/Einrichtung
 
 ```shell
-TODO
+curl --request GET \
+    --url https://example.com/api/courses/<COURSE-ID>/documents \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-{
-
-    "data": {
-        "type": "folders",
-        "id": "b36a77af8f2c4c6e5065fd90ada88803",
-        "attributes": {
-            "folder-type": "RootFolder",
-            "name": "Vorlesung: Test Lehrveranstaltung",
-            "data_content": null,
-            "description": null,
-            "mkdate": "2017-08-08T14:45:19+02:00",
-            "chdate": "2017-08-08T14:45:19+02:00"
-        },
-        "relationships": {
-            "range": {
-                "links": {
-                    "related": "https://example.com/jsonapi/courses/a07535cf2f8a72df33c12ddfa4b53dde"
-                }
-            },
-            "subfolders": {
-                "meta": {
-                    "count": 0
-                },
-                "links": {
-                    "related": "https://example.com/jsonapi/folders/b36a77af8f2c4c6e5065fd90ada88803/subfolders"
-                }
-            },
-            "files": {
-                "meta": {
-                    "count": 0
-                },
-                "links": {
-                    "related": "https://example.com/jsonapi/folders/b36a77af8f2c4c6e5065fd90ada88803/files"
-                }
-            }
-        },
-        "links": {
-            "self": "https://example.com/jsonapi/folders/b36a77af8f2c4c6e5065fd90ada88803"
-        }
-    }
-
-}
+```javascript
+fetch(p'https://example.com/api/courses/<COURSE-ID>/documents', {
+    method: 'GET',
+    mode: 'cors',
+    headers: new Headers({
+        'Authorization': `Basic ${btoa('test_autor:testing')}`
+    })
+}).then(response => console.log(response))
 ```
 
-Wenn in einer Veranstaltung der Dateibereich aktiviert ist, erhält man
-mit der ID der Veranstaltung über diesen Endpoint den Wurzelordner der Veranstaltung.
+
+> Der Request liefert JSON ähnlich wie dieses:
+
+<%= partial "includes/json/get_documents_of_course" %>
+
+Wenn der Dateibereich in einer Veranstaltung aktiviert ist, kann man
+mit dieser Route **alle** Dokumente einer Veranstaltung abfragen.
 
 ### HTTP Request
 
@@ -85,3 +134,222 @@ mit der ID der Veranstaltung über diesen Endpoint den Wurzelordner der Veransta
 Parameter |  Beschreibung
 --------- | -------
 id        | die ID der Veranstaltung
+
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden, die Zugriff auf
+die entsprechende Veranstaltung oder Einrichtung haben.
+
+
+
+
+## Alle Ordner einer Veranstaltung/Einrichtung
+```shell
+curl --request GET \
+    --url https://example.com/api/courses/<COURSE-ID>/document-folders \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+```javascript
+fetch(p'https://example.com/api/courses/<COURSE-ID>/document-folders', {
+    method: 'GET',
+    mode: 'cors',
+    headers: new Headers({
+        'Authorization': `Basic ${btoa('test_autor:testing')}`
+    })
+}).then(response => console.log(response))
+```
+> Der Request liefert JSON ähnlich wie dieses:
+
+<%= partial "includes/json/get_document_folders_of_course" %>
+
+Wenn der Dateibereich in einer Veranstaltung aktiviert ist, kann man
+mit dieser Route **alle** Ordner einer Veranstaltung abfragen, auf die
+man Zugriff hat.
+
+### HTTP Request
+`GET https://example.com/(courses|institutes)/{id}/document-folders`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID der Veranstaltung
+
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden, die Zugriff auf
+die entsprechende Veranstaltung oder Einrichtung haben. Es werden aber
+lediglich diejenigen Ordner gezeigt, die der Nutzer verwenden kann.
+
+
+
+
+## Ein Dokument auslesen
+```shell
+curl --request GET \
+    --url https://example.com/api/documents/{id} \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+```javascript
+fetch(p'https://example.com/api/documents/{id}', {
+    method: 'GET',
+    mode: 'cors',
+    headers: new Headers({
+        'Authorization': `Basic ${btoa('test_autor:testing')}`
+    })
+}).then(response => console.log(response))
+```
+> Der Request liefert JSON ähnlich wie dieses:
+
+<%= partial "includes/json/get_document" %>
+
+Mit dieser Route kann man ein einzelnes Dokument auslesen, wenn man
+darauf Zugriff hat.
+
+### HTTP Request
+`GET https://example.com/documents/{id}`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Dokuments
+
+### Authorisierung
+
+Autoren sehen nur eingeschränkt Dokumente in ihren Veranstaltungen (nach den üblichen
+Stud.IP-Regeln). Tutoren und Dozenten haben Zugriff auf alle Dokumente
+ihrer Veranstaltung; Administratoren entsprechend auf Dokumente, die
+zu Veranstaltungen ihrer Einrichtungen gehören; Root natürlich auf alle.
+
+
+## Ein Dokument herunterladen
+```shell
+curl --request GET \
+    --url https://example.com/api/documents/{id} \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+```javascript
+// TODO
+```
+> Der Request liefert in der Regel kein JSON. (Es sei denn, dass das Dokument ein JSON-Objekt war.)
+
+<aside class="warning">Diese Route ist keine JSON:API Route, da sie den
+Inhalt der Datei liefert.</aside>
+
+Mit dieser Route kann man die tatsächliche Datei herunterladen. Diese
+wird in der Regel nicht als JSON ausgeliefert.
+
+### HTTP Request
+`GET https://example.com/documents/{id}/content`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Dokuments
+
+### Authorisierung
+
+Autoren können nur eingeschränkt Dokumente in ihren Veranstaltungen
+herunterladen (nach den üblichen Stud.IP-Regeln). Tutoren und Dozenten
+haben Zugriff auf alle Dokumente ihrer Veranstaltung; Administratoren
+entsprechend auf Dokumente, die zu Veranstaltungen ihrer Einrichtungen
+gehören; Root natürlich auf alle.
+
+
+
+
+## GET /document-folders/{id}
+```shell
+```
+
+```javascript
+```
+> Der Request liefert JSON ähnlich wie dieses:
+
+<%# partial "includes/json/" %>
+
+### HTTP Request
+`GET https://example.com/document-folders/{id}`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Ordners
+
+### Authorisierung
+
+## GET /document-folders/{id}/document-folders
+```shell
+```
+
+```javascript
+```
+> Der Request liefert JSON ähnlich wie dieses:
+
+<%# partial "includes/json/" %>
+
+### HTTP Request
+`GET https://example.com/document-folders/{id}/document-folders`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Ordners
+
+### Authorisierung
+
+
+
+
+## GET /document-folders/{id}/documents
+```shell
+```
+
+```javascript
+```
+> Der Request liefert JSON ähnlich wie dieses:
+
+<%# partial "includes/json/" %>
+
+### HTTP Request
+`GET https://example.com/document-folders/{id}/documents`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Ordners
+
+### Authorisierung
+
+
+
+
+
+## GET /document-licenses/{id}
+```shell
+```
+
+```javascript
+```
+> Der Request liefert JSON ähnlich wie dieses:
+
+<%# partial "includes/json/" %>
+
+### HTTP Request
+`GET https://example.com/document-licenses/{id}`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID der Lizenz
+
+### Authorisierung

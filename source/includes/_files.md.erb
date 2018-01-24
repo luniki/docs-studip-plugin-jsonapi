@@ -1,0 +1,52 @@
+# Dateibereich v4.0+
+
+<aside class="warning">Dieser Abschnitt gilt für die Stud.IP >= v4.0 Die
+Stud.IP v3.5 verwendet den alten Dateibereich.</aside>
+
+In Stud.IP hat jeder Nutzer, jede Einrichtung und jede Veranstaltung
+einen eigenen Dateibereich. Dateibereiche sind (spezielle) Ordner.
+Ordner können Dateien und Ordner enthalten, in denen sich wiederum
+Dateien und Ordner befinden können.
+
+Es gibt verschiedene Arten von Ordnern, die sich in der Regel darin
+unterscheiden, wer sie sehen kann und wer Lese- und/oder
+Schreibzugriff auf diese Ordner hat.
+
+## Schemata
+
+
+### Type "file-refs"
+
+TODO
+
+### Type "files"
+
+TODO
+
+### Type "folders"
+
+TODO
+
+## Alle Dateien einer Veranstaltung
+
+```shell
+TODO
+```
+
+> Der Request liefert JSON ähnlich wie dieses:
+
+<%#= partial "includes/json/get_courses_id_files" %>
+
+
+Wenn in einer Veranstaltung der Dateibereich aktiviert ist, erhält man
+mit der ID der Veranstaltung über diesen Endpoint den Wurzelordner der Veranstaltung.
+
+### HTTP Request
+
+`GET https://example.com/jsonapi/courses/{id}/files`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID der Veranstaltung
