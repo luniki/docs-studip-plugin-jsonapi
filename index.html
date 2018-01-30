@@ -264,16 +264,16 @@
                     <a href="#ein-dokument-herunterladen" class="toc-h2 toc-link" data-title="Ein Dokument herunterladen">Ein Dokument herunterladen</a>
                   </li>
                   <li>
-                    <a href="#get-document-folders-id" class="toc-h2 toc-link" data-title="GET /document-folders/{id}">GET /document-folders/{id}</a>
+                    <a href="#einen-ordner-auslesen" class="toc-h2 toc-link" data-title="Einen Ordner auslesen">Einen Ordner auslesen</a>
                   </li>
                   <li>
-                    <a href="#get-document-folders-id-document-folders" class="toc-h2 toc-link" data-title="GET /document-folders/{id}/document-folders">GET /document-folders/{id}/document-folders</a>
+                    <a href="#alle-kindordner-eines-ordners" class="toc-h2 toc-link" data-title="Alle Kindordner eines Ordners">Alle Kindordner eines Ordners</a>
                   </li>
                   <li>
-                    <a href="#get-document-folders-id-documents" class="toc-h2 toc-link" data-title="GET /document-folders/{id}/documents">GET /document-folders/{id}/documents</a>
+                    <a href="#alle-dokumente-eines-ordners" class="toc-h2 toc-link" data-title="Alle Dokumente eines Ordners">Alle Dokumente eines Ordners</a>
                   </li>
                   <li>
-                    <a href="#get-document-licenses-id" class="toc-h2 toc-link" data-title="GET /document-licenses/{id}">GET /document-licenses/{id}</a>
+                    <a href="#eine-lizenz-auslesen" class="toc-h2 toc-link" data-title="Eine Lizenz auslesen">Eine Lizenz auslesen</a>
                   </li>
               </ul>
           </li>
@@ -1061,10 +1061,69 @@ herunterladen (nach den üblichen Stud.IP-Regeln). Tutoren und Dozenten
 haben Zugriff auf alle Dokumente ihrer Veranstaltung; Administratoren
 entsprechend auf Dokumente, die zu Veranstaltungen ihrer Einrichtungen
 gehören; Root natürlich auf alle.</p>
-<h2 id='get-document-folders-id'>GET /document-folders/{id}</h2><pre class="highlight shell tab-shell"><code></code></pre><pre class="highlight javascript tab-javascript"><code></code></pre>
+<h2 id='einen-ordner-auslesen'>Einen Ordner auslesen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+    --url https://example.com/api/document-folders/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">p</span><span class="s1">'https://example.com/api/document-folders/{id}'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+    <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
+        <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s2">`Basic </span><span class="p">${</span><span class="nx">btoa</span><span class="p">(</span><span class="s1">'test_autor:testing'</span><span class="p">)}</span><span class="s2">`</span>
+    <span class="p">})</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">))</span>
+</code></pre>
 <blockquote>
 <p>Der Request liefert JSON ähnlich wie dieses:</p>
 </blockquote>
+
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document-folders"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"106ca0f8cc1534f79770499fee2f2f91"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allgemeine Dateien"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allgemeine Beschreibung"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frwx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mkdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T10:07:17+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T10:07:17+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/document-folders/106ca0f8cc1534f79770499fee2f2f91/documents"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"document-folders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/document-folders/106ca0f8cc1534f79770499fee2f2f91/document-folders"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7a0a84b161f3e8c09b4a0a2e8a58147"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/users/e7a0a84b161f3e8c09b4a0a2e8a58147"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"courses"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a07535cf2f8a72df33c12ddfa4b53dde"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/courses/a07535cf2f8a72df33c12ddfa4b53dde"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/document-folders/106ca0f8cc1534f79770499fee2f2f91"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}</code></p>
 <h3 id='url-parameter-5'>URL-Parameter</h3>
@@ -1079,10 +1138,98 @@ gehören; Root natürlich auf alle.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-5'>Authorisierung</h3><h2 id='get-document-folders-id-document-folders'>GET /document-folders/{id}/document-folders</h2><pre class="highlight shell tab-shell"><code></code></pre><pre class="highlight javascript tab-javascript"><code></code></pre>
+<h3 id='authorisierung-5'>Authorisierung</h3>
+<p>Autoren sehen nur eingeschränkt Ordner in ihren Veranstaltungen
+(nach den üblichen Stud.IP-Regeln). Tutoren und Dozenten haben Zugriff
+auf alle Ordner ihrer Veranstaltung; Administratoren entsprechend
+auf Ordner, die zu Veranstaltungen ihrer Einrichtungen gehören;
+Root natürlich auf alle.</p>
+<h2 id='alle-kindordner-eines-ordners'>Alle Kindordner eines Ordners</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+    --url https://example.com/api/document-folders/<span class="o">{</span>id<span class="o">}</span>/document-folders <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">p</span><span class="s1">'https://example.com/api/document-folders/{id}/document-folders'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+    <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
+        <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s2">`Basic </span><span class="p">${</span><span class="nx">btoa</span><span class="p">(</span><span class="s1">'test_autor:testing'</span><span class="p">)}</span><span class="s2">`</span>
+    <span class="p">})</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">))</span>
+</code></pre>
 <blockquote>
 <p>Der Request liefert JSON ähnlich wie dieses:</p>
 </blockquote>
+
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/?page[offset]=0&amp;page[limit]=30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/?page[offset]=0&amp;page[limit]=30"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document-folders"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b819b13a4845547ed77db16f03969900"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kind 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frwx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mkdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T10:30:41+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T10:30:41+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/document-folders/b819b13a4845547ed77db16f03969900/documents"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"document-folders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/document-folders/b819b13a4845547ed77db16f03969900/document-folders"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7a0a84b161f3e8c09b4a0a2e8a58147"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/users/e7a0a84b161f3e8c09b4a0a2e8a58147"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document-folders"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9414828f7dd9c36975ac44e464f68d9c"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/document-folders/9414828f7dd9c36975ac44e464f68d9c"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"courses"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a07535cf2f8a72df33c12ddfa4b53dde"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/courses/a07535cf2f8a72df33c12ddfa4b53dde"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/document-folders/b819b13a4845547ed77db16f03969900"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"[...]"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}/document-folders</code></p>
 <h3 id='url-parameter-6'>URL-Parameter</h3>
@@ -1097,10 +1244,92 @@ gehören; Root natürlich auf alle.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-6'>Authorisierung</h3><h2 id='get-document-folders-id-documents'>GET /document-folders/{id}/documents</h2><pre class="highlight shell tab-shell"><code></code></pre><pre class="highlight javascript tab-javascript"><code></code></pre>
+<h3 id='authorisierung-6'>Authorisierung</h3>
+<p>Die Kindordner eines Ordners darf man nur sehen, wenn man den Ordner
+sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
+Hausaufgabenorder und Dateiberechtigungen werden entsprechend
+berücksichtigt.</p>
+<h2 id='alle-dokumente-eines-ordners'>Alle Dokumente eines Ordners</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+    --url https://example.com/api/document-folders/<span class="o">{</span>id<span class="o">}</span>/documents <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">p</span><span class="s1">'https://example.com/api/document-folders/{id}/documents'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+    <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
+        <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s2">`Basic </span><span class="p">${</span><span class="nx">btoa</span><span class="p">(</span><span class="s1">'test_autor:testing'</span><span class="p">)}</span><span class="s2">`</span>
+    <span class="p">})</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">))</span>
+</code></pre>
 <blockquote>
 <p>Der Request liefert JSON ähnlich wie dieses:</p>
 </blockquote>
+
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/?page[offset]=0&amp;page[limit]=30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/?page[offset]=0&amp;page[limit]=30"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"documents"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1a7be00625cb1b71cdf113b3d4d42957"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dateiname1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dateibeschreibung 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dateiname1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mkdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T10:35:54+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T10:35:54+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"filesize"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"downloads"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document-folders"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ed90d64dfdc754e6fd6cc5bdcbbc5c9"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/document-folders/8ed90d64dfdc754e6fd6cc5bdcbbc5c9"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"courses"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a07535cf2f8a72df33c12ddfa4b53dde"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/courses/a07535cf2f8a72df33c12ddfa4b53dde"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7a0a84b161f3e8c09b4a0a2e8a58147"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/users/e7a0a84b161f3e8c09b4a0a2e8a58147"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/documents/1a7be00625cb1b71cdf113b3d4d42957"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"download-url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/documents/1a7be00625cb1b71cdf113b3d4d42957/content"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"[...]"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}/documents</code></p>
 <h3 id='url-parameter-7'>URL-Parameter</h3>
@@ -1115,10 +1344,42 @@ gehören; Root natürlich auf alle.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-7'>Authorisierung</h3><h2 id='get-document-licenses-id'>GET /document-licenses/{id}</h2><pre class="highlight shell tab-shell"><code></code></pre><pre class="highlight javascript tab-javascript"><code></code></pre>
+<h3 id='authorisierung-7'>Authorisierung</h3>
+<p>Die Dokumente eines Ordners darf man nur sehen, wenn man den Ordner
+sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
+Hausaufgabenorder und Dateiberechtigungen werden entsprechend
+berücksichtigt.</p>
+<h2 id='eine-lizenz-auslesen'>Eine Lizenz auslesen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+    --url https://example.com/api/document-licenses/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">p</span><span class="s1">'https://example.com/api/document-licenses/{id}'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+    <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
+        <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s2">`Basic </span><span class="p">${</span><span class="nx">btoa</span><span class="p">(</span><span class="s1">'test_autor:testing'</span><span class="p">)}</span><span class="s2">`</span>
+    <span class="p">})</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">))</span>
+</code></pre>
 <blockquote>
 <p>Der Request liefert JSON ähnlich wie dieses:</p>
 </blockquote>
+
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document-licenses"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ungekl</span><span class="se">\u</span><span class="s2">00c3</span><span class="se">\u</span><span class="s2">00a4rte Lizenz"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitte geben Sie an, welcher Lizenz das hochgeladene Material unterliegt bzw. auf welcher Grundlage Sie es zug</span><span class="se">\u</span><span class="s2">00c3</span><span class="se">\u</span><span class="s2">00a4nglich machen. Unterbleibt diese Angabe, wird beim Herunterladen auf den ungekl</span><span class="se">\u</span><span class="s2">00c3</span><span class="se">\u</span><span class="s2">00a4rten Lizenzstatus hingewiesen."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"student-description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Diese Datei enth</span><span class="se">\u</span><span class="s2">00c3</span><span class="se">\u</span><span class="s2">00a4lt Material mit einer ungekl</span><span class="se">\u</span><span class="s2">00c3</span><span class="se">\u</span><span class="s2">00a4rten Lizenz. Zu Fragen der Nutzung und Weitergabe wenden Sie sich an die Person, die diese Datei hochgeladen hat."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"protected"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/document-licenses/2"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://example.com/document-licenses/{id}</code></p>
 <h3 id='url-parameter-8'>URL-Parameter</h3>
@@ -1133,7 +1394,9 @@ gehören; Root natürlich auf alle.</p>
 <td>die ID der Lizenz</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-8'>Authorisierung</h3><h1 id='dateibereich-v4-0'>Dateibereich v4.0+</h1>
+<h3 id='authorisierung-8'>Authorisierung</h3>
+<p>Jeder kann Lizenzen auslesen.</p>
+<h1 id='dateibereich-v4-0'>Dateibereich v4.0+</h1>
 <aside class="warning">Dieser Abschnitt gilt für die Stud.IP >= v4.0 Die
 Stud.IP v3.5 verwendet den alten Dateibereich.</aside>
 
