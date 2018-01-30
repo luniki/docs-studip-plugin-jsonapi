@@ -263,15 +263,25 @@ gehören; Root natürlich auf alle.
 
 
 
-## GET /document-folders/{id}
+## Einen Ordner auslesen
 ```shell
+curl --request GET \
+    --url https://example.com/api/document-folders/{id} \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
+fetch(p'https://example.com/api/document-folders/{id}', {
+    method: 'GET',
+    mode: 'cors',
+    headers: new Headers({
+        'Authorization': `Basic ${btoa('test_autor:testing')}`
+    })
+}).then(response => console.log(response))
 ```
 > Der Request liefert JSON ähnlich wie dieses:
 
-<%# partial "includes/json/" %>
+<%= partial "includes/json/get_document_folder" %>
 
 ### HTTP Request
 `GET https://example.com/document-folders/{id}`
@@ -284,15 +294,34 @@ id        | die ID des Ordners
 
 ### Authorisierung
 
-## GET /document-folders/{id}/document-folders
+Autoren sehen nur eingeschränkt Ordner in ihren Veranstaltungen
+(nach den üblichen Stud.IP-Regeln). Tutoren und Dozenten haben Zugriff
+auf alle Ordner ihrer Veranstaltung; Administratoren entsprechend
+auf Ordner, die zu Veranstaltungen ihrer Einrichtungen gehören;
+Root natürlich auf alle.
+
+
+
+
+## Alle Kindordner eines Ordners
 ```shell
+curl --request GET \
+    --url https://example.com/api/document-folders/{id}/document-folders \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
+fetch(p'https://example.com/api/document-folders/{id}/document-folders', {
+    method: 'GET',
+    mode: 'cors',
+    headers: new Headers({
+        'Authorization': `Basic ${btoa('test_autor:testing')}`
+    })
+}).then(response => console.log(response))
 ```
 > Der Request liefert JSON ähnlich wie dieses:
 
-<%# partial "includes/json/" %>
+<%= partial "includes/json/get_document_folders_of_document_folder" %>
 
 ### HTTP Request
 `GET https://example.com/document-folders/{id}/document-folders`
@@ -304,19 +333,33 @@ Parameter |  Beschreibung
 id        | die ID des Ordners
 
 ### Authorisierung
+Die Kindordner eines Ordners darf man nur sehen, wenn man den Ordner
+sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
+Hausaufgabenorder und Dateiberechtigungen werden entsprechend
+berücksichtigt.
 
 
 
 
-## GET /document-folders/{id}/documents
+## Alle Dokumente eines Ordners
 ```shell
+curl --request GET \
+    --url https://example.com/api/document-folders/{id}/documents \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
+fetch(p'https://example.com/api/document-folders/{id}/documents', {
+    method: 'GET',
+    mode: 'cors',
+    headers: new Headers({
+        'Authorization': `Basic ${btoa('test_autor:testing')}`
+    })
+}).then(response => console.log(response))
 ```
 > Der Request liefert JSON ähnlich wie dieses:
 
-<%# partial "includes/json/" %>
+<%= partial "includes/json/get_documents_of_document_folder" %>
 
 ### HTTP Request
 `GET https://example.com/document-folders/{id}/documents`
@@ -328,20 +371,33 @@ Parameter |  Beschreibung
 id        | die ID des Ordners
 
 ### Authorisierung
+Die Dokumente eines Ordners darf man nur sehen, wenn man den Ordner
+sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
+Hausaufgabenorder und Dateiberechtigungen werden entsprechend
+berücksichtigt.
 
 
 
 
-
-## GET /document-licenses/{id}
+## Eine Lizenz auslesen
 ```shell
+curl --request GET \
+    --url https://example.com/api/document-licenses/{id} \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
+fetch(p'https://example.com/api/document-licenses/{id}', {
+    method: 'GET',
+    mode: 'cors',
+    headers: new Headers({
+        'Authorization': `Basic ${btoa('test_autor:testing')}`
+    })
+}).then(response => console.log(response))
 ```
 > Der Request liefert JSON ähnlich wie dieses:
 
-<%# partial "includes/json/" %>
+<%= partial "includes/json/get_document_license" %>
 
 ### HTTP Request
 `GET https://example.com/document-licenses/{id}`
@@ -353,3 +409,5 @@ Parameter |  Beschreibung
 id        | die ID der Lizenz
 
 ### Authorisierung
+
+Jeder kann Lizenzen auslesen.
