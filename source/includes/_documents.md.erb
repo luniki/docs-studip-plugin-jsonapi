@@ -108,7 +108,7 @@ curl --request GET \
 ```
 
 ```javascript
-fetch(p'https://example.com/api/courses/<COURSE-ID>/documents', {
+fetch('https://example.com/api/courses/<COURSE-ID>/documents', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -151,7 +151,7 @@ curl --request GET \
 ```
 
 ```javascript
-fetch(p'https://example.com/api/courses/<COURSE-ID>/document-folders', {
+fetch('https://example.com/api/courses/<COURSE-ID>/document-folders', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -193,7 +193,7 @@ curl --request GET \
 ```
 
 ```javascript
-fetch(p'https://example.com/api/documents/{id}', {
+fetch('https://example.com/api/documents/{id}', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -233,7 +233,13 @@ curl --request GET \
 ```
 
 ```javascript
-// TODO
+fetch('https://example.com/api/documents/{id}/content', {
+    method: 'GET',
+    mode: 'cors',
+    headers: new Headers({
+        'Authorization': `Basic ${btoa('test_autor:testing')}`
+    })
+}).then(response => console.log(response))
 ```
 > Der Request liefert in der Regel kein JSON. (Es sei denn, dass das Dokument ein JSON-Objekt war.)
 
@@ -263,6 +269,46 @@ gehören; Root natürlich auf alle.
 
 
 
+## Ein Dokument löschen
+```shell
+curl --request DELETE \
+    --url https://example.com/api/documents/{id} \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+```javascript
+fetch('https://example.com/api/documents/{id}', {
+    method: 'DELETE',
+    mode: 'cors',
+    headers: new Headers({
+        'Authorization': `Basic ${btoa('test_autor:testing')}`
+    })
+}).then(response => console.log(response))
+```
+> Der Request liefert nichts zurück.
+
+Mit dieser Route kann man eine Datei löschen. Gemäß
+JSON-API-Spezifikation antwortet der Server im Erfolgsfall mit einem
+Status-Code 204.
+
+### HTTP Request
+`DELETE https://example.com/documents/{id}`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Dokuments
+
+### Authorisierung
+
+Eigene Dateien können gelöscht werden. Ansonsten gelten die für die
+Veranstaltung bzw. Einrichtungen geltenden Einschränkungen ganz genau
+wie im üblichen Stud.IP.
+
+
+
+
 ## Einen Ordner auslesen
 ```shell
 curl --request GET \
@@ -271,7 +317,7 @@ curl --request GET \
 ```
 
 ```javascript
-fetch(p'https://example.com/api/document-folders/{id}', {
+fetch('https://example.com/api/document-folders/{id}', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -311,7 +357,7 @@ curl --request GET \
 ```
 
 ```javascript
-fetch(p'https://example.com/api/document-folders/{id}/document-folders', {
+fetch('https://example.com/api/document-folders/{id}/document-folders', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -349,7 +395,7 @@ curl --request GET \
 ```
 
 ```javascript
-fetch(p'https://example.com/api/document-folders/{id}/documents', {
+fetch('https://example.com/api/document-folders/{id}/documents', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -387,7 +433,7 @@ curl --request GET \
 ```
 
 ```javascript
-fetch(p'https://example.com/api/document-licenses/{id}', {
+fetch('https://example.com/api/document-licenses/{id}', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
