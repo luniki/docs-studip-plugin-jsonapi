@@ -264,6 +264,9 @@
                     <a href="#ein-dokument-herunterladen" class="toc-h2 toc-link" data-title="Ein Dokument herunterladen">Ein Dokument herunterladen</a>
                   </li>
                   <li>
+                    <a href="#ein-dokument-loschen" class="toc-h2 toc-link" data-title="Ein Dokument löschen">Ein Dokument löschen</a>
+                  </li>
+                  <li>
                     <a href="#einen-ordner-auslesen" class="toc-h2 toc-link" data-title="Einen Ordner auslesen">Einen Ordner auslesen</a>
                   </li>
                   <li>
@@ -743,7 +746,7 @@ herausgegeben wird.</p>
 <h2 id='alle-dokumente-einer-veranstaltung-einrichtung'>Alle Dokumente einer Veranstaltung/Einrichtung</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
     --url https://example.com/api/courses/&lt;COURSE-ID&gt;/documents <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">p</span><span class="s1">'https://example.com/api/courses/&lt;COURSE-ID&gt;/documents'</span><span class="p">,</span> <span class="p">{</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/courses/&lt;COURSE-ID&gt;/documents'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
     <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
     <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
@@ -843,7 +846,7 @@ die entsprechende Veranstaltung oder Einrichtung haben.</p>
 <h2 id='alle-ordner-einer-veranstaltung-einrichtung'>Alle Ordner einer Veranstaltung/Einrichtung</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
     --url https://example.com/api/courses/&lt;COURSE-ID&gt;/document-folders <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">p</span><span class="s1">'https://example.com/api/courses/&lt;COURSE-ID&gt;/document-folders'</span><span class="p">,</span> <span class="p">{</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/courses/&lt;COURSE-ID&gt;/document-folders'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
     <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
     <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
@@ -941,7 +944,7 @@ lediglich diejenigen Ordner gezeigt, die der Nutzer verwenden kann.</p>
 <h2 id='ein-dokument-auslesen'>Ein Dokument auslesen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
     --url https://example.com/api/documents/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">p</span><span class="s1">'https://example.com/api/documents/{id}'</span><span class="p">,</span> <span class="p">{</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/documents/{id}'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
     <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
     <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
@@ -1030,7 +1033,13 @@ zu Veranstaltungen ihrer Einrichtungen gehören; Root natürlich auf alle.</p>
 <h2 id='ein-dokument-herunterladen'>Ein Dokument herunterladen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
     --url https://example.com/api/documents/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// TODO</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/documents/{id}/content'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+    <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
+        <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s2">`Basic </span><span class="p">${</span><span class="nx">btoa</span><span class="p">(</span><span class="s1">'test_autor:testing'</span><span class="p">)}</span><span class="s2">`</span>
+    <span class="p">})</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">))</span>
 </code></pre>
 <blockquote>
 <p>Der Request liefert in der Regel kein JSON. (Es sei denn, dass das Dokument ein JSON-Objekt war.)</p>
@@ -1061,10 +1070,46 @@ herunterladen (nach den üblichen Stud.IP-Regeln). Tutoren und Dozenten
 haben Zugriff auf alle Dokumente ihrer Veranstaltung; Administratoren
 entsprechend auf Dokumente, die zu Veranstaltungen ihrer Einrichtungen
 gehören; Root natürlich auf alle.</p>
+<h2 id='ein-dokument-loschen'>Ein Dokument löschen</h2><pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
+    --url https://example.com/api/documents/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/documents/{id}'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+    <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
+        <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s2">`Basic </span><span class="p">${</span><span class="nx">btoa</span><span class="p">(</span><span class="s1">'test_autor:testing'</span><span class="p">)}</span><span class="s2">`</span>
+    <span class="p">})</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">))</span>
+</code></pre>
+<blockquote>
+<p>Der Request liefert nichts zurück.</p>
+</blockquote>
+
+<p>Mit dieser Route kann man eine Datei löschen. Gemäß
+JSON-API-Spezifikation antwortet der Server im Erfolgsfall mit einem
+Status-Code 204.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE https://example.com/documents/{id}</code></p>
+<h3 id='url-parameter-5'>URL-Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>die ID des Dokuments</td>
+</tr>
+</tbody></table>
+<h3 id='authorisierung-5'>Authorisierung</h3>
+<p>Eigene Dateien können gelöscht werden. Ansonsten gelten die für die
+Veranstaltung bzw. Einrichtungen geltenden Einschränkungen ganz genau
+wie im üblichen Stud.IP.</p>
 <h2 id='einen-ordner-auslesen'>Einen Ordner auslesen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
     --url https://example.com/api/document-folders/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">p</span><span class="s1">'https://example.com/api/document-folders/{id}'</span><span class="p">,</span> <span class="p">{</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/document-folders/{id}'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
     <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
     <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
@@ -1124,9 +1169,9 @@ gehören; Root natürlich auf alle.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}</code></p>
-<h3 id='url-parameter-5'>URL-Parameter</h3>
+<h3 id='url-parameter-6'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1138,7 +1183,7 @@ gehören; Root natürlich auf alle.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-5'>Authorisierung</h3>
+<h3 id='authorisierung-6'>Authorisierung</h3>
 <p>Autoren sehen nur eingeschränkt Ordner in ihren Veranstaltungen
 (nach den üblichen Stud.IP-Regeln). Tutoren und Dozenten haben Zugriff
 auf alle Ordner ihrer Veranstaltung; Administratoren entsprechend
@@ -1147,7 +1192,7 @@ Root natürlich auf alle.</p>
 <h2 id='alle-kindordner-eines-ordners'>Alle Kindordner eines Ordners</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
     --url https://example.com/api/document-folders/<span class="o">{</span>id<span class="o">}</span>/document-folders <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">p</span><span class="s1">'https://example.com/api/document-folders/{id}/document-folders'</span><span class="p">,</span> <span class="p">{</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/document-folders/{id}/document-folders'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
     <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
     <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
@@ -1230,9 +1275,9 @@ Root natürlich auf alle.</p>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}/document-folders</code></p>
-<h3 id='url-parameter-6'>URL-Parameter</h3>
+<h3 id='url-parameter-7'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1244,7 +1289,7 @@ Root natürlich auf alle.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-6'>Authorisierung</h3>
+<h3 id='authorisierung-7'>Authorisierung</h3>
 <p>Die Kindordner eines Ordners darf man nur sehen, wenn man den Ordner
 sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
 Hausaufgabenorder und Dateiberechtigungen werden entsprechend
@@ -1252,7 +1297,7 @@ berücksichtigt.</p>
 <h2 id='alle-dokumente-eines-ordners'>Alle Dokumente eines Ordners</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
     --url https://example.com/api/document-folders/<span class="o">{</span>id<span class="o">}</span>/documents <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">p</span><span class="s1">'https://example.com/api/document-folders/{id}/documents'</span><span class="p">,</span> <span class="p">{</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/document-folders/{id}/documents'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
     <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
     <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
@@ -1330,9 +1375,9 @@ berücksichtigt.</p>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}/documents</code></p>
-<h3 id='url-parameter-7'>URL-Parameter</h3>
+<h3 id='url-parameter-8'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1344,7 +1389,7 @@ berücksichtigt.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-7'>Authorisierung</h3>
+<h3 id='authorisierung-8'>Authorisierung</h3>
 <p>Die Dokumente eines Ordners darf man nur sehen, wenn man den Ordner
 sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
 Hausaufgabenorder und Dateiberechtigungen werden entsprechend
@@ -1352,7 +1397,7 @@ berücksichtigt.</p>
 <h2 id='eine-lizenz-auslesen'>Eine Lizenz auslesen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
     --url https://example.com/api/document-licenses/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">p</span><span class="s1">'https://example.com/api/document-licenses/{id}'</span><span class="p">,</span> <span class="p">{</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/document-licenses/{id}'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
     <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
     <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
@@ -1380,9 +1425,9 @@ berücksichtigt.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://example.com/document-licenses/{id}</code></p>
-<h3 id='url-parameter-8'>URL-Parameter</h3>
+<h3 id='url-parameter-9'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1394,7 +1439,7 @@ berücksichtigt.</p>
 <td>die ID der Lizenz</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-8'>Authorisierung</h3>
+<h3 id='authorisierung-9'>Authorisierung</h3>
 <p>Jeder kann Lizenzen auslesen.</p>
 <h1 id='dateibereich-v4-0'>Dateibereich v4.0+</h1>
 <aside class="warning">Dieser Abschnitt gilt für die Stud.IP >= v4.0 Die
