@@ -240,6 +240,17 @@
               </ul>
           </li>
           <li>
+            <a href="#activity-streams" class="toc-h1 toc-link" data-title="Activity Streams">Activity Streams</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#schema-quot-activities-quot" class="toc-h2 toc-link" data-title="Schema "activities"">Schema "activities"</a>
+                  </li>
+                  <li>
+                    <a href="#alle-aktivitaten-auslesen" class="toc-h2 toc-link" data-title="Alle Aktivitäten auslesen">Alle Aktivitäten auslesen</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#dateibereich-v3-5" class="toc-h1 toc-link" data-title="Dateibereich v3.5">Dateibereich v3.5</a>
               <ul class="toc-list-h2">
                   <li>
@@ -537,6 +548,204 @@ authorisiert auf diesen Endpoint zugreift – also sich selbst.</p>
 <p>Es werden keine Query-Parameter unterstützt.</p>
 <h3 id='authorisierung-2'>Authorisierung</h3>
 <p>Diese Route kann von jedem authorisierten Nutzer verwendet werden.</p>
+<h1 id='activity-streams'>Activity Streams</h1>
+<p>Mit Stud.IP Version 3.5 wurde eine neue API zum Erzeugen, Darstellen
+und Filtern von kontextrelevanten Aktivitäten eingeführt. Diese API
+kann u.a. dafür genutzt werden um Nutzern einen schnellen Überblick
+über die für ihn relevanten Information/Aktivitäten zu geben.</p>
+<h2 id='schema-quot-activities-quot'>Schema &quot;activities&quot;</h2>
+<p>Activity Streams enthalten Objekte des Typs &quot;activities&quot;. Diese geben
+enthalten eine textuelle Beschreibung der Aktivität, ein Datum, eine
+(etwas) detailiertere Beschreibung und die Art der Aktivität (das
+Verb). Aktivitäten beziehen sich auf einen Akteur (in der Regel ein
+Nutzer), einen Kontext, in dem sie stattfinden, und ein Objekt, auf
+das sie sich beziehen.</p>
+<h3 id='attribute'>Attribute</h3>
+<table><thead>
+<tr>
+<th>Attribut</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>knappe Beschreibung der Aktivität: &quot;Wer tut was mit wem/was wo?&quot;</td>
+</tr>
+<tr>
+<td>content</td>
+<td>etwas detailiertere Beschreibung der Aktivität</td>
+</tr>
+<tr>
+<td>mkdate</td>
+<td>Datum der Aktivität</td>
+</tr>
+<tr>
+<td>verb</td>
+<td>Art der Aktivität</td>
+</tr>
+</tbody></table>
+
+<p>Die verwendeten Verben sind normiert. Der Wertebereich umfasst:</p>
+
+<p><code>answered, attempted, attended, completed, created, deleted,
+edited, experienced, failed, imported, interacted, passed, shared,
+sent, voided</code></p>
+<h3 id='relationen'>Relationen</h3>
+<p>Die Relationen sind nicht änderbar und können nur ausgelesen werden.</p>
+
+<table><thead>
+<tr>
+<th>Relation</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>actor</td>
+<td>Wenn der Akteur der Aktivität ein Nutzer ist, wird mit dieser Relation auf ihn verwiesen.</td>
+</tr>
+<tr>
+<td>context</td>
+<td>der Kontext, in dem die Aktivität stattfindet; kann eine der folgenden sein: Veranstaltung, Einrichtung, Nutzer oder System.</td>
+</tr>
+<tr>
+<td>object</td>
+<td>das Objekt, mit dem die Aktivität stattfindet; falls möglich wird hier auf eine Route in der JSON:API verwiesen</td>
+</tr>
+</tbody></table>
+<h2 id='alle-aktivitaten-auslesen'>Alle Aktivitäten auslesen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+    --url https://example.com/api/users/&lt;USER-ID&gt;/activitystream <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/users/&lt;USER-ID&gt;/activitystream'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+    <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
+        <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s2">`Basic </span><span class="p">${</span><span class="nx">btoa</span><span class="p">(</span><span class="s1">'test_autor:testing'</span><span class="p">)}</span><span class="s2">`</span>
+    <span class="p">})</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">))</span>
+</code></pre>
+<blockquote>
+<p>Der Request liefert JSON ähnlich wie dieses:</p>
+</blockquote>
+
+<p>Mit dieser Route können die Aktivitäten ausgelesen werden, die für einen
+Nutzer sichtbar sind. Der Activity Stream wird paginiert ausgegeben.
+Standardmäßig werden nur Aktivitäten <strong>der letzten 6 Monate</strong>
+ausgegeben. Diese Einschränkung kann mit Hilfe des URL-Parameters
+&#39;filter&#39; verändert werden.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://example.com/jsonapi/users/{id}/activitystream</code></p>
+<h3 id='url-parameter'>URL-Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter</td>
+<td>Filtermöglichkeit der anzuzeigenden Aktivitäten (Zeit und Typ)</td>
+</tr>
+<tr>
+<td>include</td>
+<td>ermöglicht das Inkludieren des Akteurs, des Kontexts und des Objekts in die JSON:API-Antwort</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Einstellmöglichkeiten zur Paginierung</td>
+</tr>
+</tbody></table>
+<h4 id='url-parameter-39-filter-39'>URL-Parameter &#39;filter&#39;</h4><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+     --url <span class="s1">'https://example.com/api/users/&lt;USER-ID&gt;/activitystream?filter\[start\]=1263078000&amp;filter\[end\]=1409695200&amp;filter[activity-type]=documents'</span> <span class="se">\</span>
+     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre>
+<p>Mit diesem URL-Parameter kann nach Typ und Datum der Aktivitäten
+gefiltert werden. Möglich sind folgende Filter:</p>
+
+<table><thead>
+<tr>
+<th>Filter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter[start]</td>
+<td>zeitliche Beschränkung: Start des Abfrageintervalls</td>
+</tr>
+<tr>
+<td>filter[end]</td>
+<td>zeitliche Beschränkung: Ende des Abfrageintervalls</td>
+</tr>
+<tr>
+<td>filter[activity-type]</td>
+<td>nur Aktivitäten dieses Typs/dieser Typen werden zurückgeliefert</td>
+</tr>
+</tbody></table>
+
+<p>Mit Hilfe der Parameter &#39;start&#39; und &#39;end&#39; kann das Abfrageintervall
+verändert werden. Standardmäßig werden alle Aktivitäten der letzten 6
+Monate bis zum aktuellen Zeitpunkt zurückgeliefert. Mit &#39;start&#39; und
+&#39;end&#39; können diese Intervallgrenzen beliebig gestaltet werden. Für diese
+beiden Parameter können nur ganzzahlige Werte angegeben werden, die
+die Anzahl der Sekunden seit dem 01.01.1970 bis zum gewünschten
+Zeitpunkt angeben (&#39;unix epoch time&#39;).</p>
+
+<p>Der Parameter &#39;activity-type&#39; schränkt die Aktivitäten nach Typ ein.
+Mögliche Werte sind:</p>
+
+<p><code>activity, blubber, documents, forum, literature, message, news, participants, schedule, wiki</code></p>
+
+<p>Um nach mehreren Aktivitätstypen zu filtern, können mehrere dieser
+Typen durch Komma getrennt verwendet werden.</p>
+<h4 id='url-parameter-39-include-39'>URL-Parameter &#39;include&#39;</h4><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+     --url <span class="s1">'https://example.com/api/users/&lt;USER-ID&gt;/activitystream?include=actor,context'</span><span class="se">\</span>
+     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Werte</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>actor</td>
+<td>inkludiert die Akteure der gelieferten Aktivitäten</td>
+</tr>
+<tr>
+<td>context</td>
+<td>inkludiert die Kontexte der gelieferten Aktivitäten</td>
+</tr>
+<tr>
+<td>object</td>
+<td>inkludiert die Objekte der gelieferten Aktivitäten</td>
+</tr>
+</tbody></table>
+
+<p>Der &#39;include&#39;-Parameter wird der JSON:API-Spezifikation entsprechend
+verwendet. Es können auch mehrere Werte durch Komma getrennt angegeben werden.</p>
+<h4 id='url-parameter-39-page-39'>URL-Parameter &#39;page&#39;</h4>
+<table><thead>
+<tr>
+<th>Page-Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page[offset]</td>
+<td>der Paginierungsoffset</td>
+</tr>
+<tr>
+<td>page[limit]</td>
+<td>das Paginierungslimit</td>
+</tr>
+</tbody></table>
+
+<p>Der &#39;page&#39;-Parameter wird der JSON:API-Spezifikation entsprechend verwendet.</p>
+<h3 id='meta-informationen'>Meta-Informationen</h3>
+<p>Damit klar ersichtlich ist, welche Filter für die Abfrage galten,
+werden diese Informationen als Top-Level-&#39;meta&#39;-Objekt zurückgegeben.</p>
+<h3 id='authorisierung'>Authorisierung</h3>
+<p>Mit dieser Route kann nur der Nutzer selbst oder Root-Nutzer
+diejenigen Aktivitäten sehen, die für einen Nutzers sichtbar wären.</p>
 <h1 id='dateibereich-v3-5'>Dateibereich v3.5</h1>
 <aside class="warning">Dieser Abschnitt gilt für die Stud.IP v3.5. Ab Stud.IP v4.0 gibt es einen neuen Dateibereich.</aside>
 
