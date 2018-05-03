@@ -371,9 +371,11 @@ id        | die ID des Dokuments
 
 ### HTTP Request Body
 
-Im Request-Body muss das neue Dokument als ein einziges ``resource object`` enthalten sein. Das ``resource object`` muss im ``type``-Attribut "documents" enthalten und darf keine ``id`` haben. Ein Beispiel:
+Im Request-Body muss das neue Dokument als ein einziges ``resource object`` enthalten sein. Das ``resource object`` muss im ``type``-Attribut "documents" enthalten und darf keine ``id`` haben.
 
 ```
+// Ein Beispiel:
+
 POST /document-folders/{id}/documents HTTP/1.1
 Content-Type: application/vnd.api+json
 Accept: application/vnd.api+json
