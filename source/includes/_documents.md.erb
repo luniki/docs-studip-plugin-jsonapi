@@ -21,7 +21,8 @@ verwendet. Es gibt Dokumente (type=documents), Ordner
 In Stud.IP kann man Dokumente auf zwei Weisen einbinden. Zum einen
 können Dokumente hochgeladen werden. Zum anderen kann auch einfach
 eine URL hinterlegt werden, die via Stud.IP-Proxy an die Nutzer
-herausgegeben wird.
+herausgegeben wird. Dokumente bestehen sowohl aus ihren Metadaten (wie
+Name und Beschreibung), als auch aus ihrem eigentlichen Inhalt.
 
 TODO: download-link, url
 
@@ -225,7 +226,7 @@ ihrer Veranstaltung; Administratoren entsprechend auf Dokumente, die
 zu Veranstaltungen ihrer Einrichtungen gehören; Root natürlich auf alle.
 
 
-## Ein Dokument herunterladen
+## Eine Dokument-Datei herunterladen
 ```shell
 curl --request GET \
     --url https://example.com/api/documents/{id} \
@@ -266,7 +267,130 @@ haben Zugriff auf alle Dokumente ihrer Veranstaltung; Administratoren
 entsprechend auf Dokumente, die zu Veranstaltungen ihrer Einrichtungen
 gehören; Root natürlich auf alle.
 
+## Eine Dokument-Datei aktualisieren
 
+```shell
+curl --request POST --form 'file=@die-aktuelle-datei.jpg' \
+     --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`" \
+     --url "https://example.com/api/documents/{id}/content"
+```
+
+<aside class="warning">Diese Route ist keine JSON:API Route.</aside>
+
+Mit dieser Route kann man den Inhalt eines vorhandenen Dokuments aktualisieren.
+
+Dazu sendet man einen ``POST``-Request an dieselbe Route, von der aus man auch den Inhalt herunterladen würde.
+
+### HTTP Request
+`POST https://example.com/documents/{id}/content`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Dokuments
+
+### Authorisierung
+
+Die Berechtigungsregeln zum Aktualisieren des Inhalts eines Dokuments sind komplex. In der Regel darf man seine eigenen
+Dokumente und Tutoren und Dozenten die meisten anderen Dokumente aktualisieren. Die Berechtigungsregeln entsprechen dem
+Verhalten, das Stud.IP über die Web-Oberfläche zeigt.
+
+
+## Ein Dokument erstellen
+
+Ein Dokument wird immer in einem Ordner erstellt. Da wie oben
+beschrieben Dokumente aus Metadaten **und** Inhalt bestehen, muss das
+Anlegen einer Datei in zwei Schritten passieren. Dazu kann entweder
+a.) zuerst der Inhalt hochgeladen werden und dann die Metadaten (wie
+Beschreibung und Lizenz) angepasst werden oder b.) erst die Datei mit
+den Metadaten erstellt werden und nachträglich der Inhalt hochgeladen
+werden.
+
+
+### Variante a.
+
+```shell
+curl --request POST --form 'file=@eine-neue-datei.jpg' \
+     --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`" \
+     --url "https://example.com/api/document-folders/{id}/documents"
+```
+
+Zuerst sendet man einen ``POST``-Request mit ``Content-Type:
+multipart/form-data`` und der Datei im Request-Body an die unten
+angegebene URL.
+
+Man erhält im Erfolgsfall einen Status-Code 201 und einen
+Location-Header, der einen zum neu erstellten Dokument in die JSON:API
+bringt.
+
+Der *Dateiname* wird standardmäßig aus dem Upload genommen und auch
+ für den Namen der Datei verwendet.
+
+Will man einen anderen Dateinamen verwenden, kann man einen
+HTTP-Header wie: ``Slug: neuer-dateiname.txt`` verwenden.
+
+Über die URL aus dem erhaltenen ``Location``-Header erhält man die
+JSON:API-Repräsentation der hochgeladenen Datei.
+
+Nun können mit einem (JSON:API-typischen) ``PATCH``-Request an diese
+Route Modifikationen an den Metadaten (wie Beschreibung usw.)
+vorgenommen werden.
+
+
+### Variante b.
+
+```shell
+curl --request POST \
+    --url https://example.com/api/document-folders/{id}/documents \
+    --header "Content-Type: application/vnd.api+json" \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+    --data '{"data": { "type": "documents", "attributes": { "name": "iason.txt", "description": "Iasons Lebenslauf", "filename": "iason.txt"}}}'
+```
+
+Zunächst sendet man einen ``POST``-Request mit ``Content-Type:
+application/vnd.api+json`` an die unten angegebene URL.
+
+Im Request-Body muss dann eine JSON:API-typische Repräsentation des
+neuen Dokuments enthalten sein. Im Erfolgsfall erhält man dann eine
+Repräsentation der neu angelegten Datei, die aber derzeit noch keinen
+Inhalt hat.
+
+Daher muss der Inhalt in einem zweiten Request hochgeladen werden.
+Dazu wird unter "Eine Dokument-Datei aktualisieren" beschrieben ein
+``POST``-Request an die ``content``-URL geschickt.
+
+### HTTP Request
+`POST https://example.com/document-folders/{id}/documents`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Dokuments
+
+### HTTP Request Body
+
+Im Request-Body muss das neue Dokument als ein einziges ``resource object`` enthalten sein. Das ``resource object`` muss im ``type``-Attribut "documents" enthalten und darf keine ``id`` haben. Ein Beispiel:
+
+```
+POST /document-folders/{id}/documents HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "documents",
+    "attributes": {
+      "name": "Der Name des Dokuments",
+      "description": "Die Beschreibung des Dokuments",
+      "filename": "test-file.txt"
+    }
+}
+
+### Authorisierung
+
+Die Berechtigungen zum Anlegen eines Dokuments in einem Ordner sind komplex und entsprechend denen, die in der Web-Oberfläche von Stud.IP verwendet werden.
 
 
 ## Ein Dokument löschen
