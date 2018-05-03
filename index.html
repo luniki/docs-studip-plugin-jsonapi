@@ -1377,8 +1377,10 @@ Dazu wird unter &quot;Eine Dokument-Datei aktualisieren&quot; beschrieben ein
 </tr>
 </tbody></table>
 <h3 id='http-request-body'>HTTP Request Body</h3>
-<p>Im Request-Body muss das neue Dokument als ein einziges <code>resource object</code> enthalten sein. Das <code>resource object</code> muss im <code>type</code>-Attribut &quot;documents&quot; enthalten und darf keine <code>id</code> haben. Ein Beispiel:</p>
-<pre class="highlight plaintext"><code>POST /document-folders/{id}/documents HTTP/1.1
+<p>Im Request-Body muss das neue Dokument als ein einziges <code>resource object</code> enthalten sein. Das <code>resource object</code> muss im <code>type</code>-Attribut &quot;documents&quot; enthalten und darf keine <code>id</code> haben.</p>
+<pre class="highlight plaintext"><code>// Ein Beispiel:
+
+POST /document-folders/{id}/documents HTTP/1.1
 Content-Type: application/vnd.api+json
 Accept: application/vnd.api+json
 
