@@ -281,6 +281,9 @@
                     <a href="#ein-dokument-erstellen" class="toc-h2 toc-link" data-title="Ein Dokument erstellen">Ein Dokument erstellen</a>
                   </li>
                   <li>
+                    <a href="#ein-dokument-loschen" class="toc-h2 toc-link" data-title="Ein Dokument löschen">Ein Dokument löschen</a>
+                  </li>
+                  <li>
                     <a href="#einen-ordner-auslesen" class="toc-h2 toc-link" data-title="Einen Ordner auslesen">Einen Ordner auslesen</a>
                   </li>
                   <li>
@@ -1388,17 +1391,11 @@ Accept: application/vnd.api+json
       "filename": "test-file.txt"
     }
 }
-
-### Authorisierung
-
-Die Berechtigungen zum Anlegen eines Dokuments in einem Ordner sind komplex und entsprechend denen, die in der Web-Oberfläche von Stud.IP verwendet werden.
-
-
-## Ein Dokument löschen
-```shell
-curl --request DELETE \
-    --url https://example.com/api/documents/{id} \
-    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+</code></pre><h3 id='authorisierung-6'>Authorisierung</h3>
+<p>Die Berechtigungen zum Anlegen eines Dokuments in einem Ordner sind komplex und entsprechend denen, die in der Web-Oberfläche von Stud.IP verwendet werden.</p>
+<h2 id='ein-dokument-loschen'>Ein Dokument löschen</h2><pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
+    --url https://example.com/api/documents/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/documents/{id}'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
     <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
@@ -1428,7 +1425,7 @@ Status-Code 204.</p>
 <td>die ID des Dokuments</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-6'>Authorisierung</h3>
+<h3 id='authorisierung-7'>Authorisierung</h3>
 <p>Eigene Dateien können gelöscht werden. Ansonsten gelten die für die
 Veranstaltung bzw. Einrichtungen geltenden Einschränkungen ganz genau
 wie im üblichen Stud.IP.</p>
@@ -1509,7 +1506,7 @@ wie im üblichen Stud.IP.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-7'>Authorisierung</h3>
+<h3 id='authorisierung-8'>Authorisierung</h3>
 <p>Autoren sehen nur eingeschränkt Ordner in ihren Veranstaltungen
 (nach den üblichen Stud.IP-Regeln). Tutoren und Dozenten haben Zugriff
 auf alle Ordner ihrer Veranstaltung; Administratoren entsprechend
@@ -1615,7 +1612,7 @@ Root natürlich auf alle.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-8'>Authorisierung</h3>
+<h3 id='authorisierung-9'>Authorisierung</h3>
 <p>Die Kindordner eines Ordners darf man nur sehen, wenn man den Ordner
 sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
 Hausaufgabenorder und Dateiberechtigungen werden entsprechend
@@ -1715,7 +1712,7 @@ berücksichtigt.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-9'>Authorisierung</h3>
+<h3 id='authorisierung-10'>Authorisierung</h3>
 <p>Die Dokumente eines Ordners darf man nur sehen, wenn man den Ordner
 sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
 Hausaufgabenorder und Dateiberechtigungen werden entsprechend
@@ -1765,7 +1762,7 @@ berücksichtigt.</p>
 <td>die ID der Lizenz</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-10'>Authorisierung</h3>
+<h3 id='authorisierung-11'>Authorisierung</h3>
 <p>Jeder kann Lizenzen auslesen.</p>
 <h1 id='dateibereich-v4-0'>Dateibereich v4.0+</h1>
 <aside class="warning">Dieser Abschnitt gilt für die Stud.IP >= v4.0 Die
