@@ -272,10 +272,13 @@
                     <a href="#ein-dokument-auslesen" class="toc-h2 toc-link" data-title="Ein Dokument auslesen">Ein Dokument auslesen</a>
                   </li>
                   <li>
-                    <a href="#ein-dokument-herunterladen" class="toc-h2 toc-link" data-title="Ein Dokument herunterladen">Ein Dokument herunterladen</a>
+                    <a href="#eine-dokument-datei-herunterladen" class="toc-h2 toc-link" data-title="Eine Dokument-Datei herunterladen">Eine Dokument-Datei herunterladen</a>
                   </li>
                   <li>
-                    <a href="#ein-dokument-loschen" class="toc-h2 toc-link" data-title="Ein Dokument löschen">Ein Dokument löschen</a>
+                    <a href="#eine-dokument-datei-aktualisieren" class="toc-h2 toc-link" data-title="Eine Dokument-Datei aktualisieren">Eine Dokument-Datei aktualisieren</a>
+                  </li>
+                  <li>
+                    <a href="#ein-dokument-erstellen" class="toc-h2 toc-link" data-title="Ein Dokument erstellen">Ein Dokument erstellen</a>
                   </li>
                   <li>
                     <a href="#einen-ordner-auslesen" class="toc-h2 toc-link" data-title="Einen Ordner auslesen">Einen Ordner auslesen</a>
@@ -765,7 +768,8 @@ verwendet. Es gibt Dokumente (type=documents), Ordner
 <p>In Stud.IP kann man Dokumente auf zwei Weisen einbinden. Zum einen
 können Dokumente hochgeladen werden. Zum anderen kann auch einfach
 eine URL hinterlegt werden, die via Stud.IP-Proxy an die Nutzer
-herausgegeben wird.</p>
+herausgegeben wird. Dokumente bestehen sowohl aus ihren Metadaten (wie
+Name und Beschreibung), als auch aus ihrem eigentlichen Inhalt.</p>
 
 <p>TODO: download-link, url</p>
 <h3 id='attribute'>Attribute</h3>
@@ -1239,7 +1243,7 @@ darauf Zugriff hat.</p>
 Stud.IP-Regeln). Tutoren und Dozenten haben Zugriff auf alle Dokumente
 ihrer Veranstaltung; Administratoren entsprechend auf Dokumente, die
 zu Veranstaltungen ihrer Einrichtungen gehören; Root natürlich auf alle.</p>
-<h2 id='ein-dokument-herunterladen'>Ein Dokument herunterladen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+<h2 id='eine-dokument-datei-herunterladen'>Eine Dokument-Datei herunterladen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
     --url https://example.com/api/documents/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/documents/{id}/content'</span><span class="p">,</span> <span class="p">{</span>
@@ -1279,9 +1283,122 @@ herunterladen (nach den üblichen Stud.IP-Regeln). Tutoren und Dozenten
 haben Zugriff auf alle Dokumente ihrer Veranstaltung; Administratoren
 entsprechend auf Dokumente, die zu Veranstaltungen ihrer Einrichtungen
 gehören; Root natürlich auf alle.</p>
-<h2 id='ein-dokument-loschen'>Ein Dokument löschen</h2><pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-    --url https://example.com/api/documents/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
-    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+<h2 id='eine-dokument-datei-aktualisieren'>Eine Dokument-Datei aktualisieren</h2><pre class="highlight shell tab-shell"><code>curl --request POST --form <span class="s1">'file=@die-aktuelle-datei.jpg'</span> <span class="se">\</span>
+     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_dozent:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+     --url <span class="s2">"https://example.com/api/documents/{id}/content"</span>
+</code></pre>
+<aside class="warning">Diese Route ist keine JSON:API Route.</aside>
+
+<p>Mit dieser Route kann man den Inhalt eines vorhandenen Dokuments aktualisieren.</p>
+
+<p>Dazu sendet man einen <code>POST</code>-Request an dieselbe Route, von der aus man auch den Inhalt herunterladen würde.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST https://example.com/documents/{id}/content</code></p>
+<h3 id='url-parameter-5'>URL-Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>die ID des Dokuments</td>
+</tr>
+</tbody></table>
+<h3 id='authorisierung-5'>Authorisierung</h3>
+<p>Die Berechtigungsregeln zum Aktualisieren des Inhalts eines Dokuments sind komplex. In der Regel darf man seine eigenen
+Dokumente und Tutoren und Dozenten die meisten anderen Dokumente aktualisieren. Die Berechtigungsregeln entsprechen dem
+Verhalten, das Stud.IP über die Web-Oberfläche zeigt.</p>
+<h2 id='ein-dokument-erstellen'>Ein Dokument erstellen</h2>
+<p>Ein Dokument wird immer in einem Ordner erstellt. Da wie oben
+beschrieben Dokumente aus Metadaten <strong>und</strong> Inhalt bestehen, muss das
+Anlegen einer Datei in zwei Schritten passieren. Dazu kann entweder
+a.) zuerst der Inhalt hochgeladen werden und dann die Metadaten (wie
+Beschreibung und Lizenz) angepasst werden oder b.) erst die Datei mit
+den Metadaten erstellt werden und nachträglich der Inhalt hochgeladen
+werden.</p>
+<h3 id='variante-a'>Variante a.</h3><pre class="highlight shell tab-shell"><code>curl --request POST --form <span class="s1">'file=@eine-neue-datei.jpg'</span> <span class="se">\</span>
+     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_dozent:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+     --url <span class="s2">"https://example.com/api/document-folders/{id}/documents"</span>
+</code></pre>
+<p>Zuerst sendet man einen <code>POST</code>-Request mit <code>Content-Type:
+multipart/form-data</code> und der Datei im Request-Body an die unten
+angegebene URL.</p>
+
+<p>Man erhält im Erfolgsfall einen Status-Code 201 und einen
+Location-Header, der einen zum neu erstellten Dokument in die JSON:API
+bringt.</p>
+
+<p>Der <em>Dateiname</em> wird standardmäßig aus dem Upload genommen und auch
+ für den Namen der Datei verwendet.</p>
+
+<p>Will man einen anderen Dateinamen verwenden, kann man einen
+HTTP-Header wie: <code>Slug: neuer-dateiname.txt</code> verwenden.</p>
+
+<p>Über die URL aus dem erhaltenen <code>Location</code>-Header erhält man die
+JSON:API-Repräsentation der hochgeladenen Datei.</p>
+
+<p>Nun können mit einem (JSON:API-typischen) <code>PATCH</code>-Request an diese
+Route Modifikationen an den Metadaten (wie Beschreibung usw.)
+vorgenommen werden.</p>
+<h3 id='variante-b'>Variante b.</h3><pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+    --url https://example.com/api/document-folders/<span class="o">{</span>id<span class="o">}</span>/documents <span class="se">\</span>
+    --header <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+    --data <span class="s1">'{"data": { "type": "documents", "attributes": { "name": "iason.txt", "description": "Iasons Lebenslauf", "filename": "iason.txt"}}}'</span>
+</code></pre>
+<p>Zunächst sendet man einen <code>POST</code>-Request mit <code>Content-Type:
+application/vnd.api+json</code> an die unten angegebene URL.</p>
+
+<p>Im Request-Body muss dann eine JSON:API-typische Repräsentation des
+neuen Dokuments enthalten sein. Im Erfolgsfall erhält man dann eine
+Repräsentation der neu angelegten Datei, die aber derzeit noch keinen
+Inhalt hat.</p>
+
+<p>Daher muss der Inhalt in einem zweiten Request hochgeladen werden.
+Dazu wird unter &quot;Eine Dokument-Datei aktualisieren&quot; beschrieben ein
+<code>POST</code>-Request an die <code>content</code>-URL geschickt.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://example.com/document-folders/{id}/documents</code></p>
+<h3 id='url-parameter-6'>URL-Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>die ID des Dokuments</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-body'>HTTP Request Body</h3>
+<p>Im Request-Body muss das neue Dokument als ein einziges <code>resource object</code> enthalten sein. Das <code>resource object</code> muss im <code>type</code>-Attribut &quot;documents&quot; enthalten und darf keine <code>id</code> haben. Ein Beispiel:</p>
+<pre class="highlight plaintext"><code>POST /document-folders/{id}/documents HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "documents",
+    "attributes": {
+      "name": "Der Name des Dokuments",
+      "description": "Die Beschreibung des Dokuments",
+      "filename": "test-file.txt"
+    }
+}
+
+### Authorisierung
+
+Die Berechtigungen zum Anlegen eines Dokuments in einem Ordner sind komplex und entsprechend denen, die in der Web-Oberfläche von Stud.IP verwendet werden.
+
+
+## Ein Dokument löschen
+```shell
+curl --request DELETE \
+    --url https://example.com/api/documents/{id} \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/documents/{id}'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
     <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
@@ -1297,9 +1414,9 @@ gehören; Root natürlich auf alle.</p>
 <p>Mit dieser Route kann man eine Datei löschen. Gemäß
 JSON-API-Spezifikation antwortet der Server im Erfolgsfall mit einem
 Status-Code 204.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>DELETE https://example.com/documents/{id}</code></p>
-<h3 id='url-parameter-5'>URL-Parameter</h3>
+<h3 id='url-parameter-7'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1311,7 +1428,7 @@ Status-Code 204.</p>
 <td>die ID des Dokuments</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-5'>Authorisierung</h3>
+<h3 id='authorisierung-6'>Authorisierung</h3>
 <p>Eigene Dateien können gelöscht werden. Ansonsten gelten die für die
 Veranstaltung bzw. Einrichtungen geltenden Einschränkungen ganz genau
 wie im üblichen Stud.IP.</p>
@@ -1378,9 +1495,9 @@ wie im üblichen Stud.IP.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}</code></p>
-<h3 id='url-parameter-6'>URL-Parameter</h3>
+<h3 id='url-parameter-8'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1392,7 +1509,7 @@ wie im üblichen Stud.IP.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-6'>Authorisierung</h3>
+<h3 id='authorisierung-7'>Authorisierung</h3>
 <p>Autoren sehen nur eingeschränkt Ordner in ihren Veranstaltungen
 (nach den üblichen Stud.IP-Regeln). Tutoren und Dozenten haben Zugriff
 auf alle Ordner ihrer Veranstaltung; Administratoren entsprechend
@@ -1484,9 +1601,9 @@ Root natürlich auf alle.</p>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}/document-folders</code></p>
-<h3 id='url-parameter-7'>URL-Parameter</h3>
+<h3 id='url-parameter-9'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1498,7 +1615,7 @@ Root natürlich auf alle.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-7'>Authorisierung</h3>
+<h3 id='authorisierung-8'>Authorisierung</h3>
 <p>Die Kindordner eines Ordners darf man nur sehen, wenn man den Ordner
 sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
 Hausaufgabenorder und Dateiberechtigungen werden entsprechend
@@ -1584,9 +1701,9 @@ berücksichtigt.</p>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}/documents</code></p>
-<h3 id='url-parameter-8'>URL-Parameter</h3>
+<h3 id='url-parameter-10'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1598,7 +1715,7 @@ berücksichtigt.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-8'>Authorisierung</h3>
+<h3 id='authorisierung-9'>Authorisierung</h3>
 <p>Die Dokumente eines Ordners darf man nur sehen, wenn man den Ordner
 sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
 Hausaufgabenorder und Dateiberechtigungen werden entsprechend
@@ -1634,9 +1751,9 @@ berücksichtigt.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://example.com/document-licenses/{id}</code></p>
-<h3 id='url-parameter-9'>URL-Parameter</h3>
+<h3 id='url-parameter-11'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1648,7 +1765,7 @@ berücksichtigt.</p>
 <td>die ID der Lizenz</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-9'>Authorisierung</h3>
+<h3 id='authorisierung-10'>Authorisierung</h3>
 <p>Jeder kann Lizenzen auslesen.</p>
 <h1 id='dateibereich-v4-0'>Dateibereich v4.0+</h1>
 <aside class="warning">Dieser Abschnitt gilt für die Stud.IP >= v4.0 Die
