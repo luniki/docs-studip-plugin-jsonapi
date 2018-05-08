@@ -284,6 +284,9 @@
                     <a href="#ein-dokument-loschen" class="toc-h2 toc-link" data-title="Ein Dokument löschen">Ein Dokument löschen</a>
                   </li>
                   <li>
+                    <a href="#ein-dokument-andern" class="toc-h2 toc-link" data-title="Ein Dokument ändern">Ein Dokument ändern</a>
+                  </li>
+                  <li>
                     <a href="#einen-ordner-auslesen" class="toc-h2 toc-link" data-title="Einen Ordner auslesen">Einen Ordner auslesen</a>
                   </li>
                   <li>
@@ -1431,6 +1434,59 @@ Status-Code 204.</p>
 <p>Eigene Dateien können gelöscht werden. Ansonsten gelten die für die
 Veranstaltung bzw. Einrichtungen geltenden Einschränkungen ganz genau
 wie im üblichen Stud.IP.</p>
+<h2 id='ein-dokument-andern'>Ein Dokument ändern</h2><pre class="highlight shell tab-shell"><code>curl --request PATCH <span class="se">\</span>
+    --url https://example.com/api/documents/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://example.com/api/documents/{id}'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="s1">'PATCH'</span><span class="p">,</span>
+    <span class="na">mode</span><span class="p">:</span> <span class="s1">'cors'</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
+        <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s2">`Basic </span><span class="p">${</span><span class="nx">btoa</span><span class="p">(</span><span class="s1">'test_autor:testing'</span><span class="p">)}</span><span class="s2">`</span>
+    <span class="p">})</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">))</span>
+</code></pre>
+<p>Die Attribute <code>name</code> und <code>description</code> und die
+<code>license</code>-Relation eines Dokuments sind durch einen
+<code>PATCH</code>-Request änderbar. Der Request-Body enthält dazu ein
+geeignetes <code>resource object</code>.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>PATCH https://example.com/documents/{id}</code></p>
+<h3 id='url-parameter-8'>URL-Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>die ID des Dokuments</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-body-2'>HTTP Request Body</h3>
+<p>Im Request-Body muss das modifizierte Dokument als ein einziges
+<code>resource object</code> enthalten sein. Wenn Attribute oder Relationen
+ausgelassen werden, interpretiert der Server dies so, als ob sie mit
+ihren aktuellen Werten enthalten wären.</p>
+<pre class="highlight plaintext"><code>// Ein Beispiel:
+
+POST /documents/17 HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "documents",
+    "id": "17",
+    "attributes": {
+      "name": "Der neue Name des Dokuments",
+      "description": "Die neue Beschreibung des Dokuments"
+    }
+}
+</code></pre><h3 id='authorisierung-8'>Authorisierung</h3>
+<p>Für das Ändern der Metadaten eines Dokuments gelten die für die
+Veranstaltung bzw. Einrichtungen gültigen Einschränkungen ganz genau
+wie in der üblichen Stud.IP-Weboberfläche.</p>
 <h2 id='einen-ordner-auslesen'>Einen Ordner auslesen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
     --url https://example.com/api/document-folders/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
@@ -1494,9 +1550,9 @@ wie im üblichen Stud.IP.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}</code></p>
-<h3 id='url-parameter-8'>URL-Parameter</h3>
+<h3 id='url-parameter-9'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1508,7 +1564,7 @@ wie im üblichen Stud.IP.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-8'>Authorisierung</h3>
+<h3 id='authorisierung-9'>Authorisierung</h3>
 <p>Autoren sehen nur eingeschränkt Ordner in ihren Veranstaltungen
 (nach den üblichen Stud.IP-Regeln). Tutoren und Dozenten haben Zugriff
 auf alle Ordner ihrer Veranstaltung; Administratoren entsprechend
@@ -1600,9 +1656,9 @@ Root natürlich auf alle.</p>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}/document-folders</code></p>
-<h3 id='url-parameter-9'>URL-Parameter</h3>
+<h3 id='url-parameter-10'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1614,7 +1670,7 @@ Root natürlich auf alle.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-9'>Authorisierung</h3>
+<h3 id='authorisierung-10'>Authorisierung</h3>
 <p>Die Kindordner eines Ordners darf man nur sehen, wenn man den Ordner
 sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
 Hausaufgabenorder und Dateiberechtigungen werden entsprechend
@@ -1700,9 +1756,9 @@ berücksichtigt.</p>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://example.com/document-folders/{id}/documents</code></p>
-<h3 id='url-parameter-10'>URL-Parameter</h3>
+<h3 id='url-parameter-11'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1714,7 +1770,7 @@ berücksichtigt.</p>
 <td>die ID des Ordners</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-10'>Authorisierung</h3>
+<h3 id='authorisierung-11'>Authorisierung</h3>
 <p>Die Dokumente eines Ordners darf man nur sehen, wenn man den Ordner
 sehen würde. Außerdem greifen die Stud.IP-üblichen Beschränkungen:
 Hausaufgabenorder und Dateiberechtigungen werden entsprechend
@@ -1750,9 +1806,9 @@ berücksichtigt.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://example.com/document-licenses/{id}</code></p>
-<h3 id='url-parameter-11'>URL-Parameter</h3>
+<h3 id='url-parameter-12'>URL-Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1764,7 +1820,7 @@ berücksichtigt.</p>
 <td>die ID der Lizenz</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-11'>Authorisierung</h3>
+<h3 id='authorisierung-12'>Authorisierung</h3>
 <p>Jeder kann Lizenzen auslesen.</p>
 <h1 id='dateibereich-v4-0'>Dateibereich v4.0+</h1>
 <aside class="warning">Dieser Abschnitt gilt für die Stud.IP >= v4.0 Die
