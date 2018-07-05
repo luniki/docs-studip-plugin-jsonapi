@@ -16,36 +16,6 @@ Attribut    | Beschreibung
  Relation | Beschreibung
 --------  | ------------
 
-        $this->app->get('/blubber-postings', Routes\Blubber\PostingIndex::class);
-        $this->app->get('/blubber-postings/{id}', Routes\Blubber\PostingShow::class);
-        $this->app->post('/blubber-postings', Routes\Blubber\PostingCreate::class);
-        $this->app->patch('/blubber-postings/{id}', Routes\Blubber\PostingUpdate::class);
-        $this->app->delete('/blubber-postings/{id}', Routes\Blubber\PostingDelete::class);
-
-        // RELATIONSHIP: 'author'
-        $this->addRelationship('/blubber-postings/{id}/relationships/author', Routes\Blubber\Rel\Author::class);
-
-        // RELATIONSHIP: 'comments'
-        $this->app->get('/blubber-postings/{id}/comments', Routes\Blubber\CommentIndex::class);
-        $this->app->post('/blubber-postings/{id}/comments', Routes\Blubber\CommentCreate::class);
-        $this->addRelationship('/blubber-postings/{id}/relationships/comments', Routes\Blubber\Rel\Comments::class);
-
-        // RELATIONSHIP: 'context'
-        $this->app->get('/blubber-postings/{id}/relationships/context', \Argonauts\Routes\Blubber\Rel\Context::class);
-
-        // RELATIONSHIP: 'mentions'
-        $this->app->get('/blubber-postings/{id}/mentions', Routes\Blubber\MentionsShow::class);
-        $this->addRelationship('/blubber-postings/{id}/relationships/mentions', Routes\Blubber\Rel\Mentions::class);
-
-        // RELATIONSHIP: 'resharers'
-        $this->addRelationship('/blubber-postings/{id}/relationships/resharers', Routes\Blubber\Rel\Resharers::class);
-
-        $this->app->post('/courses/{id}/blubber-postings', Routes\Blubber\CourseCreate::class);
-        $this->app->post('/users/{id}/blubber-postings', Routes\Blubber\UserCreate::class);
-
-        $this->app->get('/blubber-streams/{id}', Routes\Blubber\StreamShow::class);
-
-
 
 ## Alle Blubber-Beiträge
 
@@ -86,27 +56,65 @@ gefiltert werden. Möglich sind folgende Filter:
 
 Filter          | Beschreibung
 --------------- | ------------
-filter[course]  |
-filter[user]    | zeitliche Beschränkung: Ende des Abfrageintervalls
-
-Mit Hilfe der Parameter 'start' und 'end' kann das Abfrageintervall
-verändert werden. Standardmäßig werden alle Aktivitäten der letzten 6
-Monate bis zum aktuellen Zeitpunkt zurückgeliefert. Mit 'start' und
-'end' können diese Intervallgrenzen beliebig gestaltet werden. Für diese
-beiden Parameter können nur ganzzahlige Werte angegeben werden, die
-die Anzahl der Sekunden seit dem 01.01.1970 bis zum gewünschten
-Zeitpunkt angeben ('unix epoch time').
-
-Der Parameter 'activity-type' schränkt die Aktivitäten nach Typ ein.
-Mögliche Werte sind:
-
-<code>activity, blubber, documents, forum, literature, message, news, participants, schedule, wiki</code>
-
-Um nach mehreren Aktivitätstypen zu filtern, können mehrere dieser
-Typen durch Komma getrennt verwendet werden.
+filter[course]  | TODO
+filter[user]    | TODO
 
 #### URL-Parameter 'include'
+
+Wert      | Beschreibung
+--------- | ------------
+author    | TODO
+comments  | TODO
+context   | TODO
+mentions  | TODO
+resharers | TODO
 
 ### Authorisierung
 
 Diese Route kann von allen Nutzern verwendet werden.
+
+
+## Einen Blubber-Beitrag auslesen
+   GET /blubber-postings/{id}
+
+## Einen Blubber-Beitrag anlegen
+   POST /blubber-postings
+
+## Einen Blubber-Beitrag editieren
+   PATCH /blubber-postings/{id}
+
+## Einen Blubber-Beitrag löschen
+   DELETE /blubber-postings/{id}
+
+## Relation 'author'
+   GET /blubber-postings/{id}/relationships/author
+
+## Alle Kommentare eines Blubber-Beitrags
+   GET /blubber-postings/{id}/comments
+
+## Einen Blubber-Beitrag kommentieren
+   POST /blubber-postings/{id}/comments
+
+## Relation 'comments'
+   GET /blubber-postings/{id}/relationships/comments
+
+## Relation 'context'
+   GET /blubber-postings/{id}/relationships/context
+
+## Alle Erwähnungn eines Blubber-Beitrags
+   GET /blubber-postings/{id}/mentions
+
+## Relation 'mentions'
+   GET /blubber-postings/{id}/relationships/mentions
+
+## Relation 'resharers'
+   GET /blubber-postings/{id}/relationships/resharers
+
+## Einen Blubber-Beitrag in einer Veranstaltung anlegen
+   POST /courses/{id}/blubber-postings
+
+## Einen Blubber-Beitrag im Profil anlegen
+   POST /users/{id}/blubber-postings
+
+## Einen Blubber-Stream auslesen
+   GET /blubber-streams/{id}
