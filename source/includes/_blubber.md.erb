@@ -1,0 +1,112 @@
+# Blubber
+
+TODO: Einleitung
+
+## Schema "todo-a"
+
+TODO: Einleitung
+
+### Attribute
+
+Attribut    | Beschreibung
+--------    | ------------
+
+### Relationen
+
+ Relation | Beschreibung
+--------  | ------------
+
+        $this->app->get('/blubber-postings', Routes\Blubber\PostingIndex::class);
+        $this->app->get('/blubber-postings/{id}', Routes\Blubber\PostingShow::class);
+        $this->app->post('/blubber-postings', Routes\Blubber\PostingCreate::class);
+        $this->app->patch('/blubber-postings/{id}', Routes\Blubber\PostingUpdate::class);
+        $this->app->delete('/blubber-postings/{id}', Routes\Blubber\PostingDelete::class);
+
+        // RELATIONSHIP: 'author'
+        $this->addRelationship('/blubber-postings/{id}/relationships/author', Routes\Blubber\Rel\Author::class);
+
+        // RELATIONSHIP: 'comments'
+        $this->app->get('/blubber-postings/{id}/comments', Routes\Blubber\CommentIndex::class);
+        $this->app->post('/blubber-postings/{id}/comments', Routes\Blubber\CommentCreate::class);
+        $this->addRelationship('/blubber-postings/{id}/relationships/comments', Routes\Blubber\Rel\Comments::class);
+
+        // RELATIONSHIP: 'context'
+        $this->app->get('/blubber-postings/{id}/relationships/context', \Argonauts\Routes\Blubber\Rel\Context::class);
+
+        // RELATIONSHIP: 'mentions'
+        $this->app->get('/blubber-postings/{id}/mentions', Routes\Blubber\MentionsShow::class);
+        $this->addRelationship('/blubber-postings/{id}/relationships/mentions', Routes\Blubber\Rel\Mentions::class);
+
+        // RELATIONSHIP: 'resharers'
+        $this->addRelationship('/blubber-postings/{id}/relationships/resharers', Routes\Blubber\Rel\Resharers::class);
+
+        $this->app->post('/courses/{id}/blubber-postings', Routes\Blubber\CourseCreate::class);
+        $this->app->post('/users/{id}/blubber-postings', Routes\Blubber\UserCreate::class);
+
+        $this->app->get('/blubber-streams/{id}', Routes\Blubber\StreamShow::class);
+
+
+
+## Alle Blubber-Beiträge
+
+```shell
+curl --request GET \
+    --url https://example.com/api/blubber-postings \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+```javascript
+fetch('https://example.com/api/blubber-postings', {
+    method: 'GET',
+    mode: 'cors',
+    headers: new Headers({
+        'Authorization': `Basic ${btoa('test_autor:testing')}`
+    })
+}).then(response => console.log(response))
+```
+
+Es werden alle Blubber-Beiträge, die man im Stud.IP sehen könnte, angezeigt.
+
+### HTTP Request
+
+`GET https://example.com/jsonapi/blubber-postings`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+filter    | Filtermöglichkeit der anzuzeigenden Blubber-Beiträge
+include   | abhängige Ressourcen, die auch zurückgeliefert werden ([JSON:API-Spezifikation](http://jsonapi.org/format/#fetching-includes))
+page      | Einstellmöglichkeiten [zur Paginierung](#paginierung)
+
+#### URL-Parameter 'filter'
+
+Mit diesem URL-Parameter kann nach Typ und Datum der Aktivitäten
+gefiltert werden. Möglich sind folgende Filter:
+
+Filter          | Beschreibung
+--------------- | ------------
+filter[course]  |
+filter[user]    | zeitliche Beschränkung: Ende des Abfrageintervalls
+
+Mit Hilfe der Parameter 'start' und 'end' kann das Abfrageintervall
+verändert werden. Standardmäßig werden alle Aktivitäten der letzten 6
+Monate bis zum aktuellen Zeitpunkt zurückgeliefert. Mit 'start' und
+'end' können diese Intervallgrenzen beliebig gestaltet werden. Für diese
+beiden Parameter können nur ganzzahlige Werte angegeben werden, die
+die Anzahl der Sekunden seit dem 01.01.1970 bis zum gewünschten
+Zeitpunkt angeben ('unix epoch time').
+
+Der Parameter 'activity-type' schränkt die Aktivitäten nach Typ ein.
+Mögliche Werte sind:
+
+<code>activity, blubber, documents, forum, literature, message, news, participants, schedule, wiki</code>
+
+Um nach mehreren Aktivitätstypen zu filtern, können mehrere dieser
+Typen durch Komma getrennt verwendet werden.
+
+#### URL-Parameter 'include'
+
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.

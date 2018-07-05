@@ -1,0 +1,10 @@
+# Paginierung
+
+Viele Ergebnisse von GET-Routen werden paginiert zurückgeliefert. Dabei wird die Gesamtheit aller Ergebnisse auf mehrere Seiten verteilt und man erhält jeweils nur einen Ausschnitt. Dieser Ausschnitt kann durch die folgenden URL-Parameter beeinflusst werden
+
+Page-Parameter | Beschreibung
+-------------- | ------------
+page[offset]   | der Paginierungsoffset
+page[limit]    | das Paginierungslimit
+
+Der 'page'-Parameter wird der JSON:API-Spezifikation entsprechend verwendet.

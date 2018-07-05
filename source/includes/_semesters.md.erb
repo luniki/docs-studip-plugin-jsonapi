@@ -1,0 +1,64 @@
+# Semester
+
+TODO: Einleitung
+
+## Schema "todo-a"
+
+TODO: Einleitung
+
+### Attribute
+
+Attribut    | Beschreibung
+--------    | ------------
+
+### Relationen
+
+ Relation | Beschreibung
+--------  | ------------
+
+## TODO: Routen beschreiben
+
+        $this->app->get('/semesters', Routes\SemestersIndex::class);
+        $this->app->get('/semesters/{id}', Routes\SemestersShow::class);
+
+
+## Alle Blubb einer Blibb
+
+```shell
+curl --request GET \
+    --url https://example.com/api/courses/<COURSE-ID>/documents \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+```javascript
+fetch('https://example.com/api/courses/<COURSE-ID>/documents', {
+    method: 'GET',
+    mode: 'cors',
+    headers: new Headers({
+        'Authorization': `Basic ${btoa('test_autor:testing')}`
+    })
+}).then(response => console.log(response))
+```
+
+
+> Der Request liefert JSON ähnlich wie dieses:
+
+<%= partial "includes/json/get_documents_of_course" %>
+
+Wenn der Dateibereich in einer Veranstaltung aktiviert ist, kann man
+mit dieser Route **alle** Dokumente einer Veranstaltung abfragen.
+
+### HTTP Request
+
+`GET https://example.com/jsonapi/courses/{id}/documents`
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID der Veranstaltung
+
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden, die Zugriff auf
+die entsprechende Veranstaltung oder Einrichtung haben.
