@@ -2,65 +2,34 @@
 
 TODO: Einleitung
 
-## Schema "todo-a"
+## Schema "wiki"
 
 TODO: Einleitung
 
 ### Attribute
 
-Attribut    | Beschreibung
---------    | ------------
+Attribut | Beschreibung
+-------- | ------------
+keyword  | TODO
+content  | TODO
+chdate   | TODO
+version  | TODO
 
 ### Relationen
 
  Relation | Beschreibung
 --------  | ------------
+author    | TODO
+range     | TODO
 
-## TODO: Routen beschreiben
+## Alle Wiki-Seiten
+   GET /courses/{id}/wiki
 
-        $this->app->get('/courses/{id}/wiki', Routes\Wiki\WikiIndex::class);
-        $this->app->get('/courses/{id}/wiki/{keyword:.+}', Routes\Wiki\WikiShow::class);
-        $this->app->post('/courses/{id}/wiki', Routes\Wiki\WikiCreate::class);
-        $this->app->patch('/courses/{id}/wiki/{keyword:.+}', Routes\Wiki\WikiUpdate::class);
+## Eine Wiki-Seite
+   GET /courses/{id}/wiki/{keyword:.+}
 
+## Eine Wiki-Seite anlegen
+   POST /courses/{id}/wiki
 
-## Alle Blubb einer Blibb
-
-```shell
-curl --request GET \
-    --url https://example.com/api/courses/<COURSE-ID>/documents \
-    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
-```
-
-```javascript
-fetch('https://example.com/api/courses/<COURSE-ID>/documents', {
-    method: 'GET',
-    mode: 'cors',
-    headers: new Headers({
-        'Authorization': `Basic ${btoa('test_autor:testing')}`
-    })
-}).then(response => console.log(response))
-```
-
-
-> Der Request liefert JSON ähnlich wie dieses:
-
-<%= partial "includes/json/get_documents_of_course" %>
-
-Wenn der Dateibereich in einer Veranstaltung aktiviert ist, kann man
-mit dieser Route **alle** Dokumente einer Veranstaltung abfragen.
-
-### HTTP Request
-
-`GET https://example.com/jsonapi/courses/{id}/documents`
-
-### URL-Parameter
-
-Parameter |  Beschreibung
---------- | -------
-id        | die ID der Veranstaltung
-
-### Authorisierung
-
-Diese Route kann von allen Nutzern verwendet werden, die Zugriff auf
-die entsprechende Veranstaltung oder Einrichtung haben.
+## Eine Wiki-Seite ändern
+   PATCH /courses/{id}/wiki/{keyword:.+}
