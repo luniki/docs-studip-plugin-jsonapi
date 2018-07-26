@@ -1,50 +1,56 @@
-# Ankündigungen
+# Ankündigungen (News)
 
-TODO: Einleitung
+Ankündigungen informieren Stud.IP-Nutzer über neuste Ereignisse rund um
+die Lehre. In Stud.IP können Ankündigungen z.B. systemweit (global) oder für
+einen bestimmten Nutzerkreis erstellt werden.
 
 ## Schema "news"
 
-TODO: Einleitung
+Ankündigungen bestehen aus ihrem Inhalt und einigen Meta-Daten. Die Dauer der
+Sichtbarkeit einer Anküdnigung wird durch ihre Attribute publication-start und
+end bestimmt (siehe Relationen).
 
 ### Attribute
 
 Attribut          | Beschreibung
 --------          | ------------
-title             | TODO
-content           | TODO
-mkdate            | TODO
-chdate            | TODO
-publication-start | TODO
-publication-end   | TODO
-comments-allowed  | TODO
-
+title             | Name einer news
+content           | Inhalt einer News
+mkdate            | Erstellungs-Datum einer News
+chdate            | Datum der letzten Änderung
+publication-start | Start der Sichtbarkeit für den Nutzerkreis einer News
+publication-end   | Ende der Sichtbarkeit für den Nutzerkreis einer News
+comments-allowed  | Bestimmung, ob Kommentare erlaubt sind (Boolean)
 
 ### Relationen
 
  Relation | Beschreibung
 --------  | ------------
-author    | TODO
-ranges    | TODO
+author    | Ersteller einer News
+ranges    | global, institute, semester, course, users
+
+Der Range einer News gibt an wo sie publiziert wird und somit auch für wen
+sie sichtbar ist.
 
 ## Schema "comments"
 
-TODO: Einleitung
+Kommentare werden in Stud.IP an eine Ankündigung angehangen, wenn der Ersteller
+der News die Erlaubnis vergeben hat.
 
 ### Attribute
 
 Attribut          | Beschreibung
 --------          | ------------
-content           | TODO
-mkdate            | TODO
-chdate            | TODO
-
+content           | Inhalt eines Kommentars
+mkdate            | Erstellungs-Datum
+chdate            | Datum der letzten Änderung
 
 ### Relationen
 
  Relation | Beschreibung
 --------  | ------------
-author    | TODO
-news      | TODO
+author    | Der Ersteller des Kommentars
+news      | Die kommentierte News
 
 
 
