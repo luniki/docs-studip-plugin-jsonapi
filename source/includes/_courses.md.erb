@@ -2,69 +2,71 @@
 
 TODO: Einleitung
 
-## Schema "todo-a"
+## Schema "courses"
 
 TODO: Einleitung
 
 ### Attribute
 
-Attribut    | Beschreibung
---------    | ------------
+Attribut      | Beschreibung
+------------- | ------------
+course-number | TODO
+title         | TODO
+subtitle      | TODO
+course-type   | TODO
+description   | TODO
+location      | TODO
+miscellaneous | TODO
+
 
 ### Relationen
 
- Relation | Beschreibung
---------  | ------------
+ Relation        | Beschreibung
+---------------- | ------------
+institute        | TODO
+start-semester   | TODO
+end-semester     | TODO
+files            | TODO
+documents        | TODO
+document-folders | TODO
 
-## TODO: Routen beschreiben
+## Schema "course-membership"
 
-        $this->app->get('/courses', Routes\Courses\Index::class);
-        $this->app->get('/courses/{id}', Routes\Courses\Show::class);
+TODO: Einleitung
 
-        $this->app->get('/users/{id}/courses', Routes\Courses\ByUserIndex::class);
+### Attribute
 
-        $this->app->get('/courses/{id}/memberships', Routes\Courses\MembershipsIndex::class);
-        $this->addRelationship('/courses/{id}/relationships/memberships', Routes\Courses\Rel\Memberships::class);
-
-
-
-## Alle Blubb einer Blibb
-
-```shell
-curl --request GET \
-    --url https://example.com/api/courses/<COURSE-ID>/documents \
-    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
-```
-
-```javascript
-fetch('https://example.com/api/courses/<COURSE-ID>/documents', {
-    method: 'GET',
-    mode: 'cors',
-    headers: new Headers({
-        'Authorization': `Basic ${btoa('test_autor:testing')}`
-    })
-}).then(response => console.log(response))
-```
+Attribut      | Beschreibung
+------------- | ------------
+status        | TODO
+position      | TODO
+group         | TODO
+mkdate        | TODO
+label         | TODO
+notification  | TODO
+visible       | TODO
+comment       | TODO
+visible       | TODO
 
 
-> Der Request liefert JSON ähnlich wie dieses:
+### Relationen
 
-<%= partial "includes/json/get_documents_of_course" %>
+ Relation        | Beschreibung
+---------------- | ------------
+course           | TODO
+user             | TODO
 
-Wenn der Dateibereich in einer Veranstaltung aktiviert ist, kann man
-mit dieser Route **alle** Dokumente einer Veranstaltung abfragen.
+## Alle Veranstaltungen
+   GET /courses
 
-### HTTP Request
+## Eine Veranstaltung
+   GET /courses/{id}
 
-`GET https://example.com/jsonapi/courses/{id}/documents`
+## Alle Veranstaltungen eines Nutzers
+   GET /users/{id}/courses
 
-### URL-Parameter
+## Teilnahmen einer Veranstaltung
+   GET /courses/{id}/memberships
 
-Parameter |  Beschreibung
---------- | -------
-id        | die ID der Veranstaltung
-
-### Authorisierung
-
-Diese Route kann von allen Nutzern verwendet werden, die Zugriff auf
-die entsprechende Veranstaltung oder Einrichtung haben.
+## IDs der Teilnahmen
+   GET /courses/{id}/relationships/memberships
