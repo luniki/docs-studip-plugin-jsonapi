@@ -2,69 +2,38 @@
 
 TODO: Einleitung
 
-## Schema "todo-a"
+## Schema "messages"
 
 TODO: Einleitung
 
 ### Attribute
 
-Attribut    | Beschreibung
---------    | ------------
+Attribut | Beschreibung
+-------- | ------------
+subject  | TODO
+message  | TODO
+mkdate   | TODO
+priority | TODO
+tags     | TODO
 
 ### Relationen
 
- Relation | Beschreibung
---------  | ------------
+Relation   | Beschreibung
+--------   | ------------
+sender     | TODO
+recipients | TODO
 
-## TODO: Routen beschreiben
+## Alle Inbox-Nachrichten
+   GET /users/{id}/inbox
 
+## Alle Outbox-Nachrichten
+   GET /users/{id}/outbox
 
-        $this->app->get('/users/{id}/inbox', Routes\Messages\InboxShow::class);
+## Eine Nachricht senden
+   POST /messages
 
-        $this->app->get('/users/{id}/outbox', Routes\Messages\OutboxShow::class);
+## Eine Nachricht ansehen
+   GET /messages/{id}
 
-        $this->app->post('/messages', Routes\Messages\MessageCreate::class);
-        $this->app->get('/messages/{id}', Routes\Messages\MessageShow::class);
-        $this->app->delete('/messages/{id}', Routes\Messages\MessageDelete::class);
-
-
-## Alle Blubb einer Blibb
-
-```shell
-curl --request GET \
-    --url https://example.com/api/courses/<COURSE-ID>/documents \
-    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
-```
-
-```javascript
-fetch('https://example.com/api/courses/<COURSE-ID>/documents', {
-    method: 'GET',
-    mode: 'cors',
-    headers: new Headers({
-        'Authorization': `Basic ${btoa('test_autor:testing')}`
-    })
-}).then(response => console.log(response))
-```
-
-
-> Der Request liefert JSON ähnlich wie dieses:
-
-<%= partial "includes/json/get_documents_of_course" %>
-
-Wenn der Dateibereich in einer Veranstaltung aktiviert ist, kann man
-mit dieser Route **alle** Dokumente einer Veranstaltung abfragen.
-
-### HTTP Request
-
-`GET https://example.com/jsonapi/courses/{id}/documents`
-
-### URL-Parameter
-
-Parameter |  Beschreibung
---------- | -------
-id        | die ID der Veranstaltung
-
-### Authorisierung
-
-Diese Route kann von allen Nutzern verwendet werden, die Zugriff auf
-die entsprechende Veranstaltung oder Einrichtung haben.
+## Eine Nachricht löschen
+   DELETE /messages/{id}
