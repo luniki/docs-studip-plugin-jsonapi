@@ -1,28 +1,53 @@
 # Forum
 
-TODO: Einleitung
+Das Stud.IP-Forum bietet die Möglichkeit Beiträge zu erstellen, zu kommentieren
+und zu Kategorisieren. Jedes Forum ist an genau eine Veranstaltung gebunden.
+Die Schema's werden in Forum-Categories und Forum-Entries unterteilt.
 
-## Schema "todo-a"
+## Schema "forum-categories"
 
-TODO: Einleitung
+Kategorien für Einträge haben einen Namen und geben die Hierarchie des Forums
+anhand ihrer Position an.
 
 ### Attribute
 
 Attribut          | Beschreibung
 --------          | ------------
-something         | TODO
-
+title             | Name einer Kategorie
+position          | Position einer Kategorie
 
 ### Relationen
 
  Relation | Beschreibung
 --------  | ------------
-something | TODO
+courses   | Der Kurs des Forums, indem die Kategorie angelegt ist
 
+## Schema "forum-entries"
 
+Einträge des Forums liegen auf verschiedenen Ebenen. Sie können direkt in
+Kategorien als Themen erstellt werden oder an vorhandene Einträge angebunden
+werden.
 
-## Alle Foo eines Bar auslesen
-   GET /bar/{id}/foo
+### Attribute
 
+Attribut          | Beschreibung
+--------          | ------------
+title             | Name eines Entries (sollte nur bei Themen angezeigt werden)
+content           | Gibt den Inhalt eines Entries wieder
+area              | Dieses Attribut wird mitgeführt (ist aber idr. '0')
+
+## Alle Forum-Kategorien eines Kurses auslesen
+   GET /courses/{id}/forum-categories
+
+   ```shell
+   curl --request GET \
+       --url https://example.com/api/courses/<COURSE-ID>/forum-categories \
+       --header "Content-Type: application/vnd.api+json" \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+       --data
+   ```
+   > Der Request liefert JSON ähnlich wie dieses:
+
+   <%= partial "includes/json/_forum_categories" %>
 ## Ein Foo auslesen
    GET /foo/{id}
