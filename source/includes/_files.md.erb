@@ -15,17 +15,101 @@ Schreibzugriff auf diese Ordner hat.
 ## Schemata
 
 
-### Type "file-refs"
+### Schema "file-refs"
 
-TODO
+TODO: Einleitung
+
+### Attribute
+
+Attribut | Beschreibung
+-------- | ------------
+keyword  | TODO
+content  | TODO
+chdate   | TODO
+version  | TODO
+
+### Relationen
+
+ Relation | Beschreibung
+--------  | ------------
+author    | TODO
+range     | TODO
 
 ### Type "files"
 
-TODO
+TODO: Einleitung
+
+### Attribute
+
+Attribut  | Beschreibung
+--------- | ------------
+name      | TODO
+mime-type | TODO
+size      | TODO
+storage   | TODO
+mkdate    | TODO
+chdate    | TODO
+
+### Relationen
+
+ Relation | Beschreibung
+--------  | ------------
+file-refs | TODO
+owner     | TODO
+url       | TODO
+
+### Meta
+
+Meta         | Beschreibung
+------------ | ------------
+download-url | TODO
 
 ### Type "folders"
 
-TODO
+TODO: Einleitung
+
+### Attribute
+
+Attribut     | Beschreibung
+------------ | ------------
+folder-type  | TODO
+name         | TODO
+data_content | TODO
+description  | TODO
+mkdate       | TODO
+chdate       | TODO
+
+
+### Relationen
+
+Relation  | Beschreibung
+--------- | ------------
+owner     | TODO
+parent    | TODO
+range     | TODO
+children  | TODO
+folders   | TODO
+file-refs | TODO
+
+
+### Type "terms-of-use"
+
+TODO: Einleitung
+
+### Attribute
+
+Attribut     | Beschreibung
+------------ | ------------
+name         | TODO
+description  | TODO
+mkdate       | TODO
+chdate       | TODO
+
+
+### Relationen
+
+Lizenzen ('terms-of-use') haben keine Relationen.
+
 
 ## Alle Dateien einer Veranstaltung
 
@@ -43,10 +127,35 @@ mit der ID der Veranstaltung über diesen Endpoint den Wurzelordner der Veransta
 
 ### HTTP Request
 
-`GET https://example.com/jsonapi/courses/{id}/files`
+`GET https://example.com/jsonapi/{type:courses|institutes|users}/{id}/files`
 
 ### URL-Parameter
 
 Parameter |  Beschreibung
 --------- | -------
 id        | die ID der Veranstaltung
+
+
+## TODO: Eine Lizenz auslesen
+   GET /terms-of-use/{id}
+
+## TODO: Eine Datei auslesen
+   GET /files/{id}
+
+## TODO: Alle FileRefs einer Datei
+   GET /files/{id}/file-refs
+
+## TODO: Relation: FileRefs einer Datei
+   GET /files/{id}/relationships/file-refs
+
+## TODO: Eine FileRef auslesen
+   GET /file-refs/{id}
+
+## TODO: Einen Ordner auslesen
+   GET /folders/{id}
+
+## TODO: Alle FileRefs eines Ordners
+   GET /folders/{id}/file-refs
+
+## TODO: Alle Ordner eines Ordners
+   GET /folders/{id}/folders

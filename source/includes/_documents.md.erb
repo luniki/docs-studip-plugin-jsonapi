@@ -26,6 +26,17 @@ Name und Beschreibung), als auch aus ihrem eigentlichen Inhalt.
 
 TODO: download-link, url
 
+### Relationen
+
+Derzeit können die Relationen nur ausgelesen, aber nicht verändert werden.
+
+ Relation | Beschreibung
+--------  | ------------
+license   | die Lizenz des Dokuments
+owner     | der Besitzer des Dokuments
+parent    | Speicherort des Dokuments; entweder ein Ordner oder eine Nachricht
+range     | Link zum Dateibereich, in dem sich das Dokument befindet; entweder eine Veranstaltung oder eine Einrichtung
+
 ### Attribute
 
 Attribut    | Beschreibung
@@ -39,16 +50,10 @@ filesize    | Größe der Datei in Bytes
 downloads   | Anzahl der bisherigen Downloads
 priority    | Ordnungsnummer; dient der Sortierung in Stud.IP
 
-### Relationen
+### Meta-Informationen
 
-Derzeit können die Relationen nur ausgelesen, aber nicht verändert werden.
-
- Relation | Beschreibung
---------  | ------------
-license   | die Lizenz des Dokuments
-owner     | der Besitzer des Dokuments
-parent    | Speicherort des Dokuments; entweder ein Ordner oder eine Nachricht
-range     | Link zum Dateibereich, in dem sich das Dokument befindet; entweder eine Veranstaltung oder eine Einrichtung
+Ein Dokument liefert als Meta-Information die URL zum Abrufen und
+Aktualisieren seines Inhalts zurück.
 
 ## Schema "document-folders"
 
@@ -646,3 +651,31 @@ id        | die ID der Lizenz
 ### Authorisierung
 
 Jeder kann Lizenzen auslesen.
+
+
+
+## TODO: Dokumente durchsuchen
+    Sucht in allen Veranstaltungen eines Nutzers nach passenden
+    Dokumenten, auf die der API-Nutzer Zugriff hat.
+
+    GET /documents?filter[search]=*<Suchwort>*
+
+## TODO: Alle Dokumente einer Veranstaltung/Einrichtung
+    GET /{type:courses|institutes}/{id}/relationships/documents
+
+   see http://jsonapi.org/format/#fetching-relationships
+
+## TODO: Neuen Unterordner anlegen
+    POST /document-folders/{id}/document-folders
+
+## TODO: Neuen Ordner in Veranstaltung/Einrichtung anlegen
+    POST /{type:courses|institutes}/{id}/document-folders
+
+## TODO: Ordner umbenennen
+    PATCH /document-folders/{id}
+
+## TODO: Ordner löschen
+    DELETE /document-folders/{id}
+
+## TODO: Alle Lizenzen auslesen
+    GET /document-licenses
