@@ -39,6 +39,10 @@ area              | Dieses Attribut wird mitgeführt (ist aber idr. '0')
 ## Alle Forum-Kategorien eines Kurses auslesen
    GET /courses/{id}/forum-categories
 
+   Parameter | Beschreibung
+  ---------- | ------------
+  id         | Die ID des Kurses
+
    ```shell
    curl --request GET \
        --url https://example.com/api/courses/<COURSE-ID>/forum-categories \
@@ -46,8 +50,260 @@ area              | Dieses Attribut wird mitgeführt (ist aber idr. '0')
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
        --data
    ```
+
+### Autorisierung
+         Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
    > Der Request liefert JSON ähnlich wie dieses:
 
-   <%= partial "includes/json/_forum_categories" %>
-## Ein Foo auslesen
-   GET /foo/{id}
+<%= partial "includes/json/_forum_categories" %>
+## Eine Forum-Kategorie auslesen
+    GET /forum-categories{id}
+
+    Parameter | Beschreibung
+   ---------- | ------------
+   id         | Die ID der Kategorie
+
+   ```shell
+   curl --request GET \
+       --url https://example.com/api/forum-categories/<FORUM-CATEGORY-ID> \
+       --header "Content-Type: application/vnd.api+json" \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+       --data
+   ```
+### Autorisierung
+      Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+
+  > Der Request liefert JSON ähnlich wie dieses:
+
+   <%= partial "includes/json/_get_category" %>
+
+## Einen Forum-Eintrag auslesen
+       GET /forum-entries/{id}
+
+       Parameter | Beschreibung
+      ---------- | ------------
+      id         | Die ID des Entries
+
+  ```shell
+  curl --request GET \
+      --url https://example.com/api/forum-entries/<FORUM-ENTRY-ID> \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+  ```
+### Autorisierung
+         Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+
+  > Der Request liefert JSON ähnlich wie dieses:
+
+      <%= partial "includes/json/_get_entry" %>
+
+## Alle Forum-Einträge einer Kategorie auslesen
+       GET /forum-categories/{id}/entries
+
+       Parameter | Beschreibung
+      ---------- | ------------
+      id         | Die ID der Kategorie
+
+  ```shell
+  curl --request GET \
+      --url https://example.com/api/forum-categories/<CATEGORY-ID>/entries \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+  ```
+### Autorisierung
+  Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+
+  > Der Request liefert JSON ähnlich wie dieses:
+
+      <%= partial "includes/json/_get_entry" %>
+
+## Alle Untereinträge eines Forumeintrags auslesen
+       GET /forum-entries/{id}/entries
+
+       Parameter | Beschreibung
+      ---------- | ------------
+      id         | Die ID des Eintrags
+
+  ```shell
+  curl --request GET \
+      --url https://example.com/api/forum-entries/<FORUM-ENTRY-ID>/entries \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+  ```
+### Autorisierung
+  Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+
+  > Der Request liefert JSON ähnlich wie dieses:
+
+      <%= partial "includes/json/_get_entry" %>
+
+__
+## Eine Kategorie innerhalb eines Kurses anlegen
+
+       POST /courses/{id}/forum-categories
+
+       Parameter | Beschreibung
+      ---------- | ------------
+      id         | Die ID des Kurses
+
+  ```shell
+  curl --request POST \
+      --url https://example.com/api/courses/<COURSE-ID>/categories \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+      '{"data": {"type": "forum-categories","attributes": {"title": "CreateCategoryTest","content": "works"}
+  }
+}'
+
+  ```
+### Autorisierung
+  Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+
+  > Der Request liefert JSON ähnlich wie dieses:
+
+      <%= partial "includes/json/_get_category" %>
+
+## Einen Eintrag in eine Kategorie posten
+
+       POST /forum-categories/{id}/entries
+
+       Parameter | Beschreibung
+      ---------- | ------------
+      id         | Die ID der Kategorie
+
+  ```shell
+  curl --request POST \
+      --url https://example.com/api/forum-entries/<FORUM-CATEGORY-ID>/entries \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+      '{"data": {"type": "forum-entries","attributes": {"title": "TestTheRoute","content": "works!"}}}'
+
+  ```
+### Autorisierung
+  Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+
+  > Der Request liefert JSON ähnlich wie dieses:
+
+      <%= partial "includes/json/_get_entry" %>
+
+## Einen Eintrag unter einen Eintrag posten
+
+       POST /forum-entries/{id}/entries
+
+       Parameter | Beschreibung
+      ---------- | ------------
+      id         | Die ID des Eintrags
+
+  ```shell
+  curl --request POST \
+      --url https://example.com/api/forum-entries/<FORUM-ENTRY-ID>/entries \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+      '{"data": {"type": "forum-entries","attributes": {"title": "TestTheRoute","content": "works!"}}}'
+
+  ```
+### Autorisierung
+  Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+
+  > Der Request liefert JSON ähnlich wie dieses:
+
+      <%= partial "includes/json/_get_entry" %>
+
+## Einen Kategorie aktualisieren
+
+       PATCH /forum-categories/{id}
+
+       Parameter | Beschreibung
+      ---------- | ------------
+      id         | Die ID der Kategorie
+
+  ```shell
+  curl --request PATCH \
+      --url https://example.com/api/forum-categories/<FORUM-CATEGORY-ID> \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+      '{"data": {"type": "forum-categories","attributes": {"title": "UpdateCategory","content": "time for a change"}
+
+  ```
+### Autorisierung
+  Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+  Der Nutzer sollte die entsprechenden Adminrechte verfügen oder Ersteller der
+  Kategorie sein
+
+  > Der Request liefert JSON ähnlich wie dieses:
+
+  <%= partial "includes/json/_get_category" %>
+
+
+## Einen Forum-Eintrag aktualisieren
+
+       PATCH /forum-entries/{id}
+
+       Parameter | Beschreibung
+      ---------- | ------------
+      id         | Die ID des Eintrags
+
+  ```shell
+  curl --request PATCH \
+      --url https://example.com/api/forum-entries/<FORUM-ENTRY-ID> \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+      '{"data": {"type": "forum-entries","attributes": {"title": "Update an entry","content": "time for a change"}}}'
+
+  ```
+  ### Autorisierung
+  Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+  Der Nutzer sollte die entsprechenden Adminrechte verfügen oder Ersteller des
+  Eintrags sein
+
+  > Der Request liefert JSON ähnlich wie dieses:
+
+  <%= partial "includes/json/_get_category" %>
+
+## Eine Forum-Kategorie entfernen
+
+         DELETE /forum-categories/{id}
+
+         Parameter | Beschreibung
+        ---------- | ------------
+        id         | Die ID der Kategorie
+
+  ```shell
+  curl --request DELETE \
+    --url https://example.com/api/forum-categories/<FORUM-CATEGORY-ID> \
+    --header "Content-Type: application/vnd.api+json" \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+    --data
+  ```
+### Autorisierung
+    Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+    Der Nutzer sollte die entsprechenden Adminrechte verfügen oder Ersteller der
+    Kategorie sein.
+
+## Einen Forum-Eintrag entfernen
+
+         DELETE /forum-categories/{id}
+
+         Parameter | Beschreibung
+        ---------- | ------------
+        id         | Die ID des Eintrags
+
+```shell
+curl --request DELETE \
+    --url https://example.com/api/forum-entries/<FORUM-ENTRY-ID> \
+    --header "Content-Type: application/vnd.api+json" \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+    --data
+```
+### Autorisierung
+    Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+    Der Nutzer sollte die entsprechenden Adminrechte verfügen oder Ersteller des
+    Eintrags sein.
