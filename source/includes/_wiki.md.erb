@@ -1,35 +1,103 @@
 # Wiki
 
-TODO: Einleitung
+Wiki's bieten Dozenten und Studenten die Möglichkeit, gemeinsame Dokumente zu
+erstellen. Zu verschiedenen Themen in der Veranstaltungen können Wikis erstellt und
+gepflegt werden. Eine Versionskontrolle ermöglicht, sich Änderungen zwischen den
+Dokumentenversionen anzuschauen.
 
 ## Schema "wiki"
-
-TODO: Einleitung
-
+Neben dem Inhalt und Namen enthält jedes Wiki Metadaten zur aktuellen Version.
 ### Attribute
 
 Attribut | Beschreibung
 -------- | ------------
-keyword  | TODO
-content  | TODO
-chdate   | TODO
-version  | TODO
+keyword  | Der Name des Wikis
+content  | Der Inhalt des Wikis
+chdate   | Das Datum der letzten Änderung eines Wikis.
+version  | Die aktuelle Versionsnummer des Wikis
 
 ### Relationen
 
  Relation | Beschreibung
 --------  | ------------
-author    | TODO
-range     | TODO
+author    | Der Verfasser des Wikis
+range     | Der Range eines Wikis ist der entsprechende Kurs
 
-## Alle Wiki-Seiten
+## Alle Wiki-Seiten eines Kurses
    GET /courses/{id}/wiki
 
+   Parameter | Beschreibung
+  ---------- | ------------
+  id         | Die ID des Kurses
+
+  ```shell
+  curl --request GET \
+      --url https://example.com/api/courses/<COURSE-ID>/wiki \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+  ```
+### Autorisierung
+      Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+
+> Der Request liefert JSON ähnlich wie dieses:
+
+      <%= partial "includes/json/_get_wikis" %>
 ## Eine Wiki-Seite
    GET /courses/{id}/wiki/{keyword:.+}
+
+   Parameter | Beschreibung
+  ---------- | ------------
+  id         | Die ID des Kurses
+  keyword    | Der Name des Wikis
+
+
+  ```shell
+  curl --request GET \
+      --url https://example.com/api/courses/<COURSE-ID>/wiki/<KEYWORD> \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+  ```
+### Autorisierung
+        Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+  > Der Request liefert JSON ähnlich wie dieses:
+
+        <%= partial "includes/json/_get_wiki" %>
 
 ## Eine Wiki-Seite anlegen
    POST /courses/{id}/wiki
 
+   Parameter | Beschreibung
+  ---------- | ------------
+  id         | Die ID des Kurses
+
+  ```shell
+  curl --request POST \
+      --url https://example.com/api/courses/<COURSE-ID>/wiki \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+      '{"data": {"type": "wiki","attributes": {"title": "testing","content": "wiki created"}}}'
+  ```
+### Autorisierung
+          Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
+
+
 ## Eine Wiki-Seite ändern
    PATCH /courses/{id}/wiki/{keyword:.+}
+
+   Parameter | Beschreibung
+  ---------- | ------------
+  id         | Die ID des Kurses
+  keyword    | Der Name des Wikis
+
+curl --request PATCH \
+      --url https://example.com/api/courses/<COURSE-ID>/wiki/<KEYWORD> \
+      --header "Content-Type: application/vnd.api+json" \
+      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      --data
+      '{"data": {"type": "wiki","attributes": {"content": "wiki changed"}}}'
+  ```
+### Autorisierung
+            Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
