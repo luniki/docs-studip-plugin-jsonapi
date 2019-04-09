@@ -487,3 +487,34 @@ keine URL-Parameter
 ### Autorisierung
 
 Der übergeordnete Ordner der Datei entscheidet.
+
+
+## Inhalt einer Datei aktualisieren
+
+<aside class="notice">Diese Route ist keine JSON-API-konforme Route.</aside>
+
+```shell
+curl --url https://example.com/file-refs/<ID>/content \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+    -F 'myfile=@/path/to/local/file'
+```
+
+Mit dieser Route kann der Inhalt einer vorhandenen Datei überschrieben
+werden. Dazu wird eine einzige Datei "multipart/form-data"-kodiert an
+diese Route geschickt.
+
+### HTTP Request
+
+`POST /file-refs/{id}/content`
+
+Im Request-Body muss dann eine Datei "multipart/form-data"-kodiert
+enthalten sein.
+
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Der übergeordnete Ordner der Datei entscheidet.
