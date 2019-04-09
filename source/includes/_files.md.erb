@@ -752,3 +752,29 @@ keine URL-Parameter
 ### Autorisierung
 
 Ob man einen Ordner erstellen darf, entscheidet die Implementierung des übergeordneten Ordners.
+
+
+## Ein "File" auslesen
+```shell
+curl --request HEAD \
+    --url https://example.com/files/<ID> \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Die Dateien, die in den obigen Routen genannt werden, sind technisch gesehen nur Verweise auf tatsächliche Dateien auf der Festplatte o.ä. Auch die tatsächlichen Dateien ("files") können ausgelesen werden. Dazu verwendet man diese Route.
+
+### HTTP Request
+
+`GET /files/{id}`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des "files"
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Ein "file" kann ein Nutzer dann sehen, wenn eine der darauf verweisenden Dateien vom Nutzer gesehen werden kann.
