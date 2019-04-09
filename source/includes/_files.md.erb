@@ -603,3 +603,34 @@ keine URL-Parameter
 ### Autorisierung
 
 Die Art des Ordners entscheidet über die Autorisierung.
+
+
+## Alle Dateien eines Ordners
+```shell
+curl --request GET \
+    --url https://example.com/folders/<ID>/file-refs \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route erhält man eine Liste aller Dateien, die direkt in
+einem Ordner liegen.
+
+### HTTP Request
+
+`GET /folders/{id}/file-refs`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Ordners
+
+### URL-Parameter
+
+Parameter    | Default | Beschreibung
+---------    | ------- | ------------
+page[offset] | 0       | der Offset (siehe Paginierung)
+page[limit]  | 30      | das Limit (siehe Paginierung)
+
+### Autorisierung
+
+Ob man die Liste der Dateien eines Ordners sehen darf, entscheidet die
+Implementierung des Ordners.
