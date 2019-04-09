@@ -518,3 +518,30 @@ keine URL-Parameter
 ### Autorisierung
 
 Der übergeordnete Ordner der Datei entscheidet.
+
+
+## Einen Ordner auslesen
+
+```shell
+curl --request GET \
+    --url https://example.com/folders/<ID> \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route kann man die Daten eines Ordners auslesen.
+
+### HTTP Request
+
+`GET /folders/{id}`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Ordners
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Die Art des Ordners entscheidet über die Autorisierung.
