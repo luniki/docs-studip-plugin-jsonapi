@@ -386,10 +386,43 @@ Um die Relation einer Datei zu einer Lizenz auszulesen, verwendet man diese Rout
 
 Parameter |  Beschreibung
 --------- | -------
+id        | die ID der Datei
 
 ### URL-Parameter
 
-Parameter |  Beschreibung
---------- | -------
+keine URL-Parameter
 
 ### Autorisierung
+
+Der übergeordnete Ordner der Datei entscheidet.
+
+
+## Lizenz einer Datei ändern
+```shell
+curl --request PATCH \
+    --url https://example.com/file-refs/<ID>/relationships/terms-of-use \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+    --header "Content-Type: application/vnd.api+json" \
+    --data '{"data": {"type": "terms-of-use","id": "<id-der-lizenz>"}}'
+
+```
+
+Um die Relation einer Datei zu einer Lizenz zu ändern, verwendet man diese Route. Das Löschen der Relation zur Datei ist ausgeschlossen.
+
+### HTTP Request
+
+`PATCH /file-refs/<ID>/relationships/terms-of-use`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID der Datei
+
+Der Request-Body muss einen "resource identifier" von Typ "terms-of-use" enthalten.
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Der übergeordnete Ordner der Datei entscheidet.
