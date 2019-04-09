@@ -78,30 +78,35 @@ owner     | der Nutzer, dem diese Datei gehört
 
 ### Type "folders"
 
-TODO: Einleitung
+Ressourcen vom Typ "folders" sind im herkömmlichen Sinne Ordner und können weitere "folders" oder Ressourcen vom Typ "file-refs" enthalten.
+
+Es gibt verschiedene Arten von "folders". In Stud.IP werden aber vorrangig "StandardFolders" verwendet. Für diese sind alle Operationen möglich. Für andere Arten entscheiden die Implementierungen jeweils selbst, ob die Operation möglich ist.
 
 ### Attribute
 
-Attribut     | Beschreibung
------------- | ------------
-folder-type  | TODO
-name         | TODO
-data_content | TODO
-description  | TODO
-mkdate       | TODO
-chdate       | TODO
+Attribut             | Beschreibung
+------------         | ------------
+folder-type          | die Art des Ordners
+name                 | der Name des Ordners
+description          | die Beschreibung des Ordners
+mkdate               | das Anlegedatum des Ordners
+chdate               | das Datum der letzten Änderung des Ordners
+is-visible           | Darf der eingeloggte Nutzer den Ordner sehen?
+is-readable          | Darf der eingeloggte Nutzer den Ordner öffnen?
+is-writable          | Darf der eingeloggte Nutzer im Ordner Dateien anlegen?
+is-editable          | Darf der eingeloggte Nutzer den Ordner bearbeiten?
+is-subfolder-allowed | Darf der eingeloggte Nutzer im Ordner weitere Ordner anlegen?
 
 
 ### Relationen
 
 Relation  | Beschreibung
 --------- | ------------
-owner     | TODO
-parent    | TODO
-range     | TODO
-children  | TODO
-folders   | TODO
-file-refs | TODO
+owner     | der Nutzer, dem dieser Ordner gehört
+parent    | der Ordner, in dem sich dieser Ordner befindet
+range     | die Veranstaltung, die Einrichtung oder der Nutzer, in dessen Dateibereich dieser Ordner liegt
+folders   | die Ordner, die sich in diesem Ordner befinden
+file-refs | die Dateien, die sich in diesem Ordner befinden
 
 
 ### Type "terms-of-use"
