@@ -17,23 +17,40 @@ Schreibzugriff auf diese Ordner hat.
 
 ### Schema "file-refs"
 
-TODO: Einleitung
+Aus Nutzersicht sind Dateien in Stud.IP Ressourcen vom Typ
+"file-refs". Technisch gesehen sind es allerdings Verweise auf die
+Ressourcen vom Typ "files". Letztere sind die tatsächlich auf der
+Festplatte gespeicherten Dateien, die mithilfe der "file-refs" nur
+verlinkt werden.
+
+Vereinfacht gesagt, hantiert man in der Regel immer mit "file-refs".
 
 ### Attribute
 
-Attribut | Beschreibung
--------- | ------------
-keyword  | TODO
-content  | TODO
-chdate   | TODO
-version  | TODO
+Attribut    | Beschreibung
+--------    | ------------
+name        | der Name der Datei
+description | eine optionale Beschreibung der Datei
+mkdate      | das Anlegedatum der Datei
+chdate      | das Datum der letzten Änderung der Metadaten ('name', 'description', …) der Datei
+downloads   | Wie häufig wurde diese Datei heruntergeladen?
+filesize    | die Größe der Datei in Byte
+storage     | TODO
 
 ### Relationen
 
- Relation | Beschreibung
---------  | ------------
-author    | TODO
-range     | TODO
+ Relation    | Beschreibung
+--------     | ------------
+file         | die tatsächliche Datei auf der Festplatte
+owner        | der Nutzer, dem diese Datei gehört
+parent       | der Ordner, im dem diese Datei liegt
+range        | die Veranstaltung, die Einrichtung oder der Nutzer, in dessen Dateibereich diese Datei liegt
+terms-of-use | die Lizenz, unter der diese Datei verfügbar gemacht wird
+
+### Meta
+
+In den Metadaten von Dateien ist der "download-link" enthalten, um den Inhalt der Datei herunterzuladen.
+
 
 ### Type "files"
 
