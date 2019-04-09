@@ -1,39 +1,75 @@
 # Nachrichten
 
-TODO: Einleitung
+Studip bietet die Möglichkeit Nachrichten ("messages") innerhalb des Systems zwischen Nutzern und Nutzergruppen zu versenden.
+Das Nachrichten-System ist aufgebaut wie ein interner Mail-Service.
 
 ## Schema "messages"
 
-TODO: Einleitung
+Die Bestandteile einer Nachricht sind mit denen einer typischen Mail gleichzusetzen.
 
 ### Attribute
 
 Attribut | Beschreibung
 -------- | ------------
-subject  | TODO
-message  | TODO
-mkdate   | TODO
-priority | TODO
-tags     | TODO
+subject  | Der Betreff einer Nachricht
+message  | Der Content einer Nachricht
+mkdate   | Erstellungsdatum einer Nachricht
+priority | Art der Relevanz
+tags     | Themen der Nachricht
 
 ### Relationen
 
 Relation   | Beschreibung
 --------   | ------------
-sender     | TODO
-recipients | TODO
+sender     | Absendender Nutzer
+recipients | Emfpänger einer Nachricht
 
 ## Alle Inbox-Nachrichten
    GET /users/{id}/inbox
 
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/<posting-id>/users/<user-id>/inbox \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
+
 ## Alle Outbox-Nachrichten
    GET /users/{id}/outbox
+
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/<posting-id>/users/<user-id>/outbox \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
 
 ## Eine Nachricht senden
    POST /messages
 
+   ```shell
+   curl --request POST \
+       --url https://example.com/messages \
+       --header "Content-Type: application/vnd.api+json" \
+       --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
+       --data
+       '{"data": {"type": "messages","attributes": {"subject": "Eine neue E-Mail","message": "Das ist meine erste Mail - Dank der API super einfach.", "priority": "normal" }, "relationships": {"recipients": {"data": [{"type": "users","id": "6235c46eb9e962866ebdceece739ace5"}]}}}}'
+   ```
+
 ## Eine Nachricht ansehen
    GET /messages/{id}
 
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/messages/<message-id>/ \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
+
+
 ## Eine Nachricht löschen
    DELETE /messages/{id}
+
+
+      ```shell
+      curl --request DELETE \
+          --url https://example.com/messages/<messages-id> \
+          --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+      ```
