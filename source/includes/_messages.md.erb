@@ -67,9 +67,8 @@ recipients | Emfpänger einer Nachricht
 ## Eine Nachricht löschen
    DELETE /messages/{id}
 
-
-      ```shell
-      curl --request DELETE \
-          --url https://example.com/messages/<messages-id> \
-          --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
-      ```
+  ```shell
+    curl --request DELETE \
+    --url https://example.com/messages/<messages-id> \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+  ```
