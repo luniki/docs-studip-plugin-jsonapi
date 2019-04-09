@@ -725,3 +725,30 @@ id        | die ID des Ordners
 ### Authorisierung
 
 Ob man eine Datei erstellen darf, entscheidet die Implementierung des Ordners.
+
+
+## Einen Ordner erstellen
+```shell
+curl --request POST \
+    --url https://example.com/folders/<ID>/folders \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+    --data '{"data": { "type": "folders", "attributes": {"name":"Neuer Ordner"}}}'
+```
+
+Mit dieser Route kann man einen neuen Ordner anlegen.
+
+### HTTP Request
+
+`POST /folders/{id}/folders`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des übergeordneten Ordners
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Ob man einen Ordner erstellen darf, entscheidet die Implementierung des übergeordneten Ordners.
