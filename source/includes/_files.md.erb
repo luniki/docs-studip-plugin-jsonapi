@@ -428,7 +428,7 @@ keine URL-Parameter
 Der übergeordnete Ordner der Datei entscheidet.
 
 
-# Den ETag einer Datei auslesen
+## Den ETag einer Datei auslesen
 
 <aside class="notice">Diese Route ist keine JSON-API-konforme Route.</aside>
 
@@ -447,6 +447,38 @@ Um einen Fingerabdruck (ETag) des tatsächlichen Inhalts einer Datei zu bekommen
 Parameter |  Beschreibung
 --------- | -------
 id        | die ID der Datei
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Der übergeordnete Ordner der Datei entscheidet.
+
+
+## Eine Datei herunterladen
+
+<aside class="notice">Diese Route ist keine JSON-API-konforme Route.</aside>
+
+```shell
+curl --request GET \
+    --url https://example.com/file-refs/<ID>/content \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route kann der Inhalt einer Datei heruntergeladen werden.
+
+### HTTP Request
+
+`GET /file-refs/{id}/content`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID der Datei
+
+Der Request kann einen ETag-Header mitbringen, um redundante
+Datenübertragung zu vermeiden.
 
 ### URL-Parameter
 
