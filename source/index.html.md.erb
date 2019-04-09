@@ -12,19 +12,50 @@ toc_footers:
 includes:
 - users
 - activitystreams
+#Activity.php
 - news
+#StudipNews.php
+#StudipComment.php
 - blubber
+#BlubberPosting.php
 - documents
 - files
+#ContentTermsOfUse.php
+#File.php
+#FileRef.php
+#Folder.php
 - forum
+#ForumCategory.php
+#ForumEntry.php
+- calendar
+#CalendarEvent.php
+#CourseEvent.php
+#ScheduleEntry.php
+#SeminarCycleDate.php
+- institutes
+#InstituteMember.php
+#Institute.php
 - contacts
 - messages
+#Message.php
 - resources
+#ResourcesAssignEvent.php
+#ResourcesCategory.php
+#ResourcesObject.php
 - semesters
+#Semester.php
 - courses
+#Course.php
+#CourseMember.php
 - wiki
+#WikiPage.php
 - pagination
 - errors
+- discovery
+#SlimRoute.php
+- studip
+#Studip.php
+#StudipProperty.php
 
 search: true
 ---
@@ -58,7 +89,12 @@ zu authentifizieren:
 
 * HTTP Basic access authentication
 * Stud.IP-Session-Cookies
-<%# * (OAuth2) %>
+* OAuth1
+
+Für HTTP Basic access authentication benötigt man die Zugangsdaten, die auch
+für ein "normales" Login verwendet werden.
+https://hilfe.studip.de/develop/Entwickler/RESTAPI
+
 
 <%#
 <aside class="notice">
