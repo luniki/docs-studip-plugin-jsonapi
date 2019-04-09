@@ -264,8 +264,7 @@ Ein Ordner kann einfach über diese Route angelegt werden.
        --url https://example.com/courses/<ID>/folders \
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`" \
-       --data
-       '{"data": {"type": "folders","attributes": {"name": "Name of the folder"}, "relationships": {"parent": {"data": {"type":"folders","id":"<any-folder-id>"}}}}}'
+       --data '{"data": {"type": "folders","attributes": {"name": "Name of the folder"}, "relationships": {"parent": {"data": {"type":"folders","id":"<any-folder-id>"}}}}}'
 ```
 
 ### HTTP Request
@@ -321,7 +320,10 @@ Ob eine Datei ausgelesen werden darf, entscheidet der übergeordnete Ordner.
 ```shell
 curl --request PATCH \
     --url https://example.com/file-refs/<ID> \
-    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+    --header "Content-Type: application/vnd.api+json" \
+    --data '{"data": {"type": "file-refs","id":"<id-der-datei>", \
+             "attributes":{"name":"neuer-name.jpg"}}}'
 ```
 Mit dieser Route kann der Name, die Beschreibung und/oder die Lizenz einer Datei geändert werden. Dazu wird JSONAPI-typisch das angepasste "resource object" an diese Route geschickt.
 
@@ -401,10 +403,9 @@ Der übergeordnete Ordner der Datei entscheidet.
 ```shell
 curl --request PATCH \
     --url https://example.com/file-refs/<ID>/relationships/terms-of-use \
-    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
     --header "Content-Type: application/vnd.api+json" \
     --data '{"data": {"type": "terms-of-use","id": "<id-der-lizenz>"}}'
-
 ```
 
 Um die Relation einer Datei zu einer Lizenz zu ändern, verwendet man diese Route. Das Löschen der Relation zur Datei ist ausgeschlossen.
@@ -495,7 +496,7 @@ Der übergeordnete Ordner der Datei entscheidet.
 
 ```shell
 curl --url https://example.com/file-refs/<ID>/content \
-    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
     -F 'myfile=@/path/to/local/file'
 ```
 
@@ -533,6 +534,37 @@ Mit dieser Route kann man die Daten eines Ordners auslesen.
 ### HTTP Request
 
 `GET /folders/{id}`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Ordners
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Die Art des Ordners entscheidet über die Autorisierung.
+
+
+## Einen Ordner ändern
+```shell
+curl --request PATCH \
+    --url https://example.com/folders/<ID> \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+    --header "Content-Type: application/vnd.api+json" \
+    --data '{"data": {"type":"folders","id":"<id-der-lizenz>", \
+             "attributes":{"name":"Neuer Name"}}}'
+```
+
+Mit dieser Route kann der Name und/oder die Beschreibung geändert
+werden. Außerdem kann man den Ordner in einen anderen Ordner verschieben. Dazu
+ändert man die "parent"-Relation.
+
+### HTTP Request
+
+`PATCH /folders/{id}`
 
 Parameter |  Beschreibung
 --------- | -------
