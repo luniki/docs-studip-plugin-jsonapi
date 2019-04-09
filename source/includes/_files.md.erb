@@ -804,3 +804,29 @@ keine URL-Parameter
 ### Autorisierung
 
 Die Route kann sinnvoll aufgerufen werden, wenn man eine der darauf verweisenden Dateien sehen kann.
+
+
+## Alle Datei-IDs eines "Files"
+```shell
+curl --request GET \
+    --url https://example.com/files/<ID>/relationships/file-refs \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Diese Route wird verwendet, um alle IDs der Dateien zu erhalten, die auf dieses "file" verweisen.
+
+### HTTP Request
+
+`GET /files/{id}/relationships/file-refs`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des "files"
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Die Route kann sinnvoll aufgerufen werden, wenn man eine der auf das "file" verweisenden Dateien sehen kann.
