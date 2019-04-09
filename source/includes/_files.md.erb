@@ -634,3 +634,34 @@ page[limit]  | 30      | das Limit (siehe Paginierung)
 
 Ob man die Liste der Dateien eines Ordners sehen darf, entscheidet die
 Implementierung des Ordners.
+
+
+## Alle Ordner eines Ordners
+```shell
+curl --request GET \
+    --url https://example.com/folders/<ID>/folders \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route erhält man eine Liste aller Ordner, die direkt in
+einem Ordner liegen.
+
+### HTTP Request
+
+`GET /folders/{id}/folders`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Ordners
+
+### URL-Parameter
+
+Parameter    | Default | Beschreibung
+---------    | ------- | ------------
+page[offset] | 0       | der Offset (siehe Paginierung)
+page[limit]  | 30      | das Limit (siehe Paginierung)
+
+### Autorisierung
+
+Ob man die Liste der Ordner eines Ordners sehen darf, entscheidet die
+Implementierung des Ordners.
