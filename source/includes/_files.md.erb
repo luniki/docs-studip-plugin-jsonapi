@@ -146,6 +146,31 @@ Diese Route erfragt alle im Stud.IP registrierten Lizenzen von Dateien.
 
 Jeder Nutzer darf diese Route verwenden.
 
+## Eine Lizenz auslesen
+
+```shell
+curl --request GET \
+    --url https://example.com/api/terms-of-use/<ID> \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Beschreibung
+
+### HTTP Request
+
+`GET https://example.com/jsonapi/terms-of-use/{id}`
+
+Parameter | Beschreibung
+--------- | ------------
+id        | die ID der Lizenz
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Jeder Nutzer darf diese Route verwenden.
 
 ## Alle Dateien einer Veranstaltung
 
