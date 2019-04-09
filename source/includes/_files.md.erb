@@ -209,8 +209,47 @@ page[limit]  | 30      | das Limit (siehe Paginierung)
 ### Autorisierung
 
 Die Dateien einer Einrichtung darf jeder Nutzer sehen. Die Dateien
-einer Veranstaltung einer Veranstaltung sehen alle Nutzer, die Zugriff
+einer Veranstaltung sehen alle Nutzer, die Zugriff
 auf die Veranstaltung haben. Die Dateien eines Nutzers sehen alle, es
 sei denn der Nutzer ist unsichtbar.
 
 Im Übrigen gelten die Zugriffsregeln der Ordner, in denen die Dateien liegen.
+
+
+## Alle Ordner eines Dateibereichs
+
+```shell
+curl --request GET \
+    --url https://example.com/api/<courses,institutes,users>/<ID>/folders \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route können *alle*  Ordner eines Dateibereichs ausgelesen
+werden. Das Ergebnis ist eine flache Liste aller Ordner, ungeachtet
+der Zugehörigkeit zu Ordnern dieses Dateibereichs.
+
+### HTTP Request
+
+`GET https://example.com/jsonapi/courses/{id}/folders`
+`GET https://example.com/jsonapi/institutes/{id}/folders`
+`GET https://example.com/jsonapi/users/{id}/folders`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID der Veranstaltung, der Einrichtung oder des Nutzers
+
+### URL-Parameter
+
+Parameter    | Default | Beschreibung
+---------    | ------- | ------------
+page[offset] | 0       | der Offset (siehe Paginierung)
+page[limit]  | 30      | das Limit (siehe Paginierung)
+
+### Autorisierung
+
+Die Ordner einer Einrichtung darf jeder Nutzer sehen. Die Ordner einer
+Veranstaltung sehen alle Nutzer, die Zugriff auf die Veranstaltung
+haben. Die Ordner eines Nutzers sehen alle, es sei denn der Nutzer ist
+unsichtbar.
+
+Im Übrigen gelten die Zugriffsregeln der Ordner, in denen die Ordner liegen.
