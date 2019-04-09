@@ -18,7 +18,7 @@ position          | Position einer Kategorie
 
 ### Relationen
 
- Relation | Beschreibung
+Relation | Beschreibung
 --------  | ------------
 course    | Der Kurs des Forums, indem die Kategorie angelegt ist
 entries   | Alle Forum-Einträge einer Forum-Kategorie
@@ -36,6 +36,13 @@ Attribut          | Beschreibung
 title             | Name eines Entries (sollte nur bei Themen angezeigt werden)
 content           | Gibt den Inhalt eines Entries wieder
 area              | Dieses Attribut wird mitgeführt (ist aber idr. '0')
+
+### Relationen
+
+Relation | Beschreibung
+--------  | ------------
+category  | Die Forum-Kategorie des Forumeintrags
+entries   | Alle Untereinträge eines Forumeintrags
 
 ## Alle Forum-Kategorien eines Kurses auslesen
    GET /courses/{id}/forum-categories
