@@ -1,10 +1,9 @@
 # Blubber
-
-TODO: Einleitung
-
-## Schema "todo-a"
-
-TODO: Einleitung
+Blubber ermöglicht innerhalb von Veranstaltungen mit anderen Stud.IP-Teilnehmern zu chatten.
+Wir unterscheiden in öffentliche-, private- und veranstaltungsbezogene Blubber.
+## Schema
+Der Inhalt wird als plain-text und html gespeichert. Meta-Daten geben Informationen über den Zeitpunkt und
+das Thema einer Nachricht.
 
 ### Attribute
 
@@ -22,11 +21,11 @@ tags            | eine Liste von Tags
 
  Relation | Beschreibung
 --------- | ------------
-author    |
-comments  |
-context   |
-mentions  |
-parent    |
+author    | Verfasser der Nachricht
+comments  | Untergeordnete Blubber
+context   | Sichtbarkeit eines Blubber-Eintrags: course, private oder public
+mentions  | Thema eines Blubber-Eintrags
+parent    | Übergeordneter Blubber-Eintrag
 resharers |
 
 
@@ -67,20 +66,24 @@ page      | Einstellmöglichkeiten [zur Paginierung](#paginierung)
 Mit diesem URL-Parameter kann nach Typ und Datum der Aktivitäten
 gefiltert werden. Möglich sind folgende Filter:
 
+Beispiel-Url: "https://example.com/blubber-postings?filter[user]=205f3efb7997a0fc9755da2b535038da"
+
 Filter          | Beschreibung
 --------------- | ------------
-filter[course]  | TODO
-filter[user]    | TODO
+filter[course]  | Filtert Blubber-Einträge für eine Veranstaltung
+filter[user]    | Filter Blubber-Einträge für einen Nutzer
 
 #### URL-Parameter 'include'
 
+Fügt folgende Attribute in die Ausgabe hinzu.
+
 Wert      | Beschreibung
 --------- | ------------
-author    | TODO
-comments  | TODO
-context   | TODO
-mentions  | TODO
-resharers | TODO
+author    | Den Verfasser eines Blubbers
+comments  | Angehangene Blubber
+context   | Blubber-Themen
+mentions  |
+resharers |
 
 ### Authorisierung
 
@@ -90,44 +93,150 @@ Diese Route kann von allen Nutzern verwendet werden.
 ## Einen Blubber-Beitrag auslesen
    GET /blubber-postings/{id}
 
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/<posting-id> \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
+
 ## Einen Blubber-Beitrag anlegen
    POST /blubber-postings
+
+   ```shell
+   curl --request POST \
+       --url https://example.com/blubber-postings \
+       --header "Content-Type: application/vnd.api+json" \
+       --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
+       --data
+       '{"data": {"type": "blubber-postings","attributes": {"context-type": "public","content": "Ein neuer blubberpost"}}}'
+   ```
+
 
 ## Einen Blubber-Beitrag editieren
    PATCH /blubber-postings/{id}
 
+   ```shell
+   curl --request PATCH \
+       --url https://example.com/blubber-postings/<blubber-id> \
+       --header "Content-Type: application/vnd.api+json" \
+       --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
+       --data
+       '{"data": {"type": "blubber-postings","attributes": {"context-type": "public","content": "Ein veränderter blubberpost"}}}'
+   ```
+
 ## Einen Blubber-Beitrag löschen
    DELETE /blubber-postings/{id}
+
+   ```shell
+   curl --request DELETE \
+       --url https://example.com/blubber-postings/<blubber-id> \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+   ```
 
 ## Relation 'author'
    GET /blubber-postings/{id}/relationships/author
 
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/<posting-id>/relationships/author \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
+
 ## Alle Kommentare eines Blubber-Beitrags
    GET /blubber-postings/{id}/comments
+
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/<posting-id>/comments \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
 
 ## Einen Blubber-Beitrag kommentieren
    POST /blubber-postings/{id}/comments
 
+   ```shell
+   curl --request POST \
+       --url https://example.com/blubber-postings/<posting-id>/comments \
+       --header "Content-Type: application/vnd.api+json" \
+       --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
+       --data
+       '{"data": {"type": "blubber-postings","attributes": {"content": "Ein neuer blubberkommentar"}}}'
+   ```
+
 ## Relation 'comments'
    GET /blubber-postings/{id}/relationships/comments
+
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/<posting-id>/relationships/comments \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
 
 ## Relation 'context'
    GET /blubber-postings/{id}/relationships/context
 
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/<posting-id>/relationships/context \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
+
 ## Alle Erwähnungn eines Blubber-Beitrags
    GET /blubber-postings/{id}/mentions
+
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/<posting-id>/mentions \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
 
 ## Relation 'mentions'
    GET /blubber-postings/{id}/relationships/mentions
 
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/<posting-id>/relationships/mentions \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
+
 ## Relation 'resharers'
    GET /blubber-postings/{id}/relationships/resharers
+
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/<posting-id>/relationships/resharers \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
 
 ## Einen Blubber-Beitrag in einer Veranstaltung anlegen
    POST /courses/{id}/blubber-postings
 
+   ```shell
+   curl --request POST \
+       --url https://example.com/courses/<course-id>/blubber-postings \
+       --header "Content-Type: application/vnd.api+json" \
+       --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
+       --data
+       '{"data": {"type": "blubber-postings","attributes": {"context-type": "course","content": "Ein neuer blubberpost"}}}'
+   ```
+
 ## Einen Blubber-Beitrag im Profil anlegen
    POST /users/{id}/blubber-postings
 
+   ```shell
+   curl --request POST \
+       --url https://example.com/courses/<course-id>/users/<user-id>/blubber-postings \
+       --header "Content-Type: application/vnd.api+json" \
+       --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
+       --data
+       '{"data": {"type": "blubber-postings","attributes": {"context-type": "private","content": "Ein neuer blubberpost"}}}'
+   ```
+
 ## Einen Blubber-Stream auslesen
    GET /blubber-streams/{id}
+
+   ```shell
+   curl --request GET \
+       --url https://example.com/blubber-postings/<posting-id>/blubber-streams/<stream-id> \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
