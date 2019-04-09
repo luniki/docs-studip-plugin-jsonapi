@@ -253,3 +253,37 @@ haben. Die Ordner eines Nutzers sehen alle, es sei denn der Nutzer ist
 unsichtbar.
 
 Im Übrigen gelten die Zugriffsregeln der Ordner, in denen die Ordner liegen.
+
+
+## Einen Ordner anlegen
+
+Ein Ordner kann einfach über diese Route angelegt werden.
+
+```shell
+   curl --request POST \
+       --url https://example.com/api/courses/<ID>/folders \
+       --header "Content-Type: application/vnd.api+json" \
+       --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`" \
+       --data
+       '{"data": {"type": "folders","attributes": {"name": "Name of the folder"}, "relationships": {"parent": {"data": {"type":"folders","id":"<any-folder-id>"}}}}}'
+```
+
+### HTTP Request
+
+`POST https://example.com/jsonapi/courses/{id}/folders`
+`POST https://example.com/jsonapi/institutes/{id}/folders`
+`POST https://example.com/jsonapi/users/{id}/folders`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID der Veranstaltung, der Einrichtung oder des Nutzers
+
+Der Request-Body enthält ein "JSONAPI resource object" vom Typ "folders". Name und übergeordneter, enthaltender Ordner sind erforderlich: Das Attribut "name" und die Relation "parent", die auf ein "folders"-Objekt verweist, sind verpflichtend.
+
+### URL-Parameter
+
+keine Parameter
+
+### Autorisierung
+
+Ob ein Ordner angelegt werden darf, wird von der jeweiligen Implementation des Zielordners entschieden.
