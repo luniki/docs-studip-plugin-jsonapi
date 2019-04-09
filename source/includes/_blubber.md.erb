@@ -34,12 +34,12 @@ resharers |
 
 ```shell
 curl --request GET \
-    --url https://example.com/api/blubber-postings \
+    --url https://example.com/blubber-postings \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/blubber-postings', {
+fetch('https://example.com/blubber-postings', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -52,7 +52,7 @@ Es werden alle Blubber-Beiträge, die man im Stud.IP sehen könnte, angezeigt.
 
 ### HTTP Request
 
-`GET https://example.com/jsonapi/blubber-postings`
+`GET /blubber-postings`
 
 ### URL-Parameter
 

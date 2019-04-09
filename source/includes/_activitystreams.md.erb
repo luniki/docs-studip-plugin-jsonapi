@@ -43,12 +43,12 @@ object    | das Objekt, mit dem die Aktivität stattfindet; falls möglich wird 
 
 ```shell
 curl --request GET \
-    --url https://example.com/api/users/<USER-ID>/activitystream \
+    --url https://example.com/users/<USER-ID>/activitystream \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/users/<USER-ID>/activitystream', {
+fetch('https://example.com/users/<USER-ID>/activitystream', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -70,7 +70,7 @@ ausgegeben. Diese Einschränkung kann mit Hilfe des URL-Parameters
 
 ### HTTP Request
 
-`GET https://example.com/jsonapi/users/{id}/activitystream`
+`GET /users/{id}/activitystream`
 
 ### URL-Parameter
 
@@ -84,7 +84,7 @@ page      | Einstellmöglichkeiten [zur Paginierung](#paginierung)
 
 ```shell
 curl --request GET \
-     --url 'https://example.com/api/users/<USER-ID>/activitystream?filter\[start\]=1263078000&filter\[end\]=1409695200&filter[activity-type]=documents' \
+     --url 'https://example.com/users/<USER-ID>/activitystream?filter\[start\]=1263078000&filter\[end\]=1409695200&filter[activity-type]=documents' \
      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
@@ -117,7 +117,7 @@ Typen durch Komma getrennt verwendet werden.
 
 ```shell
 curl --request GET \
-     --url 'https://example.com/api/users/<USER-ID>/activitystream?include=actor,context'\
+     --url 'https://example.com/users/<USER-ID>/activitystream?include=actor,context'\
      --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 

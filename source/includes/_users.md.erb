@@ -46,7 +46,7 @@ courses          | die Veranstaltungen der Nutzers
 
 ```shell
 curl --request GET \
-    --url https://example.com/api/users \
+    --url https://example.com/users \
     --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`"
 ```
 
@@ -80,7 +80,7 @@ Diese Route kann nur von Nutzern der Rechtestufe "root" verwendet werden.
 
 ```shell
 curl --request GET \
-    --url https://example.com/api/users/me \
+    --url https://example.com/users/me \
     --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`"
 ```
 

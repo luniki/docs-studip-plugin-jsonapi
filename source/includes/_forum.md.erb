@@ -45,7 +45,7 @@ area              | Dieses Attribut wird mitgeführt (ist aber idr. '0')
 
    ```shell
    curl --request GET \
-       --url https://example.com/api/courses/<COURSE-ID>/forum-categories \
+       --url https://example.com/courses/<COURSE-ID>/forum-categories \
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
        --data
@@ -65,7 +65,7 @@ area              | Dieses Attribut wird mitgeführt (ist aber idr. '0')
 
    ```shell
    curl --request GET \
-       --url https://example.com/api/forum-categories/<FORUM-CATEGORY-ID> \
+       --url https://example.com/forum-categories/<FORUM-CATEGORY-ID> \
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
        --data
@@ -86,7 +86,7 @@ area              | Dieses Attribut wird mitgeführt (ist aber idr. '0')
 
   ```shell
   curl --request GET \
-      --url https://example.com/api/forum-entries/<FORUM-ENTRY-ID> \
+      --url https://example.com/forum-entries/<FORUM-ENTRY-ID> \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -107,7 +107,7 @@ area              | Dieses Attribut wird mitgeführt (ist aber idr. '0')
 
   ```shell
   curl --request GET \
-      --url https://example.com/api/forum-categories/<CATEGORY-ID>/entries \
+      --url https://example.com/forum-categories/<CATEGORY-ID>/entries \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -128,7 +128,7 @@ area              | Dieses Attribut wird mitgeführt (ist aber idr. '0')
 
   ```shell
   curl --request GET \
-      --url https://example.com/api/forum-entries/<FORUM-ENTRY-ID>/entries \
+      --url https://example.com/forum-entries/<FORUM-ENTRY-ID>/entries \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -151,7 +151,7 @@ __
 
   ```shell
   curl --request POST \
-      --url https://example.com/api/courses/<COURSE-ID>/categories \
+      --url https://example.com/courses/<COURSE-ID>/categories \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -177,7 +177,7 @@ __
 
   ```shell
   curl --request POST \
-      --url https://example.com/api/forum-entries/<FORUM-CATEGORY-ID>/entries \
+      --url https://example.com/forum-entries/<FORUM-CATEGORY-ID>/entries \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -201,7 +201,7 @@ __
 
   ```shell
   curl --request POST \
-      --url https://example.com/api/forum-entries/<FORUM-ENTRY-ID>/entries \
+      --url https://example.com/forum-entries/<FORUM-ENTRY-ID>/entries \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -225,7 +225,7 @@ __
 
   ```shell
   curl --request PATCH \
-      --url https://example.com/api/forum-categories/<FORUM-CATEGORY-ID> \
+      --url https://example.com/forum-categories/<FORUM-CATEGORY-ID> \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -252,7 +252,7 @@ __
 
   ```shell
   curl --request PATCH \
-      --url https://example.com/api/forum-entries/<FORUM-ENTRY-ID> \
+      --url https://example.com/forum-entries/<FORUM-ENTRY-ID> \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -278,7 +278,7 @@ __
 
   ```shell
   curl --request DELETE \
-    --url https://example.com/api/forum-categories/<FORUM-CATEGORY-ID> \
+    --url https://example.com/forum-categories/<FORUM-CATEGORY-ID> \
     --header "Content-Type: application/vnd.api+json" \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
     --data
@@ -298,7 +298,7 @@ __
 
 ```shell
 curl --request DELETE \
-    --url https://example.com/api/forum-entries/<FORUM-ENTRY-ID> \
+    --url https://example.com/forum-entries/<FORUM-ENTRY-ID> \
     --header "Content-Type: application/vnd.api+json" \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
     --data

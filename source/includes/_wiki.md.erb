@@ -32,7 +32,7 @@ range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
 
   ```shell
   curl --request GET \
-      --url https://example.com/api/courses/<COURSE-ID>/wiki-pages \
+      --url https://example.com/courses/<COURSE-ID>/wiki-pages \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -53,7 +53,7 @@ range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
 
   ```shell
   curl --request GET \
-      --url https://example.com/api/wiki-pages/<ID> \
+      --url https://example.com/wiki-pages/<ID> \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -73,7 +73,7 @@ range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
 
   ```shell
   curl --request POST \
-      --url https://example.com/api/courses/<COURSE-ID>/wiki \
+      --url https://example.com/courses/<COURSE-ID>/wiki \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -91,7 +91,7 @@ range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
   id         | Die ID der Wiki-Seite
 
 curl --request PATCH \
-      --url https://example.com/api/wiki-pages/<ID> \
+      --url https://example.com/wiki-pages/<ID> \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data

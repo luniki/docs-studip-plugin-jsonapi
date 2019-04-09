@@ -132,7 +132,7 @@ Lizenzen ('terms-of-use') haben keine Relationen.
 
 ```shell
 curl --request GET \
-    --url https://example.com/api/terms-of-use \
+    --url https://example.com/terms-of-use \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
@@ -140,7 +140,7 @@ Diese Route erfragt alle im Stud.IP registrierten Lizenzen von Dateien.
 
 ### HTTP Request
 
-`GET https://example.com/jsonapi/terms-of-use`
+`GET /terms-of-use`
 
 ### Autorisierung
 
@@ -150,7 +150,7 @@ Jeder Nutzer darf diese Route verwenden.
 
 ```shell
 curl --request GET \
-    --url https://example.com/api/terms-of-use/<ID> \
+    --url https://example.com/terms-of-use/<ID> \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
@@ -158,7 +158,7 @@ Beschreibung
 
 ### HTTP Request
 
-`GET https://example.com/jsonapi/terms-of-use/{id}`
+`GET /terms-of-use/{id}`
 
 Parameter | Beschreibung
 --------- | ------------
@@ -177,7 +177,7 @@ Jeder Nutzer darf diese Route verwenden.
 
 ```shell
 curl --request GET \
-    --url https://example.com/api/<courses,institutes,users>/<ID>/file-refs \
+    --url https://example.com/<courses,institutes,users>/<ID>/file-refs \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
@@ -191,9 +191,9 @@ der Zugehörigkeit zu Ordnern dieses Dateibereichs.
 
 ### HTTP Request
 
-`GET https://example.com/jsonapi/courses/{id}/file-refs`
-`GET https://example.com/jsonapi/institutes/{id}/file-refs`
-`GET https://example.com/jsonapi/users/{id}/file-refs`
+`GET /courses/{id}/file-refs`
+`GET /institutes/{id}/file-refs`
+`GET /users/{id}/file-refs`
 
 Parameter |  Beschreibung
 --------- | -------
@@ -220,7 +220,7 @@ Im Übrigen gelten die Zugriffsregeln der Ordner, in denen die Dateien liegen.
 
 ```shell
 curl --request GET \
-    --url https://example.com/api/<courses,institutes,users>/<ID>/folders \
+    --url https://example.com/<courses,institutes,users>/<ID>/folders \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
@@ -230,9 +230,9 @@ der Zugehörigkeit zu Ordnern dieses Dateibereichs.
 
 ### HTTP Request
 
-`GET https://example.com/jsonapi/courses/{id}/folders`
-`GET https://example.com/jsonapi/institutes/{id}/folders`
-`GET https://example.com/jsonapi/users/{id}/folders`
+`GET /courses/{id}/folders`
+`GET /institutes/{id}/folders`
+`GET /users/{id}/folders`
 
 Parameter |  Beschreibung
 --------- | -------
@@ -261,7 +261,7 @@ Ein Ordner kann einfach über diese Route angelegt werden.
 
 ```shell
    curl --request POST \
-       --url https://example.com/api/courses/<ID>/folders \
+       --url https://example.com/courses/<ID>/folders \
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`" \
        --data
@@ -270,9 +270,9 @@ Ein Ordner kann einfach über diese Route angelegt werden.
 
 ### HTTP Request
 
-`POST https://example.com/jsonapi/courses/{id}/folders`
-`POST https://example.com/jsonapi/institutes/{id}/folders`
-`POST https://example.com/jsonapi/users/{id}/folders`
+`POST /courses/{id}/folders`
+`POST /institutes/{id}/folders`
+`POST /users/{id}/folders`
 
 Parameter |  Beschreibung
 --------- | -------
@@ -293,7 +293,7 @@ Ob ein Ordner angelegt werden darf, wird von der jeweiligen Implementation des Z
 
 ```shell
 curl --request GET \
-    --url https://example.com/api/file-refs/<ID> \
+    --url https://example.com/file-refs/<ID> \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
@@ -301,7 +301,7 @@ Mit dieser Route kann eine Datei ausgelesen werden.
 
 ### HTTP Request
 
-`GET https://example.com/jsonapi/file-refs/{id}`
+`GET /file-refs/{id}`
 
 Parameter |  Beschreibung
 --------- | -------
@@ -320,14 +320,14 @@ Ob eine Datei ausgelesen werden darf, entscheidet der übergeordnete Ordner.
 
 ```shell
 curl --request PATCH \
-    --url https://example.com/api/file-refs/<ID> \
+    --url https://example.com/file-refs/<ID> \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 Mit dieser Route kann der Name, die Beschreibung und/oder die Lizenz einer Datei geändert werden. Dazu wird JSONAPI-typisch das angepasste "resource object" an diese Route geschickt.
 
 ### HTTP Request
 
-`PATCH https://example.com/jsonapi/file-refs/{id}`
+`PATCH /file-refs/{id}`
 
 Parameter |  Beschreibung
 --------- | -------
@@ -348,7 +348,7 @@ Ob eine Datei angepasst werden darf, entscheidet der übergeordnete Ordner.
 
 ```shell
 curl --request DELETE \
-    --url https://example.com/api/file-refs/<ID> \
+    --url https://example.com/file-refs/<ID> \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
@@ -356,7 +356,7 @@ Mit dieser Route löscht man eine Datei.
 
 ### HTTP Request
 
-`DELETE https://example.com/jsonapi/file-refs/{id}`
+`DELETE /file-refs/{id}`
 
 Parameter |  Beschreibung
 --------- | -------
@@ -369,3 +369,27 @@ keine URL-Parameter
 ### Autorisierung
 
 ob eine Datei gelöscht werden kann, entscheidet der übergeordnete Ordner.
+
+
+## Lizenz einer Datei auslesen
+```shell
+curl --request GET \
+    --url https://example.com/file-refs/<ID>/relationships/terms-of-use \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Um die Relation einer Datei zu einer Lizenz auszulesen, verwendet man diese Route.
+
+### HTTP Request
+
+`GET /file-refs/<ID>/relationships/terms-of-use`
+
+Parameter |  Beschreibung
+--------- | -------
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+
+### Autorisierung

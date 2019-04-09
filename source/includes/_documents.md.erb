@@ -109,12 +109,12 @@ Lizenzen haben keine Relationen.
 
 ```shell
 curl --request GET \
-    --url https://example.com/api/courses/<COURSE-ID>/documents \
+    --url https://example.com/courses/<COURSE-ID>/documents \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/courses/<COURSE-ID>/documents', {
+fetch('https://example.com/courses/<COURSE-ID>/documents', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -133,7 +133,7 @@ mit dieser Route **alle** Dokumente einer Veranstaltung abfragen.
 
 ### HTTP Request
 
-`GET https://example.com/jsonapi/courses/{id}/documents`
+`GET /jsonapi/courses/{id}/documents`
 
 ### URL-Parameter
 
@@ -152,12 +152,12 @@ die entsprechende Veranstaltung oder Einrichtung haben.
 ## Alle Ordner einer Veranstaltung/Einrichtung
 ```shell
 curl --request GET \
-    --url https://example.com/api/courses/<COURSE-ID>/document-folders \
+    --url https://example.com/courses/<COURSE-ID>/document-folders \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/courses/<COURSE-ID>/document-folders', {
+fetch('https://example.com/courses/<COURSE-ID>/document-folders', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -174,7 +174,7 @@ mit dieser Route **alle** Ordner einer Veranstaltung abfragen, auf die
 man Zugriff hat.
 
 ### HTTP Request
-`GET https://example.com/(courses|institutes)/{id}/document-folders`
+`GET /(courses|institutes)/{id}/document-folders`
 
 ### URL-Parameter
 
@@ -194,12 +194,12 @@ lediglich diejenigen Ordner gezeigt, die der Nutzer verwenden kann.
 ## Ein Dokument auslesen
 ```shell
 curl --request GET \
-    --url https://example.com/api/documents/{id} \
+    --url https://example.com/documents/{id} \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/documents/{id}', {
+fetch('https://example.com/documents/{id}', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -234,12 +234,12 @@ zu Veranstaltungen ihrer Einrichtungen gehören; Root natürlich auf alle.
 ## Eine Dokument-Datei herunterladen
 ```shell
 curl --request GET \
-    --url https://example.com/api/documents/{id} \
+    --url https://example.com/documents/{id} \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/documents/{id}/content', {
+fetch('https://example.com/documents/{id}/content', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -277,7 +277,7 @@ gehören; Root natürlich auf alle.
 ```shell
 curl --request POST --form 'file=@die-aktuelle-datei.jpg' \
      --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`" \
-     --url "https://example.com/api/documents/{id}/content"
+     --url "https://example.com/documents/{id}/content"
 ```
 
 <aside class="warning">Diese Route ist keine JSON:API Route.</aside>
@@ -318,7 +318,7 @@ werden.
 ```shell
 curl --request POST --form 'file=@eine-neue-datei.jpg' \
      --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`" \
-     --url "https://example.com/api/document-folders/{id}/documents"
+     --url "https://example.com/document-folders/{id}/documents"
 ```
 
 Zuerst sendet man einen ``POST``-Request mit ``Content-Type:
@@ -347,7 +347,7 @@ vorgenommen werden.
 
 ```shell
 curl --request POST \
-    --url https://example.com/api/document-folders/{id}/documents \
+    --url https://example.com/document-folders/{id}/documents \
     --header "Content-Type: application/vnd.api+json" \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
     --data '{"data": { "type": "documents", "attributes": { "name": "iason.txt", "description": "Iasons Lebenslauf", "filename": "iason.txt"}}}'
@@ -404,12 +404,12 @@ Die Berechtigungen zum Anlegen eines Dokuments in einem Ordner sind komplex und 
 ## Ein Dokument löschen
 ```shell
 curl --request DELETE \
-    --url https://example.com/api/documents/{id} \
+    --url https://example.com/documents/{id} \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/documents/{id}', {
+fetch('https://example.com/documents/{id}', {
     method: 'DELETE',
     mode: 'cors',
     headers: new Headers({
@@ -443,12 +443,12 @@ wie im üblichen Stud.IP.
 
 ```shell
 curl --request PATCH \
-    --url https://example.com/api/documents/{id} \
+    --url https://example.com/documents/{id} \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/documents/{id}', {
+fetch('https://example.com/documents/{id}', {
     method: 'PATCH',
     mode: 'cors',
     headers: new Headers({
@@ -506,12 +506,12 @@ wie in der üblichen Stud.IP-Weboberfläche.
 ## Einen Ordner auslesen
 ```shell
 curl --request GET \
-    --url https://example.com/api/document-folders/{id} \
+    --url https://example.com/document-folders/{id} \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/document-folders/{id}', {
+fetch('https://example.com/document-folders/{id}', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -546,12 +546,12 @@ Root natürlich auf alle.
 ## Alle Kindordner eines Ordners
 ```shell
 curl --request GET \
-    --url https://example.com/api/document-folders/{id}/document-folders \
+    --url https://example.com/document-folders/{id}/document-folders \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/document-folders/{id}/document-folders', {
+fetch('https://example.com/document-folders/{id}/document-folders', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -584,12 +584,12 @@ berücksichtigt.
 ## Alle Dokumente eines Ordners
 ```shell
 curl --request GET \
-    --url https://example.com/api/document-folders/{id}/documents \
+    --url https://example.com/document-folders/{id}/documents \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/document-folders/{id}/documents', {
+fetch('https://example.com/document-folders/{id}/documents', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({
@@ -622,12 +622,12 @@ berücksichtigt.
 ## Eine Lizenz auslesen
 ```shell
 curl --request GET \
-    --url https://example.com/api/document-licenses/{id} \
+    --url https://example.com/document-licenses/{id} \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 ```javascript
-fetch('https://example.com/api/document-licenses/{id}', {
+fetch('https://example.com/document-licenses/{id}', {
     method: 'GET',
     mode: 'cors',
     headers: new Headers({

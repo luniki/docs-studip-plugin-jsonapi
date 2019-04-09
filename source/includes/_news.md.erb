@@ -68,7 +68,7 @@ Es wird diskutiert ob hier Adminrechte reichen.
 
    ```shell
    curl --request POST \
-       --url https://example.com/api/news \
+       --url https://example.com/news \
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
        --data
@@ -81,7 +81,7 @@ Es wird diskutiert ob hier Adminrechte reichen.
 
    ```shell
    curl --request POST \
-       --url https://example.com/api/courses/<COURSE-ID>/news \
+       --url https://example.com/courses/<COURSE-ID>/news \
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`" \
        --data
@@ -97,7 +97,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
 
    ```shell
    curl --request POST \
-       --url https://example.com/api/users/<USER-ID>/news \
+       --url https://example.com/users/<USER-ID>/news \
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
        --data
@@ -114,7 +114,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
 
    ```shell
    curl --request POST \
-       --url https://example.com/api/news/<NEWS-ID>/comments \
+       --url https://example.com/news/<NEWS-ID>/comments \
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`" \
        --data
@@ -138,7 +138,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
 
   ```shell
   curl --request PATCH \
-      --url https://example.com/api/news/<NEWS-ID> \
+      --url https://example.com/news/<NEWS-ID> \
       --header "Content-Type: application/vnd.api+json" \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
       --data
@@ -155,7 +155,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
   id         | Die ID der News
   ```shell
   curl --request GET \
-      --url https://example.com/api/news/<NEWS-ID> \
+      --url https://example.com/news/<NEWS-ID> \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
   ```
 ### Autorisierung
@@ -173,7 +173,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
 
   ```shell
   curl --request GET \
-      --url https://example.com/api/course/<COURSE-ID>/news \
+      --url https://example.com/course/<COURSE-ID>/news \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
   ```
 ### Autorisierung
@@ -192,7 +192,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
 
    ```shell
    curl --request GET \
-       --url https://example.com/api/user/<USER-ID>/news \
+       --url https://example.com/user/<USER-ID>/news \
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
    ```
 ### Autorisierung
@@ -213,7 +213,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
 
    ```shell
    curl --request GET \
-       --url https://example.com/api/user/studip/news \
+       --url https://example.com/user/studip/news \
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
    ```
 
@@ -230,7 +230,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
 
   ```shell
   curl --request GET \
-      --url https://example.com/api/news \
+      --url https://example.com/news \
       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
   ```
 
@@ -251,7 +251,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
 
    ```shell
    curl --request DELETE \
-       --url https://example.com/api/news/<NEWS-ID> \
+       --url https://example.com/news/<NEWS-ID> \
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
    ```
  ### Autorisierung
@@ -267,7 +267,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
 
    ```shell
    curl --request DELETE \
-       --url https://example.com/api/comments/studip/news \
+       --url https://example.com/comments/studip/news \
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
    ```
 ## Alle News-Ranges
