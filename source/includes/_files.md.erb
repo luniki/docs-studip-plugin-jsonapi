@@ -314,3 +314,31 @@ keine Parameter
 ### Autorisierung
 
 Ob eine Datei ausgelesen werden darf, entscheidet der übergeordnete Ordner.
+
+
+## Metadaten einer Datei ändern
+
+```shell
+curl --request PATCH \
+    --url https://example.com/api/file-refs/<ID> \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+Mit dieser Route kann der Name, die Beschreibung und/oder die Lizenz einer Datei geändert werden. Dazu wird JSONAPI-typisch das angepasste "resource object" an diese Route geschickt.
+
+### HTTP Request
+
+`PATCH https://example.com/jsonapi/file-refs/{id}`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID der Datei
+
+Der Request-Body enthält das veränderte "resource object".
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Ob eine Datei angepasst werden darf, entscheidet der übergeordnete Ordner.
