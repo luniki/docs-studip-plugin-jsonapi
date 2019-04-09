@@ -287,3 +287,30 @@ keine Parameter
 ### Autorisierung
 
 Ob ein Ordner angelegt werden darf, wird von der jeweiligen Implementation des Zielordners entschieden.
+
+
+## Eine Datei auslesen
+
+```shell
+curl --request GET \
+    --url https://example.com/api/file-refs/<ID> \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route kann eine Datei ausgelesen werden.
+
+### HTTP Request
+
+`GET https://example.com/jsonapi/file-refs/{id}`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID der Datei
+
+### URL-Parameter
+
+keine Parameter
+
+### Autorisierung
+
+Ob eine Datei ausgelesen werden darf, entscheidet der übergeordnete Ordner.
