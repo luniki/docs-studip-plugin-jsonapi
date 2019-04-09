@@ -109,6 +109,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
   id         | Die ID des Users
 ### Autorisierung
   Der Nutzer muss mindestens User-Rechte haben.
+
 ## Einen Kommentar anlegen
    POST /news/{id}/comments
 
@@ -118,8 +119,7 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`" \
        --data
-       '{
-  "data": {"type": "comments","attributes": {"content": "Ein Kommentar wurde geupdatet"}}}'
+       '{"data": {"type": "comments","attributes": {"content": "Ein Kommentar wurde geupdatet"}}}'
    ```
    ### Autorisierung
      Der Nutzer muss mindestens User-Rechte haben.
