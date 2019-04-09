@@ -172,51 +172,45 @@ keine URL-Parameter
 
 Jeder Nutzer darf diese Route verwenden.
 
-## Alle Dateien einer Veranstaltung
+
+## Alle Dateien eines Dateibereichs
 
 ```shell
-TODO
+curl --request GET \
+    --url https://example.com/api/<courses,institutes,users>/<ID>/file-refs \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
 ```
 
 > Der Request liefert JSON ähnlich wie dieses:
 
 <%#= partial "includes/json/get_courses_id_files" %>
 
-
-Wenn in einer Veranstaltung der Dateibereich aktiviert ist, erhält man
-mit der ID der Veranstaltung über diesen Endpoint den Wurzelordner der Veranstaltung.
+Mit dieser Route können *alle*  Dateien eines Dateibereichs ausgelesen
+werden. Das Ergebnis ist eine flache Liste aller Dateien, ungeachtet
+der Zugehörigkeit zu Ordnern dieses Dateibereichs.
 
 ### HTTP Request
 
-`GET https://example.com/jsonapi/{type:courses|institutes|users}/{id}/files`
-
-### URL-Parameter
+`GET https://example.com/jsonapi/courses/{id}/file-refs`
+`GET https://example.com/jsonapi/institutes/{id}/file-refs`
+`GET https://example.com/jsonapi/users/{id}/file-refs`
 
 Parameter |  Beschreibung
 --------- | -------
-id        | die ID der Veranstaltung
+id        | die ID der Veranstaltung, der Einrichtung oder des Nutzers
 
+### URL-Parameter
 
-## TODO: Eine Lizenz auslesen
-   GET /terms-of-use/{id}
+Parameter    | Default | Beschreibung
+---------    | ------- | ------------
+page[offset] | 0       | der Offset (siehe Paginierung)
+page[limit]  | 30      | das Limit (siehe Paginierung)
 
-## TODO: Eine Datei auslesen
-   GET /files/{id}
+### Autorisierung
 
-## TODO: Alle FileRefs einer Datei
-   GET /files/{id}/file-refs
+Die Dateien einer Einrichtung darf jeder Nutzer sehen. Die Dateien
+einer Veranstaltung einer Veranstaltung sehen alle Nutzer, die Zugriff
+auf die Veranstaltung haben. Die Dateien eines Nutzers sehen alle, es
+sei denn der Nutzer ist unsichtbar.
 
-## TODO: Relation: FileRefs einer Datei
-   GET /files/{id}/relationships/file-refs
-
-## TODO: Eine FileRef auslesen
-   GET /file-refs/{id}
-
-## TODO: Einen Ordner auslesen
-   GET /folders/{id}
-
-## TODO: Alle FileRefs eines Ordners
-   GET /folders/{id}/file-refs
-
-## TODO: Alle Ordner eines Ordners
-   GET /folders/{id}/folders
+Im Übrigen gelten die Zugriffsregeln der Ordner, in denen die Dateien liegen.
