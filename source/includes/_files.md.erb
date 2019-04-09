@@ -31,7 +31,7 @@ Attribut    | Beschreibung
 --------    | ------------
 name        | der Name der Datei
 description | eine optionale Beschreibung der Datei
-mkdate      | das Anlegedatum der Datei
+mkdate      | das Erstellungsdatum der Datei
 chdate      | das Datum der letzten Änderung der Metadaten ('name', 'description', …) der Datei
 downloads   | Wie häufig wurde diese Datei heruntergeladen?
 filesize    | die Größe der Datei in Byte
@@ -66,7 +66,7 @@ name      | der Name der Datei
 mime-type | der MIME-Typ der Datei
 size      | die Größe der Datei in Bytes
 storage   | TODO
-mkdate    | das Anlegedatum der Datei
+mkdate    | das Erstellungsdatum der Datei
 chdate    | das Datum der letzten Änderung der Datei
 
 ### Relationen
@@ -89,13 +89,13 @@ Attribut             | Beschreibung
 folder-type          | die Art des Ordners
 name                 | der Name des Ordners
 description          | die Beschreibung des Ordners
-mkdate               | das Anlegedatum des Ordners
+mkdate               | das Erstellungsdatum des Ordners
 chdate               | das Datum der letzten Änderung des Ordners
 is-visible           | Darf der eingeloggte Nutzer den Ordner sehen?
 is-readable          | Darf der eingeloggte Nutzer den Ordner öffnen?
-is-writable          | Darf der eingeloggte Nutzer im Ordner Dateien anlegen?
+is-writable          | Darf der eingeloggte Nutzer im Ordner Dateien erstellen?
 is-editable          | Darf der eingeloggte Nutzer den Ordner bearbeiten?
-is-subfolder-allowed | Darf der eingeloggte Nutzer im Ordner weitere Ordner anlegen?
+is-subfolder-allowed | Darf der eingeloggte Nutzer im Ordner weitere Ordner erstellen?
 
 
 ### Relationen
@@ -120,7 +120,7 @@ Attribut     | Beschreibung
 name         | der Name der Lizenz
 description  | die Beschreibung der Lizenz
 icon         | das für die Lizenz verwendete Icon
-mkdate       | das Anlegedatum der Lizenz
+mkdate       | das Erstellungsdatum der Lizenz
 chdate       | das Datum der letzten Änderung der Lizenz
 
 
@@ -255,7 +255,7 @@ unsichtbar.
 Im Übrigen gelten die Zugriffsregeln der Ordner, in denen die Ordner liegen.
 
 
-## Einen Ordner anlegen
+## Einen Ordner erstellen
 
 Ein Ordner kann einfach über diese Route angelegt werden.
 
@@ -665,3 +665,63 @@ page[limit]  | 30      | das Limit (siehe Paginierung)
 
 Ob man die Liste der Ordner eines Ordners sehen darf, entscheidet die
 Implementierung des Ordners.
+
+
+## Eine Datei erstellen
+
+Eine Datei wird immer in einem Ordner erstellt. Da Dateien aus
+Metadaten **und** Inhalt bestehen, muss das Erstellen einer Datei in
+zwei Schritten passieren. Dazu kann entweder
+
+* zuerst der Inhalt hochgeladen werden und dann die Metadaten (wie Beschreibung und Lizenz) angepasst werden oder
+* erst die Datei mit den Metadaten erstellt werden und nachträglich der Inhalt hochgeladen werden.
+
+### Variante a.
+
+```shell
+curl --url "https://example.com/folders/<ID>/file-refs" \
+     -F 'file=@/pfad/zu/einer-neuen-datei.jpg' \
+     --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`"
+```
+
+Zuerst sendet man einen ``POST``-Request mit ``Content-Type: multipart/form-data`` und der Datei im Request-Body an die angegebene URL.
+
+Man erhält im Erfolgsfall einen Status-Code 201 und einen ``Location``-Header, der einen zum neu erstellten Dokument in die JSON:API bringt.
+
+Der *Dateiname* wird standardmäßig aus dem Upload genommen und auch für den Namen der Datei verwendet.
+
+Will man einen anderen Dateinamen verwenden, kann man einen HTTP-Header verwenden: ``Slug: neuer-dateiname.txt``.
+
+Über die URL aus dem erhaltenen ``Location``-Header erhält man die JSON:API-Repräsentation der hochgeladenen Datei.
+
+Nun können mit einem (JSON:API-typischen) ``PATCH``-Request an diese Route Modifikationen an den Metadaten (wie Beschreibung usw.) vorgenommen werden.
+
+### Variante b.
+
+```shell
+curl --url https://example.com/folders/<ID>/file-refs \
+    --header "Content-Type: application/vnd.api+json" \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+    --data '{"data": { "type": "file-refs", "attributes": { "name": "iason.txt", "description": "Iasons Lebenslauf"}}}'
+```
+
+Zunächst sendet man einen ``POST``-Request mit ``Content-Type: application/vnd.api+json`` an die URL.
+
+Im Request-Body muss dann eine JSON:API-typische Repräsentation der neuen Datei enthalten sein. Im Erfolgsfall erhält man dann eine Repräsentation der neu angelegten Datei, die aber derzeit noch keinen Inhalt hat.
+
+Daher muss der Inhalt in einem zweiten Request hochgeladen werden. Dazu wird – wie unter "Inhalt einer Datei aktualisieren" beschrieben – ein ``POST``-Request an die ``download-url`` geschickt.
+
+### HTTP Request
+`POST https://example.com/folders/{id}/file-refs`
+
+Im Request-Body befindet sich dann entweder eine "multipart/form-data"-kodierte Datei oder ein JSON-API-spezifisches "resource object".
+
+### URL-Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Ordners
+
+### Authorisierung
+
+Ob man eine Datei erstellen darf, entscheidet die Implementierung des Ordners.
