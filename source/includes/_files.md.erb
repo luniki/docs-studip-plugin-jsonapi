@@ -577,3 +577,29 @@ keine URL-Parameter
 ### Autorisierung
 
 Die Art des Ordners entscheidet über die Autorisierung.
+
+
+## Einen Ordner löschen
+```shell
+curl --request DELETE \
+    --url https://example.com/folders/<ID> \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route kann man einen Ordner löschen.
+
+### HTTP Request
+
+`DELETE /folders/{id}`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID des Ordners
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Die Art des Ordners entscheidet über die Autorisierung.
