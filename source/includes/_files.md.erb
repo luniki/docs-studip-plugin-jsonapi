@@ -342,3 +342,30 @@ keine URL-Parameter
 ### Autorisierung
 
 Ob eine Datei angepasst werden darf, entscheidet der übergeordnete Ordner.
+
+
+## Eine Datei löschen
+
+```shell
+curl --request DELETE \
+    --url https://example.com/api/file-refs/<ID> \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route löscht man eine Datei.
+
+### HTTP Request
+
+`DELETE https://example.com/jsonapi/file-refs/{id}`
+
+Parameter |  Beschreibung
+--------- | -------
+id        | die ID der Datei
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+ob eine Datei gelöscht werden kann, entscheidet der übergeordnete Ordner.
