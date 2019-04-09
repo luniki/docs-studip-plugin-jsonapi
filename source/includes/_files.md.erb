@@ -52,34 +52,29 @@ terms-of-use | die Lizenz, unter der diese Datei verfügbar gemacht wird
 In den Metadaten von Dateien ist der "download-link" enthalten, um den Inhalt der Datei herunterzuladen.
 
 
-### Type "files"
+### Schema "files"
 
-TODO: Einleitung
+Anders als Ressourcen vom Typ "file-refs" sind Ressourcen vom Typ "files" über die grafische Oberfläche nicht verfügbar. Technisch werden "files" verwendet, um die Dateien tatsächlich auf der Festplatte (oder einem entfernten Speicherort) abzulegen.
+
+Erst durch die Verknüpfung durch "file-refs" werden Ressourcen vom Typ "files" sichtbar.
 
 ### Attribute
 
 Attribut  | Beschreibung
 --------- | ------------
-name      | TODO
-mime-type | TODO
-size      | TODO
+name      | der Name der Datei
+mime-type | der MIME-Typ der Datei
+size      | die Größe der Datei in Bytes
 storage   | TODO
-mkdate    | TODO
-chdate    | TODO
+mkdate    | das Anlegedatum der Datei
+chdate    | das Datum der letzten Änderung der Datei
 
 ### Relationen
 
  Relation | Beschreibung
 --------  | ------------
-file-refs | TODO
-owner     | TODO
-url       | TODO
-
-### Meta
-
-Meta         | Beschreibung
------------- | ------------
-download-url | TODO
+file-refs | alle Ressourcen vom Typ "file-refs", die auf diese Datei verweisen
+owner     | der Nutzer, dem diese Datei gehört
 
 ### Type "folders"
 
