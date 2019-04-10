@@ -29,7 +29,7 @@ parent    | Übergeordneter Blubber-Eintrag
 resharers |
 
 
-## Alle Blubber-Beiträge
+## Alle Beiträge
 
 ```shell
 curl --request GET \
@@ -90,7 +90,7 @@ resharers |
 Diese Route kann von allen Nutzern verwendet werden.
 
 
-## Blubber-Beitrag auslesen
+## Beitrag auslesen
    GET /blubber-postings/{id}
 
    ```shell
@@ -112,7 +112,7 @@ Diese Route kann von allen Nutzern verwendet werden.
    ```
 
 
-## Blubber-Beitrag editieren
+## Beitrag editieren
    PATCH /blubber-postings/{id}
 
    ```shell
@@ -124,7 +124,7 @@ Diese Route kann von allen Nutzern verwendet werden.
        '{"data":{"type":"blubber-postings","attributes":{"context-type":"course","content":"Ein veränderter blubberpost"}, "relationships":{"context":{"data":{"type":"courses","id":"a07535cf2f8a72df33c12ddfa4b53dde"}}}}}'
    ```
 
-## Blubber-Beitrag löschen
+## Beitrag löschen
    DELETE /blubber-postings/{id}
 
    ```shell
@@ -142,7 +142,7 @@ Diese Route kann von allen Nutzern verwendet werden.
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
 
-## Alle Kommentare eines Blubber-Beitrags
+## Kommentare eines Blubber-Beitrags
    GET /blubber-postings/{id}/comments
 
    ```shell
@@ -151,7 +151,7 @@ Diese Route kann von allen Nutzern verwendet werden.
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
 
-## Blubber-Beitrag kommentieren
+## Beitrag kommentieren
    POST /blubber-postings/{id}/comments
 
    ```shell
@@ -181,7 +181,7 @@ Diese Route kann von allen Nutzern verwendet werden.
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
 
-## Alle Erwähnungn eines Blubber-Beitrags
+## Erwähnungn eines Beitrags
    GET /blubber-postings/{id}/mentions
 
    ```shell
@@ -208,7 +208,7 @@ Diese Route kann von allen Nutzern verwendet werden.
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
 
-## Blubber-Beitrag in Veranstaltung anlegen
+## Beitrag in Veranstaltung anlegen
    POST /courses/{id}/blubber-postings
 
    ```shell
@@ -220,7 +220,7 @@ Diese Route kann von allen Nutzern verwendet werden.
        '{"data":{"type":"blubber-postings","attributes":{"context-type":"course","content":"Ein neuer blubberpost"}, "relationships":{"context":{"data":{"type":"courses","id":"a07535cf2f8a72df33c12ddfa4b53dde"}}}}}'
    ```
 
-## Blubber-Beitrag im Profil anlegen
+## Beitrag im Profil anlegen
    POST /users/{id}/blubber-postings
 
    ```shell
