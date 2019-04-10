@@ -1,72 +1,101 @@
 # Veranstaltungen
 
-TODO: Einleitung
+Veranstaltungen sind Gruppen für Seminare, Vorlesungen, Übungen etc.
+Innerhalb von Veranstaltungen werden Materialien geteilt, Plugins verwendet, Termine festgelegt uvm.
+Viele Funktionen von Stud.IP sind nur für eine bestimmte Veranstaltung sichtbar.
 
 ## Schema "courses"
 
-TODO: Einleitung
-
 ### Attribute
 
 Attribut      | Beschreibung
 ------------- | ------------
-course-number | TODO
-title         | TODO
-subtitle      | TODO
-course-type   | TODO
-description   | TODO
-location      | TODO
-miscellaneous | TODO
+course-number | ID des Kurses
+title         | Titel des Kurses
+subtitle      | Untertitel des Kurses
+course-type   | Art des Kurses (Seminar, Vorlesung...)
+description   | Beschreibung des Kurses
+location      | Ort der Veranstaltung
+miscellaneous | sonstiges
 
 
 ### Relationen
 
  Relation        | Beschreibung
 ---------------- | ------------
-institute        | TODO
-start-semester   | TODO
-end-semester     | TODO
-files            | TODO
-documents        | TODO
-document-folders | TODO
+institute        | Die zugewiesene Institution
+start-semester   | Anfangs-Semester der Veranstaltung
+end-semester     | End-Semester der Veranstaltung
+files            | Referenz auf Files innerhalb der Veranstaltung
+documents        | Referenz auf Dokumente innerhalb der Veranstaltung
+document-folders | Ordner für Dateien innerhalb der Veranstaltung
 
 ## Schema "course-membership"
 
-TODO: Einleitung
+Zeigt die Teilnehmer einer Veranstaltung mit Ihrer Rolle an.
 
 ### Attribute
 
 Attribut      | Beschreibung
 ------------- | ------------
-status        | TODO
-position      | TODO
-group         | TODO
-mkdate        | TODO
-label         | TODO
-notification  | TODO
-visible       | TODO
-comment       | TODO
-visible       | TODO
+status        | Rolle des Nutzers (Autor, Dozent, etc...)
+position      | Anordnung in der Teilnehmer-Liste
+group         | Anordnung in der Teilnehmer-Liste
+mkdate        | Erstellungsdatum
+label         |
+notification  |
+comment       |
+visible       | Sichtbarkeit im Kurs
 
 
 ### Relationen
 
  Relation        | Beschreibung
 ---------------- | ------------
-course           | TODO
-user             | TODO
+course           | Die Veranstaltung für die Teilnehmer
+user             | Nutzer der Veranstaltung
 
 ## Alle Veranstaltungen
    GET /courses
 
+   ```shell
+   curl --request GET \
+       --url https://example.com/courses \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+   ```
+
 ## Eine Veranstaltung
    GET /courses/{id}
+
+   ```shell
+   curl --request GET \
+       --url https://example.com/courses/<course-id> \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+   ```
 
 ## Alle Veranstaltungen eines Nutzers
    GET /users/{id}/courses
 
+   ```shell
+   curl --request GET \
+       --url https://example.com/users/<user-id>/courses \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+   ```
+
 ## Teilnahmen einer Veranstaltung
    GET /courses/{id}/memberships
 
+   ```shell
+   curl --request GET \
+       --url https://example.com/courses/<course-id>/memberships \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+   ```
+
 ## IDs der Teilnahmen
    GET /courses/{id}/relationships/memberships
+
+   ```shell
+   curl --request GET \
+       --url https://example.com/courses/<course-id>/relationships/memberships \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+   ```
