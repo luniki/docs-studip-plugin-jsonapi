@@ -23,7 +23,7 @@ tags            | eine Liste von Tags
 --------- | ------------
 author    | Verfasser der Nachricht
 comments  | Untergeordnete Blubber
-context   | Sichtbarkeit eines Blubber-Eintrags: course, private oder public
+context   | Wem wird der Blubber angezeigt: users, courses, public
 mentions  | Thema eines Blubber-Eintrags
 parent    | Übergeordneter Blubber-Eintrag
 resharers |
@@ -81,7 +81,7 @@ Wert      | Beschreibung
 --------- | ------------
 author    | Den Verfasser eines Blubbers
 comments  | Angehangene Blubber
-context   | Blubber-Themen
+context   | Wem wird der post angezeigt (users, courses, public)
 mentions  |
 resharers |
 
@@ -90,7 +90,7 @@ resharers |
 Diese Route kann von allen Nutzern verwendet werden.
 
 
-## Einen Blubber-Beitrag auslesen
+## Blubber-Beitrag auslesen
    GET /blubber-postings/{id}
 
    ```shell
@@ -99,20 +99,20 @@ Diese Route kann von allen Nutzern verwendet werden.
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
 
-## Einen Blubber-Beitrag anlegen
+## Öffentlichen Blubber-Beitrag anlegen
    POST /blubber-postings
 
    ```shell
    curl --request POST \
        --url https://example.com/blubber-postings \
        --header "Content-Type: application/vnd.api+json" \
-       --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
        --data
-       '{"data": {"type": "blubber-postings","attributes": {"context-type": "public","content": "Ein neuer blubberpost"}}}'
+       '{"data":{"type":"blubber-postings","attributes":{"context-type":"public","content":"Ein neuer blubberpost"}, "relationships":{"context":{"data":{"type":"public"}}}}}'
    ```
 
 
-## Einen Blubber-Beitrag editieren
+## Blubber-Beitrag editieren
    PATCH /blubber-postings/{id}
 
    ```shell
@@ -121,10 +121,10 @@ Diese Route kann von allen Nutzern verwendet werden.
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
        --data
-       '{"data": {"type": "blubber-postings","attributes": {"context-type": "public","content": "Ein veränderter blubberpost"}}}'
+       '{"data":{"type":"blubber-postings","attributes":{"context-type":"course","content":"Ein veränderter blubberpost"}, "relationships":{"context":{"data":{"type":"courses","id":"a07535cf2f8a72df33c12ddfa4b53dde"}}}}}'
    ```
 
-## Einen Blubber-Beitrag löschen
+## Blubber-Beitrag löschen
    DELETE /blubber-postings/{id}
 
    ```shell
@@ -151,7 +151,7 @@ Diese Route kann von allen Nutzern verwendet werden.
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
 
-## Einen Blubber-Beitrag kommentieren
+## Blubber-Beitrag kommentieren
    POST /blubber-postings/{id}/comments
 
    ```shell
@@ -208,7 +208,7 @@ Diese Route kann von allen Nutzern verwendet werden.
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
 
-## Einen Blubber-Beitrag in einer Veranstaltung anlegen
+## Blubber-Beitrag in Veranstaltung anlegen
    POST /courses/{id}/blubber-postings
 
    ```shell
@@ -217,10 +217,10 @@ Diese Route kann von allen Nutzern verwendet werden.
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
        --data
-       '{"data": {"type": "blubber-postings","attributes": {"context-type": "course","content": "Ein neuer blubberpost"}}}'
+       '{"data":{"type":"blubber-postings","attributes":{"context-type":"course","content":"Ein neuer blubberpost"}, "relationships":{"context":{"data":{"type":"courses","id":"a07535cf2f8a72df33c12ddfa4b53dde"}}}}}'
    ```
 
-## Einen Blubber-Beitrag im Profil anlegen
+## Blubber-Beitrag im Profil anlegen
    POST /users/{id}/blubber-postings
 
    ```shell
@@ -229,10 +229,10 @@ Diese Route kann von allen Nutzern verwendet werden.
        --header "Content-Type: application/vnd.api+json" \
        --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
        --data
-       '{"data": {"type": "blubber-postings","attributes": {"context-type": "private","content": "Ein neuer blubberpost"}}}'
+       '{"data":{"type":"blubber-postings","attributes":{"context-type":"private","content":"Ein neuer blubberpost"}, "relationships":{"context":{"data":{"type":"users","id":"205f3efb7997a0fc9755da2b535038da"}}}}}'
    ```
 
-## Einen Blubber-Stream auslesen
+## Blubber-Stream auslesen
    GET /blubber-streams/{id}
 
    ```shell
