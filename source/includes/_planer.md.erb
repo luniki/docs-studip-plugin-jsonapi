@@ -261,3 +261,28 @@ keine URL-Parameter
 ### Autorisierung
 
 Nur der Nutzer, der den Eintrag verfasst hat, darf den Eintrag auch auslesen.
+
+## Regelmäßige Veranstaltungstermine auslesen
+```shell
+curl --request GET \
+    --url https://example.com/seminar-cycle-dates/<ID> \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Beschreibung
+
+### HTTP Request
+
+`GET /seminar-cycle-dates/{id}`
+
+Parameter | Beschreibung
+--------- | ------------
+id        | die ID des Termins
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Alle Teilnehmenden einer Veranstaltung können den Termin sehen.
