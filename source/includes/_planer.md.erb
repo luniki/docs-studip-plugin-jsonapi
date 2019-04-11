@@ -1,0 +1,106 @@
+# Planer
+
+In diese Kategorie fällt alles, was mit dem Stundenplan oder dem
+Terminkalender zu tun hat. Dabei ist der Stundenplan ein
+semesterabhängiger Wochenplan, der wöchentlich wiederkehrende Termine
+enthält, die entweder selbst eingetragen wurden oder aufgrund von
+besuchten Veranstaltungen dort hinein gelangen.
+
+## Schemata
+
+### Schema "calendar-events"
+
+Ressourcen dieses Typs sind selbst in den Terminkalender eingetragene Termine.
+
+
+#### Attribute
+
+Attribut    | Beschreibung
+--------    | ------------
+title       | der Titel des Eintrags
+description | die Beschreibung des Eintrags
+start       | der Beginn des Eintrags (ISO 8601)
+end         | das Ende des Eintrag (ISO 8601)
+categories  | die Kategorie des Eintrags (als String)
+location    | der Ort des Eintrags
+mkdate      | das Erstellungsdatum des Eintrags
+chdate      | das Datum der letzten Änderung des Eintrags
+recurrence  | Informationen über Wiederholungen des Eintrags
+
+#### Relationen
+
+Relation | Beschreibung
+-------- | ------------
+owner    | der Nutzer, der den Eintrag erstellt hat
+
+### Schema "course-events"
+
+Ressourcen dieses Typs repräsentieren einmalige Termine von belegten Veranstaltungen.
+
+#### Attribute
+
+Attribut    | Beschreibung
+--------    | ------------
+title       | der Titel des Eintrags
+description | die Beschreibung des Eintrags
+start       | der Beginn des Eintrags (ISO 8601)
+end         | das Ende des Eintrag (ISO 8601)
+categories  | die Kategorie des Eintrags (als String)
+location    | der Ort des Eintrags
+mkdate      | das Erstellungsdatum des Eintrags
+chdate      | das Datum der letzten Änderung des Eintrags
+recurrence  | Informationen über Wiederholungen des Eintrags
+
+
+#### Relationen
+
+Relation | Beschreibung
+-------- | ------------
+owner    | die **Veranstaltung**, zu der der Eintrag gehört
+
+
+### Schema "schedule-entries"
+
+Ressourcen dieses Typs stellen Einträge in den Stundenplan dar, die
+ein Nutzer selbst eingetragen hat.
+
+#### Attribute
+
+Attribut    | Beschreibung
+--------    | ------------
+title       | der Titel des Eintrags
+description | die Beschreibung des Eintrags
+start       | die Uhrzeit des Beginns des Eintrags ("hh:mm")
+end         | die Uhrzeit des Endes des Eintrags ("hh:mm")
+weekday     | der Wochentag des Eintrags (0-6)
+color       | die Farbe des Eintrags ("#rrggbb")
+
+#### Relationen
+
+Relation | Beschreibung
+-------- | ------------
+owner    | der Nutzer, der den Eintrag erstellt hat
+
+
+### Schema "seminar-cycle-dates"
+
+Ressourcen dieses Typs stellen Einträge in den Stundenplan dar, die
+sich aus den regelmäßigen Terminen einer Veranstaltung zusammensetzen.
+
+#### Attribute
+
+Attribut    | Beschreibung
+--------    | ------------
+title       | der Titel des Eintrags
+description | die Beschreibung des Eintrags
+start       | die Uhrzeit des Beginns des Eintrags ("hh:mm")
+end         | die Uhrzeit des Endes des Eintrags ("hh:mm")
+weekday     | der Wochentag des Eintrags (0-6)
+recurrence  | Informationen über Wiederholungen des Eintrags
+locations   | alle Orte, an denen dieser Eintrag stattfindet
+
+#### Relationen
+
+Relation | Beschreibung
+-------- | ------------
+owner    | die **Veranstaltung**, zu der der Eintrag gehört
