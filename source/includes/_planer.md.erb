@@ -104,3 +104,41 @@ locations   | alle Orte, an denen dieser Eintrag stattfindet
 Relation | Beschreibung
 -------- | ------------
 owner    | die **Veranstaltung**, zu der der Eintrag gehört
+
+## Alle Kalendereinträge auslesen
+
+```shell
+curl --request GET \
+    --url https://example.com/users/<ID>/events \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route kann der Kalender des Nutzer abgefragt werden. Ohne
+weitere Parameter werden alle Einträge der nächsten zwei Wochen zurück
+geliefert.
+
+### HTTP Request
+
+`GET /users/{id}/events`
+
+Parameter | Beschreibung
+--------- | ------------
+id        | die ID des Nutzers
+
+### URL-Parameter
+
+Parameter         | Beschreibung
+---------         | ------------
+filter[timestamp] | Startzeitpunkt der gelieferten Kalendereinträge (als Sekunden seit dem 01.01.1970)
+
+Wenn "filter[timestamp]" nicht gesetzt ist, werden alle
+Kalendereinträge der nächsten zwei Wochen zurück geliefert.
+
+Mittels "filter[timestamp]" kann dieser Startzeitpunkt verändert
+werden. Es werden jedoch immer Kalendereinträge der nächsten zwei
+Wochen ausgeliefert.
+
+### Autorisierung
+
+Jeder Nutzer darf diese Route für sich selbst verwenden. Andere Nutzer
+haben nur Zugriff auf ihre eigenen Kalender.
