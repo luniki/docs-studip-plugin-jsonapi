@@ -235,3 +235,29 @@ filter[timestamp] | Beginn des aktuellen Semesters |  Startzeitpunkt des gewüns
 
 Nur der eigene Stundenplan kann ausgelesen werden.
 
+
+## Eigene Stundenplaneinträge
+```shell
+curl --request GET \
+    --url https://example.com/schedule-entries/<ID> \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route kann man einen einzelnen, selbst verfassten Eintrag
+in den Stundenplan auslesen.
+
+### HTTP Request
+
+`GET /schedule-entries/{id}`
+
+Parameter | Beschreibung
+--------- | ------------
+id        | die ID des Eintrags
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Nur der Nutzer, der den Eintrag verfasst hat, darf den Eintrag auch auslesen.
