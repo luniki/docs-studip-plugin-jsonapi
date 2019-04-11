@@ -68,7 +68,44 @@ resources-object | die belegte Ressource
 
 
 ## Alle Ressourcen
-   GET /resources-objects
+```shell
+curl --request GET \
+    --url https://example.com/resources-objects \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
 
-## Alle Belegungen einer Resource
-   GET /resources-objects/{id}/assignments
+Diese Route liefert alle Ressourcenobjekte.
+
+### HTTP Request
+
+`GET /resources-objects`
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Jeder eingeloggte Nutzer kann die Liste der Ressourcenobjekte sehen.
+
+
+## Alle Belegungen einer Ressource
+```shell
+curl --request GET \
+    --url https://example.com/resources-objects/<ID>/assignments \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route können die Belegungen einer Ressource abgefragt werden.
+
+### HTTP Request
+
+`GET /resources-objects/{id}/assignments`
+
+Parameter | Beschreibung
+--------- | ------------
+id        | die ID des Ressourcenobjekts
+
+### Autorisierung
+
+Jeder eingeloggte Nutzer kann die Liste der Ressourcenbelegungen sehen.
