@@ -56,13 +56,34 @@ course           | Die Veranstaltung für die Teilnehmer
 user             | Nutzer der Veranstaltung
 
 ## Alle Veranstaltungen
-   GET /courses
+```shell
+curl --request GET \
+    --url https://example.com/courses \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
 
-   ```shell
-   curl --request GET \
-       --url https://example.com/courses \
-       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
-   ```
+Mit dieser Route können alle Veranstaltungen ausgelesen werden.
+
+### HTTP Request
+
+`GET /courses`
+
+### URL-Parameter
+
+Parameter        | Default | Beschreibung
+---------        | ------- | ------------
+page[offset]     | 0       | der Offset (siehe Paginierung)
+page[limit]      | 30      | das Limit (siehe Paginierung)
+filter[q]        | -       | ein Suchbegriff (mind. 3 Zeichen)
+filter[fields]   | all     | in welchen Feldern gesucht werden soll
+filter[semester] | all     | in welchem Semester gesucht werden soll
+
+Der Parameter "filter[fields]" darf folgende Werte annehmen: 'all', 'title_lecturer_number', 'title', 'sub_title', 'lecturer', 'number', 'comment', 'scope'.
+
+### Autorisierung
+
+Jeder eingeloggte Nutzer kann diese Route verwenden.
+
 
 ## Eine Veranstaltung
    GET /courses/{id}
