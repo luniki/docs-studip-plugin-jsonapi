@@ -205,3 +205,33 @@ page[limit]  | 30      | das Limit (siehe Paginierung)
 
 Die Termine einer Veranstaltung sind für alle Teilnehmenden sichtbar.
 
+
+## Stundenplan auslesen
+```shell
+curl --request GET \
+    --url https://example.com/users/<ID>/schedule \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route kann man seinen Stundenplan abfragen. Wird kein
+filter-Parameter angegeben, wird der Stundenplan des aktuellen
+Semesters ausgeliefert.
+
+### HTTP Request
+
+`GET /users/{id}/schedule`
+
+Parameter | Beschreibung
+--------- | ------------
+id        | die ID des Nutzers
+
+### URL-Parameter
+
+Parameter         | Default                        |  Beschreibung
+---------         | -------                        |  ------------
+filter[timestamp] | Beginn des aktuellen Semesters |  Startzeitpunkt des gewünschten Semesters (in Sekunden seit 01.01.1970)
+
+### Autorisierung
+
+Nur der eigene Stundenplan kann ausgelesen werden.
+
