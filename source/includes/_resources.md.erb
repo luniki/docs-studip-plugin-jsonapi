@@ -1,74 +1,111 @@
 # Räume/Gebäude
 
-TODO: Einleitung
+In dieser Kategorie ist alles versammelt, was mit Ressourcenverwaltung zu tun hat.
 
 
 ## Schema "resources-objects"
 
-TODO: Einleitung
+Alle Ressourcenobjekte der Ressourcenverwaltung werden mit diesem Schema repräsentiert.
 
 ### Attribute
 
 Attribut        | Beschreibung
 --------        | ------------
-name            | TODO
-description     | TODO
-is-room         | TODO
-multiple-assign | TODO
-requestable     | TODO
-lockable        | TODO
-mkdate          | TODO
-chdate          | TODO
+name            | der Name der Ressource
+description     | die Beschreibung der Ressource
+is-room         | Handelt es sich bei dieser Ressource um einen Raum?
+multiple-assign | Darf diese Ressource zeitgleich mehrfach belegt werden?
+requestable     | Kann man zu dieser Ressource eine Raumanfrage stellen?
+lockable        | Ist diese Ressource betroffen von einer globalen Sperrzeit?
+mkdate          | Erstellungsdatum
+chdate          | Änderungsdatum
 
 ### Relationen
 
 Relation  | Beschreibung
 --------  | ------------
-category  | TODO
+category  | Kategorie der Ressource
 
 
 ## Schema "resources-categories"
 
-TODO: Einleitung
+Dieses Schema beschreibt Ressourcenarten.
 
 ### Attribute
 
 Attribut    | Beschreibung
 --------    | ------------
-name        | TODO
-description | TODO
-system      | TODO
-is-room     | TODO
-icon        | TODO
+name        | der Name der Art
+description | die Beschreibung der Art
+system      |
+is-room     | Handelt es sich bei dieser Art um einen Raum?
+icon        | Nummer des zu verwendenden Icons
 
 ### Relationen
 
-keine
+keine Relationen
 
 
 ## Schema "resources-assign-events"
 
-TODO: Einleitung
+Alle Ressourcenbelegungen werden mit diesem Schema abgebildet.
 
 ### Attribute
 
 Attribut        | Beschreibung
 --------        | ------------
-repeat-mode     | TODO
-start           | TODO
-end             | TODO
-owner-free-text | TODO
+repeat-mode     | in welchem Abstand und in welcher Frequenz wird diese Ressourcenbelegung ausgeführt
+start           | das Datum des Beginns der Belegung
+end             | das Datum des Endes der Belegung
+owner-free-text | Freitextangabe für den Besitzer dieser Belegung
 
 ### Relationen
 
 Relation         | Beschreibung
 --------         | ------------
-owner            | TODO
-resources-object | TODO
+owner            | (optional) der Besitzer der Belegung
+resources-object | die belegte Ressource
 
 
 ## Alle Ressourcen
-   GET /resources-objects
+```shell
+curl --request GET \
+    --url https://example.com/resources-objects \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
 
-## Alle Belegungen einer Resource
-   GET /resources-objects/{id}/assignments
+Diese Route liefert alle Ressourcenobjekte.
+
+### HTTP Request
+
+`GET /resources-objects`
+
+### URL-Parameter
+
+keine URL-Parameter
+
+### Autorisierung
+
+Jeder eingeloggte Nutzer kann die Liste der Ressourcenobjekte sehen.
+
+
+## Alle Belegungen einer Ressource
+```shell
+curl --request GET \
+    --url https://example.com/resources-objects/<ID>/assignments \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Mit dieser Route können die Belegungen einer Ressource abgefragt werden.
+
+### HTTP Request
+
+`GET /resources-objects/{id}/assignments`
+
+Parameter | Beschreibung
+--------- | ------------
+id        | die ID des Ressourcenobjekts
+
+### Autorisierung
+
+Jeder eingeloggte Nutzer kann die Liste der Ressourcenbelegungen sehen.
