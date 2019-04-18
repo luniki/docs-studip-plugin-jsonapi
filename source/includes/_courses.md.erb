@@ -1,9 +1,9 @@
 # Veranstaltungen
-
-Veranstaltungen sind Gruppen für Seminare, Vorlesungen, Übungen etc.
-Innerhalb von Veranstaltungen werden Materialien geteilt, Plugins verwendet, Termine festgelegt uvm.
-Viele Funktionen von Stud.IP sind nur für eine bestimmte Veranstaltung sichtbar.
-
+<aside class="success">
+  Veranstaltungen sind Gruppen für Seminare, Vorlesungen, Übungen etc.
+  Innerhalb von Veranstaltungen werden Materialien geteilt, Plugins verwendet, Termine festgelegt uvm.
+  Viele Funktionen von Stud.IP sind nur für eine bestimmte Veranstaltung sichtbar.
+</aside>
 ## Schema "courses"
 
 ### Attribute
@@ -57,19 +57,6 @@ Veranstaltung zu sehen.
 course           | Die Veranstaltung für die Teilnehmer
 user             | Nutzer der Veranstaltung
 
-## Alle Veranstaltungen
-```shell
-curl --request GET \
-    --url https://example.com/courses \
-    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
-```
-
-Mit dieser Route können alle Veranstaltungen ausgelesen werden.
-
-### HTTP Request
-
-`GET /courses`
-
 ### URL-Parameter
 
 Parameter        | Default | Beschreibung
@@ -82,13 +69,53 @@ filter[semester] | all     | in welchem Semester gesucht werden soll
 
 Der Parameter "filter[fields]" darf folgende Werte annehmen: 'all', 'title_lecturer_number', 'title', 'sub_title', 'lecturer', 'number', 'comment', 'scope'.
 
+## Alle Veranstaltungen
+Mit dieser Route können alle Veranstaltungen ausgelesen werden.
+
+### HTTP Request
+  `GET /courses`
+
+### Parameter
+
+Diese Route benötigt keine Parameter
+
+
 ### Autorisierung
 
 Jeder eingeloggte Nutzer kann diese Route verwenden.
 
+### Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | ID des Kurses
+
+### Autorisierung
+
+Jeder Teilnehmer des Kurses kann diese Route nutzen.
+
+```shell
+curl --request GET \
+    --url https://example.com/courses \
+    --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
 
 ## Eine Veranstaltung
-   GET /courses/{id}
+
+Gibt eine Veranstaltung wieder.
+
+### HTTP Request
+   `GET /courses/{id}`
+
+### Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | ID des Kurses
+
+### Autorisierung
+
+Jeder Teilnehmer des Kurses oder Root kann diese Route nutzen.
 
    ```shell
    curl --request GET \
@@ -97,7 +124,21 @@ Jeder eingeloggte Nutzer kann diese Route verwenden.
    ```
 
 ## Alle Veranstaltungen eines Nutzers
-   GET /users/{id}/courses
+Gibt alle Veranstaltungen eines Nutzers zurück.
+
+### HTTP Request
+
+   `GET /users/{id}/courses`
+
+### Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | ID des Nutzers
+
+### Autorisierung
+
+Jeder eingeloggte Nutzer kann diese Route nutzen.
 
    ```shell
    curl --request GET \
@@ -106,7 +147,21 @@ Jeder eingeloggte Nutzer kann diese Route verwenden.
    ```
 
 ## Teilnahmen einer Veranstaltung
-   GET /courses/{id}/memberships
+
+Gibt alle Kurse mit dem jeweiligen Teilnehmerstatus eines Nutzers zurück.
+
+### HTTP Request
+   `GET /courses/{id}/memberships`
+
+### Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | ID des Kurses
+
+### Autorisierung
+
+Nutzer mit mindestens Adminstatus oder Teilnehmer des Kurses können diese Route benutzen.
 
    ```shell
    curl --request GET \
@@ -115,7 +170,21 @@ Jeder eingeloggte Nutzer kann diese Route verwenden.
    ```
 
 ## IDs der Teilnahmen
-   GET /courses/{id}/relationships/memberships
+
+Gibt die Referenzen auf die Teilnehmer eines Kurses zurück.
+
+### HTTP-Request
+   `GET /courses/{id}/relationships/memberships`
+
+### Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | ID des Kurses
+
+### Autorisierung
+
+Nutzer mit mindestens Adminstatus oder Teilnehmer des Kurses können diese Route benutzen.
 
    ```shell
    curl --request GET \

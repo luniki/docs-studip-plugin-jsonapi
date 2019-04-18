@@ -25,8 +25,10 @@ version  | Die aktuelle Versionsnummer
 author    | Der Verfasser der Wiki-Seite
 range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
 
-## Alle Wiki-Seiten eines Kurses
+## Wiki-Seiten eines Kurses
    `GET /courses/{id}/wiki-pages`
+
+### Parameter
 
    Parameter | Beschreibung
   ---------- | ------------
@@ -44,7 +46,10 @@ range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
 > Der Request liefert JSON ähnlich wie dieses:
 
       <%= partial "includes/json/_get_wikis" %>
-## Eine Wiki-Seite
+## Wiki-Seite
+
+Gibt eine Wiki-Seite zurück.
+
    `GET /wiki-pages/{id}`
 
    Parameter | Beschreibung
@@ -65,7 +70,10 @@ range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
 
         <%= partial "includes/json/_get_wiki" %>
 
-## Eine Wiki-Seite anlegen
+## Wiki-Seite anlegen
+
+Legt eine Wiki-Seite an.
+
    `POST /courses/{id}/wiki-pages`
 
    Parameter | Beschreibung
@@ -84,7 +92,10 @@ range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
           Der Nutzer sollte Mitglied des entsprechenden Kurses sein.
 
 
-## Eine Wiki-Seite ändern
+## Wiki-Seite ändern
+
+Aktualisiert eine Wiki-Seite.
+
    `PATCH /wiki-pages/{id}`
 
    Parameter | Beschreibung
