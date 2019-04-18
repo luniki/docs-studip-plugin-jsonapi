@@ -1,6 +1,8 @@
 # Blubber
-Blubber ermöglicht innerhalb von Veranstaltungen mit anderen Stud.IP-Teilnehmern zu chatten.
+<aside class="success">Blubber ermöglicht innerhalb von Veranstaltungen mit anderen Stud.IP-Teilnehmern zu chatten.
 Wir unterscheiden in öffentliche-, private- und veranstaltungsbezogene Blubber.
+</aside>
+
 ## Schema 'blubber-postings'
 Der Inhalt wird als plain-text und html gespeichert. Meta-Daten geben Informationen über den Zeitpunkt und
 das Thema einer Nachricht.
@@ -257,7 +259,15 @@ Erstellt einen Kommentar zu einem Blubber-Beitrag.
 
 Gibt den Scope (Sichtbarkeit) eines Blubber-Beitrags zurück.
 
+### HTTP Request
+
    `GET /blubber-postings/{id}/relationships/context`
+
+### Parameter
+
+    Parameter |  Beschreibung
+    --------- | -------
+    id        | ID des Blubber-Posts
 
    ```shell
    curl --request GET \
@@ -265,8 +275,18 @@ Gibt den Scope (Sichtbarkeit) eines Blubber-Beitrags zurück.
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
 
-## Erwähnungn eines Beitrags
-   GET /blubber-postings/{id}/mentions
+## Erwähnungen eines Beitrags
+Gibt an, ob und in welchen Beiträgen eine Referenz zu diesem Beitrag gibt.
+
+### HTTP Request
+
+   `GET /blubber-postings/{id}/mentions`
+
+### Parameter
+
+    Parameter |  Beschreibung
+    --------- | -------
+    id        | ID des Blubber-Posts
 
    ```shell
    curl --request GET \
@@ -275,7 +295,17 @@ Gibt den Scope (Sichtbarkeit) eines Blubber-Beitrags zurück.
    ```
 
 ## Relation 'mentions'
-   GET /blubber-postings/{id}/relationships/mentions
+Gibt die Referenz der Beiträge zurück, in denen dieser Beitrag erwähnt wird.
+
+### HTTP Request
+
+   `GET /blubber-postings/{id}/relationships/mentions`
+
+### Parameter
+
+    Parameter |  Beschreibung
+    --------- | -------
+    id        | ID des Blubber-Posts
 
    ```shell
    curl --request GET \
@@ -284,7 +314,18 @@ Gibt den Scope (Sichtbarkeit) eines Blubber-Beitrags zurück.
    ```
 
 ## Relation 'resharers'
-   GET /blubber-postings/{id}/relationships/resharers
+
+Gibt die Referenz von Usern zurück, die diesen Beitrag geteilt haben.
+
+### HTTP Request
+
+   `GET /blubber-postings/{id}/relationships/resharers`
+
+### Parameter
+
+    Parameter |  Beschreibung
+    --------- | -------
+    id        | ID des Blubber-Posts
 
    ```shell
    curl --request GET \
@@ -293,7 +334,18 @@ Gibt den Scope (Sichtbarkeit) eines Blubber-Beitrags zurück.
    ```
 
 ## Beitrag in Veranstaltung anlegen
-   POST /courses/{id}/blubber-postings
+
+Erstellt einen veranstaltungsbezogenen Blubber-Eintrag.
+### HTTP Request
+
+   `POST /courses/{id}/blubber-postings`
+
+### Parameter
+
+    Parameter |  Beschreibung
+    --------- | -------
+    id        | ID des Blubber-Posts
+
 
    ```shell
    curl --request POST \
@@ -305,7 +357,17 @@ Gibt den Scope (Sichtbarkeit) eines Blubber-Beitrags zurück.
    ```
 
 ## Beitrag im Profil anlegen
-   POST /users/{id}/blubber-postings
+Erstellt einen veranstaltungsbezogenen Blubber-Beitrag
+
+### HTTP Request
+
+   `POST /users/{id}/blubber-postings`
+
+### Parameter
+
+   Parameter |  Beschreibung
+   --------- | -------
+   id        | ID des Blubber-Posts
 
    ```shell
    curl --request POST \
@@ -317,7 +379,16 @@ Gibt den Scope (Sichtbarkeit) eines Blubber-Beitrags zurück.
    ```
 
 ## Blubber-Stream auslesen
-   GET /blubber-streams/{id}
+
+Gibt eine Folge von Blubber-Einträgen zurück.
+
+   `GET /blubber-streams/{id}`
+
+### Parameter
+
+  Parameter |  Beschreibung
+  --------- | -------
+  id        | ID des Blubber-Streams
 
    ```shell
    curl --request GET \
