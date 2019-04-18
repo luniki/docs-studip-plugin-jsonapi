@@ -1,7 +1,9 @@
 # Nachrichten
 
-Studip bietet die Möglichkeit Nachrichten ("messages") innerhalb des Systems zwischen Nutzern und Nutzergruppen zu versenden.
-Das Nachrichten-System ist aufgebaut wie ein interner Mail-Service.
+<aside class="success">
+  Studip bietet die Möglichkeit Nachrichten ("messages") innerhalb des Systems zwischen Nutzern und Nutzergruppen zu versenden.
+  Das Nachrichten-System ist aufgebaut wie ein interner Mail-Service.
+</aside>
 
 ## Schema "messages"
 
@@ -25,7 +27,22 @@ sender     | Absendender Nutzer
 recipients | Emfpänger einer Nachricht
 
 ## Alle Inbox-Nachrichten
-   GET /users/{id}/inbox
+
+Gibt alle Nachrichten eines Nutzers zurück.
+
+### HTTP Request
+
+   `GET /users/{id}/inbox`
+
+### Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | ID des Nutzers
+
+### Authorisierung
+
+Diese Route kann nur vom Besitzer der betreffenden Nachrichten genutzt werden.
 
    ```shell
    curl --request GET \
@@ -34,7 +51,20 @@ recipients | Emfpänger einer Nachricht
    ```
 
 ## Alle Outbox-Nachrichten
-   GET /users/{id}/outbox
+Gibt alle Outbox-Nachrichten eines Nutzers zurück
+
+### HTTP Request
+   `GET /users/{id}/outbox`
+
+### Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | ID des Nutzers
+
+### Authorisierung
+
+Diese Route kann nur vom Besitzer der betreffenden Nachrichten genutzt werden.
 
    ```shell
    curl --request GET \
@@ -43,7 +73,18 @@ recipients | Emfpänger einer Nachricht
    ```
 
 ## Eine Nachricht senden
-   POST /messages
+
+### HTTP Request
+
+`POST /messages`
+
+### Authorisierung
+
+Diese Route kann von jedem Studip-Nutzer genutzt werden.
+
+### Parameter
+
+Diese Route benötigt keine Parameter
 
    ```shell
    curl --request POST \
@@ -55,7 +96,18 @@ recipients | Emfpänger einer Nachricht
    ```
 
 ## Eine Nachricht ansehen
-   GET /messages/{id}
+
+### HTTP Request
+
+   `GET /messages/{id}`
+
+   Parameter |  Beschreibung
+   --------- | -------
+   id        | ID der Nachricht
+
+### Authorisierung
+
+Diese Route kann von Besitzern der jeweiligen Nachricht genutzt werden.
 
    ```shell
    curl --request GET \
@@ -65,7 +117,14 @@ recipients | Emfpänger einer Nachricht
 
 
 ## Eine Nachricht löschen
-   DELETE /messages/{id}
+Löscht eine Nachrichten
+
+### HTTP Request
+   `DELETE /messages/{id}`
+
+### Authorisierung
+
+Diese Route kann von Besitzern der jeweiligen Nachricht genutzt werden.
 
   ```shell
     curl --request DELETE \

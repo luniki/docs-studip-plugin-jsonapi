@@ -249,6 +249,10 @@ Der Nutzer muss mindestens Dozenten- oder Adminrechte innerhalb des Kurses haben
    ---------- | ------------
    id         | Die ID der News
 
+### Authorisierung
+
+Diese Route kann nur vom Nutzer der betreffenden Nachrichten genutzt werden.
+
    ```shell
    curl --request DELETE \
        --url https://example.com/news/<NEWS-ID> \
