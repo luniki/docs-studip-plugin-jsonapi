@@ -49,15 +49,15 @@ institute-memberships | die Institute der Nutzers
 ```shell
 curl --request GET \
     --url https://example.com/users \
-    --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`"
+    --header "Authorization: Basic `echo -ne "root@studip:testing" | base64`" \
 ```
 
-> Der Request liefert JSON ähnlich wie dieses:
+  > Der Request liefert JSON ähnlich wie dieses:
 
-<%= partial "includes/json/get_users" %>
+  <%= partial "includes/json/get_users" %>
 
 Dieser Endpoint liefert alle Nutzer im Stud.IP, die der
-JSON:API-Nutzer mit seinen ``credentials`` auch im Stud.IP selbst
+JSON:API-Nutzer mit seinen `credentials` auch im Stud.IP selbst
 sehen darf. Die Ausgabe erfolgt paginiert und kann durch Angabe von
 Offset und Limit weitergeblättert werden.
 
