@@ -87,9 +87,6 @@ context   | Wem wird der post angezeigt (users, courses, public)
 mentions  |
 resharers |
 
-### Authorisierung
-
-Diese Route kann von allen Nutzern verwendet werden.
 
 ## Beitrag auslesen
 Einen gezielten Blubber-Eintrag auslesen.
@@ -103,6 +100,9 @@ Parameter |  Beschreibung
 --------- | -------
 id        | ID des Blubber-Posts
 
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.
 
    ```shell
    curl --request GET \
@@ -121,6 +121,10 @@ Einen Blubber-Beitrag anlegen, der für alle sichtbar ist.
 ### Parameter
 
    Bei diesem Request sind keine Parameter notwendig.
+
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.
 
    ```shell
    curl --request POST \
@@ -146,6 +150,10 @@ Einen Blubber-Beitrag anlegen, der für alle sichtbar ist.
    --------- | -------
    id        | ID des Blubber-Posts
 
+### Authorisierung
+
+Der Sender des Requests muss Besitzer  des Blubber-Beitrags oder Root sein.
+
    ```shell
    curl --request PATCH \
        --url https://example.com/blubber-postings/<blubber-id> \
@@ -169,6 +177,10 @@ Einen Blubber-Beitrag anlegen, der für alle sichtbar ist.
   --------- | -------
   id        | ID des Blubber-Posts
 
+### Authorisierung
+
+Der Sender des Requests muss Besitzer des Blubber-Beitrags oder Root sein.
+
    ```shell
    curl --request DELETE \
        --url https://example.com/blubber-postings/<blubber-id> \
@@ -189,11 +201,17 @@ Gibt den Author eines Blubber-Posts zurück.
   --------- | -------
   id        | ID des Blubber-Posts
 
+
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.
+
    ```shell
    curl --request GET \
        --url https://example.com/blubber-postings/<posting-id>/relationships/author \
        --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
+
 
 ## Kommentare eines Blubber-Beitrags
 
@@ -208,6 +226,10 @@ Gibt alle Kommentare eines Blubber-Beitrags zurück.
   Parameter |  Beschreibung
   --------- | -------
   id        | ID des Blubber-Posts
+
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.
 
    ```shell
    curl --request GET \
@@ -229,6 +251,10 @@ Erstellt einen Kommentar zu einem Blubber-Beitrag.
  --------- | -------
  id        | ID des Blubber-Posts
 
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.
+
    ```shell
    curl --request POST \
        --url https://example.com/blubber-postings/<posting-id>/comments \
@@ -248,6 +274,10 @@ Erstellt einen Kommentar zu einem Blubber-Beitrag.
  Parameter |  Beschreibung
  --------- | -------
  id        | ID des Blubber-Posts
+
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.
 
    ```shell
    curl --request GET \
@@ -269,6 +299,10 @@ Gibt den Scope (Sichtbarkeit) eines Blubber-Beitrags zurück.
     --------- | -------
     id        | ID des Blubber-Posts
 
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.
+
    ```shell
    curl --request GET \
        --url https://example.com/blubber-postings/<posting-id>/relationships/context \
@@ -288,6 +322,10 @@ Gibt an, ob und in welchen Beiträgen eine Referenz zu diesem Beitrag gibt.
     --------- | -------
     id        | ID des Blubber-Posts
 
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.
+
    ```shell
    curl --request GET \
        --url https://example.com/blubber-postings/<posting-id>/mentions \
@@ -306,6 +344,10 @@ Gibt die Referenz der Beiträge zurück, in denen dieser Beitrag erwähnt wird.
     Parameter |  Beschreibung
     --------- | -------
     id        | ID des Blubber-Posts
+
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.
 
    ```shell
    curl --request GET \
@@ -327,6 +369,10 @@ Gibt die Referenz von Usern zurück, die diesen Beitrag geteilt haben.
     --------- | -------
     id        | ID des Blubber-Posts
 
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.
+
    ```shell
    curl --request GET \
        --url https://example.com/blubber-postings/<posting-id>/relationships/resharers \
@@ -346,6 +392,9 @@ Erstellt einen veranstaltungsbezogenen Blubber-Eintrag.
     --------- | -------
     id        | ID des Blubber-Posts
 
+### Authorisierung
+
+Diese Route kann von Nutzern in der Veranstaltung oder Root genutzt werden.
 
    ```shell
    curl --request POST \
@@ -369,6 +418,10 @@ Erstellt einen veranstaltungsbezogenen Blubber-Beitrag
    --------- | -------
    id        | ID des Blubber-Posts
 
+### Authorisierung
+
+Diese Route kann vom Nutzer des betreffenden Profils oder Root genutzt werden.
+
    ```shell
    curl --request POST \
        --url https://example.com/courses/<course-id>/users/<user-id>/blubber-postings \
@@ -389,6 +442,10 @@ Gibt eine Folge von Blubber-Einträgen zurück.
   Parameter |  Beschreibung
   --------- | -------
   id        | ID des Blubber-Streams
+
+### Authorisierung
+
+Diese Route kann von allen Nutzern verwendet werden.
 
    ```shell
    curl --request GET \
