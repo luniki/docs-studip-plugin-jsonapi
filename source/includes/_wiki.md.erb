@@ -1,9 +1,11 @@
 # Wiki
 
-Wiki's bieten Dozenten und Studenten die Möglichkeit, gemeinsame Dokumente zu
-erstellen. Zu verschiedenen Themen in der Veranstaltungen können Wikis erstellt und
-gepflegt werden. Eine Versionskontrolle ermöglicht, sich Änderungen zwischen den
-Dokumentenversionen anzuschauen.
+<aside class="success">
+  Wiki's bieten Dozenten und Studenten die Möglichkeit, gemeinsame Dokumente zu
+  erstellen. Zu verschiedenen Themen in der Veranstaltungen können Wikis erstellt und
+  gepflegt werden. Eine Versionskontrolle ermöglicht, sich Änderungen zwischen den
+  Dokumentenversionen anzuschauen.
+</aside>
 
 ## Schema "wiki-pages"
 Neben dem Inhalt und Namen enthält jede Wiki-Seite Metadaten zur aktuellen Version.
@@ -24,7 +26,7 @@ author    | Der Verfasser der Wiki-Seite
 range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
 
 ## Alle Wiki-Seiten eines Kurses
-   GET /courses/{id}/wiki-pages
+   `GET /courses/{id}/wiki-pages`
 
    Parameter | Beschreibung
   ---------- | ------------
@@ -43,7 +45,7 @@ range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
 
       <%= partial "includes/json/_get_wikis" %>
 ## Eine Wiki-Seite
-   GET /wiki-pages/{id}
+   `GET /wiki-pages/{id}`
 
    Parameter | Beschreibung
   ---------- | ------------
@@ -64,7 +66,7 @@ range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
         <%= partial "includes/json/_get_wiki" %>
 
 ## Eine Wiki-Seite anlegen
-   POST /courses/{id}/wiki-pages
+   `POST /courses/{id}/wiki-pages`
 
    Parameter | Beschreibung
   ---------- | ------------
@@ -83,7 +85,7 @@ range     | Der Range einer Wiki-Seite ist der entsprechende Kurs
 
 
 ## Eine Wiki-Seite ändern
-   PATCH /wiki-pages/{id}
+   `PATCH /wiki-pages/{id}`
 
    Parameter | Beschreibung
   ---------- | ------------
