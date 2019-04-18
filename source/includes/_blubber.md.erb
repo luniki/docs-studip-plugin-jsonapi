@@ -89,9 +89,18 @@ resharers |
 
 Diese Route kann von allen Nutzern verwendet werden.
 
-
 ## Beitrag auslesen
-   GET /blubber-postings/{id}
+Einen gezielten Blubber-Eintrag auslesen.
+### HTTP Request
+
+`GET /blubber-postings/{id}`
+
+### Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | ID des Blubber-Posts
+
 
    ```shell
    curl --request GET \
@@ -100,7 +109,16 @@ Diese Route kann von allen Nutzern verwendet werden.
    ```
 
 ## Öffentlichen Blubber-Beitrag anlegen
-   POST /blubber-postings
+
+Einen Blubber-Beitrag anlegen, der für alle sichtbar ist.
+
+### HTTP Request
+
+   `POST /blubber-postings`
+
+### Parameter
+
+   Bei diesem Request sind keine Parameter notwendig.
 
    ```shell
    curl --request POST \
@@ -113,7 +131,18 @@ Diese Route kann von allen Nutzern verwendet werden.
 
 
 ## Beitrag editieren
-   PATCH /blubber-postings/{id}
+
+  Aktualisiert einen Blubber-Beitrag.
+
+### HTTP Request
+
+   `PATCH /blubber-postings/{id}`
+
+### Parameter
+
+   Parameter |  Beschreibung
+   --------- | -------
+   id        | ID des Blubber-Posts
 
    ```shell
    curl --request PATCH \
@@ -125,7 +154,18 @@ Diese Route kann von allen Nutzern verwendet werden.
    ```
 
 ## Beitrag löschen
-   DELETE /blubber-postings/{id}
+
+  Löscht einen Blubber-Eintrag.
+
+### HTTP Request
+
+   `DELETE /blubber-postings/{id}`
+
+### Parameter
+
+  Parameter |  Beschreibung
+  --------- | -------
+  id        | ID des Blubber-Posts
 
    ```shell
    curl --request DELETE \
@@ -134,7 +174,18 @@ Diese Route kann von allen Nutzern verwendet werden.
    ```
 
 ## Relation 'author'
-   GET /blubber-postings/{id}/relationships/author
+
+Gibt den Author eines Blubber-Posts zurück.
+
+### HTTP Request
+
+   `GET /blubber-postings/{id}/relationships/author`
+
+### Parameter
+
+  Parameter |  Beschreibung
+  --------- | -------
+  id        | ID des Blubber-Posts
 
    ```shell
    curl --request GET \
@@ -143,7 +194,18 @@ Diese Route kann von allen Nutzern verwendet werden.
    ```
 
 ## Kommentare eines Blubber-Beitrags
-   GET /blubber-postings/{id}/comments
+
+Gibt alle Kommentare eines Blubber-Beitrags zurück.
+
+### HTTP Request
+
+   `GET /blubber-postings/{id}/comments`
+
+### Parameter
+
+  Parameter |  Beschreibung
+  --------- | -------
+  id        | ID des Blubber-Posts
 
    ```shell
    curl --request GET \
@@ -152,7 +214,18 @@ Diese Route kann von allen Nutzern verwendet werden.
    ```
 
 ## Beitrag kommentieren
-   POST /blubber-postings/{id}/comments
+
+Erstellt einen Kommentar zu einem Blubber-Beitrag.
+
+### HTTP Request
+
+   `POST /blubber-postings/{id}/comments`
+
+### Parameter
+
+ Parameter |  Beschreibung
+ --------- | -------
+ id        | ID des Blubber-Posts
 
    ```shell
    curl --request POST \
@@ -164,7 +237,15 @@ Diese Route kann von allen Nutzern verwendet werden.
    ```
 
 ## Relation 'comments'
-   GET /blubber-postings/{id}/relationships/comments
+
+### HTTP Request
+   `GET /blubber-postings/{id}/relationships/comments`
+
+### Parameter
+
+ Parameter |  Beschreibung
+ --------- | -------
+ id        | ID des Blubber-Posts
 
    ```shell
    curl --request GET \
@@ -173,7 +254,10 @@ Diese Route kann von allen Nutzern verwendet werden.
    ```
 
 ## Relation 'context'
-   GET /blubber-postings/{id}/relationships/context
+
+Gibt den Scope (Sichtbarkeit) eines Blubber-Beitrags zurück.
+
+   `GET /blubber-postings/{id}/relationships/context`
 
    ```shell
    curl --request GET \
