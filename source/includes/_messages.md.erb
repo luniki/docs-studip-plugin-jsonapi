@@ -34,11 +34,19 @@ Gibt alle Nachrichten eines Nutzers zurück.
 
    `GET /users/{id}/inbox`
 
-### Parameter
+#### Parameter
 
 Parameter |  Beschreibung
 --------- | -------
 id        | ID des Nutzers
+
+#### URL-Parameter
+
+Parameter         | Beschreibung
+---------         | ------------
+filter[unread]    | Sollen nur ungelesene Nachrichten ausgeliefert werden?
+
+Wenn "filter[unread]" nicht gesetzt ist, werden alle Nachrichten ausgeliefert. Mit "filter[unread]=1" werden nur ungelesene Nachrichten zurück gegeben.
 
 ### Authorisierung
 
