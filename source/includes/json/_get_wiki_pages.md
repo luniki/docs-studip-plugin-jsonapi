@@ -18,7 +18,7 @@
       "attributes": {
         "keyword": "ulyq",
         "content": "Es gibt im Moment in diese Mannschaft, oh, einige Spieler vergessen ihren Profi was sie sind. Ich lese nicht sehr viele Zeitungen, aberich habe geh\u00f6rt viele Situationen. Erstens: Wir haben nicht offensivgespielt.",
-        "chdate": "2019-04-23T12:06:28+02:00",
+        "chdate": "2019-04-23T12:10:26+02:00",
         "version": 1
       },
       "relationships": {
@@ -48,7 +48,7 @@
       "attributes": {
         "keyword": "yxilo",
         "content": "Es gibt im Moment in diese Mannschaft, oh, einige Spieler vergessen ihren Profi was sie sind. Ich lese nicht sehr viele Zeitungen, aberich habe geh\u00f6rt viele Situationen. Erstens: Wir haben nicht offensivgespielt.",
-        "chdate": "2019-04-23T12:06:28+02:00",
+        "chdate": "2019-04-23T12:10:26+02:00",
         "version": 1
       },
       "relationships": {
