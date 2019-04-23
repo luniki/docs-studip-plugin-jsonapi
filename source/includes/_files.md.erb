@@ -495,7 +495,7 @@ Der übergeordnete Ordner der Datei entscheidet.
 <aside class="notice">Diese Route ist keine JSON-API-konforme Route.</aside>
 
 ```shell
-curl --url https://example.com/file-refs/<ID>/content \
+curl --request POST --url https://example.com/file-refs/<ID>/content \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
     -F 'myfile=@/path/to/local/file'
 ```
@@ -679,7 +679,7 @@ zwei Schritten passieren. Dazu kann entweder
 ### Variante a.
 
 ```shell
-curl --url "https://example.com/folders/<ID>/file-refs" \
+curl --request POST --url "https://example.com/folders/<ID>/file-refs" \
      -F 'file=@/pfad/zu/einer-neuen-datei.jpg' \
      --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`"
 ```
@@ -699,10 +699,10 @@ Nun können mit einem (JSON:API-typischen) ``PATCH``-Request an diese Route Modi
 ### Variante b.
 
 ```shell
-curl --url https://example.com/folders/<ID>/file-refs \
+curl --request POST --url https://example.com/folders/<ID>/file-refs \
     --header "Content-Type: application/vnd.api+json" \
     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
-    --data '{"data": { "type": "file-refs", "attributes": { "name": "iason.txt", "description": "Iasons Lebenslauf"}}}'
+    --data '{"data": { "type": "file-refs", "attributes": { "name": "iason.txt", "description": "Iasons Lebenslauf"}, "relationships":{"terms-of-use": {"data": {"type": "terms-of-use", "id": "FREE_LICENSE"}}}}}'
 ```
 
 Zunächst sendet man einen ``POST``-Request mit ``Content-Type: application/vnd.api+json`` an die URL.
@@ -712,9 +712,15 @@ Im Request-Body muss dann eine JSON:API-typische Repräsentation der neuen Datei
 Daher muss der Inhalt in einem zweiten Request hochgeladen werden. Dazu wird – wie unter "Inhalt einer Datei aktualisieren" beschrieben – ein ``POST``-Request an die ``download-url`` geschickt.
 
 ### HTTP Request
-`POST https://example.com/folders/{id}/file-refs`
+`POST /folders/{id}/file-refs`
 
-Im Request-Body befindet sich dann entweder eine "multipart/form-data"-kodierte Datei oder ein JSON-API-spezifisches "resource object".
+Im Request-Body befindet sich dann entweder eine
+"multipart/form-data"-kodierte Datei oder ein JSON-API-spezifisches
+"resource object".
+
+Wenn man ein JSON-API-"resource object" verschickt, **muss** die
+Relation `terms-of-use` (die Lizenz) enthalten sein. Ohne Lizenz
+können keine Dateien angelegt werden.
 
 ### URL-Parameter
 
@@ -726,6 +732,19 @@ id        | die ID des Ordners
 
 Ob man eine Datei erstellen darf, entscheidet die Implementierung des Ordners.
 
+## Eine Datei kopieren
+
+Um eine Datei zu kopieren, verwendet man die ["Variante b."](#variante-b)  für das
+Anlegen von Dateien.
+
+Zuerst benötigt man den "resource identifier" der Relation `file` der
+zu kopierenden Datei. Dann schickt man ein JSON-API-"resource object"
+an die URL zum Erstellen einer Datei und setzt dort diesen "resource
+identifier" als Relation `file` der neuen Datei.
+
+Wenn man selbst der Besitzer der Quelldatei ist, bleibt der Verweis
+auf das `file` bestehen. Ist man nicht der Besitzer der Quelldatei,
+wird auch das `file` kopiert und man selbst dessen Besitzer.
 
 ## Einen Ordner erstellen
 ```shell
