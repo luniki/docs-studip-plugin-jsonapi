@@ -746,6 +746,39 @@ Wenn man selbst der Besitzer der Quelldatei ist, bleibt der Verweis
 auf das `file` bestehen. Ist man nicht der Besitzer der Quelldatei,
 wird auch das `file` kopiert und man selbst dessen Besitzer.
 
+## Einen Ordner kopieren
+
+<aside class="notice">Diese Route ist keine JSON-API-konforme Route.</aside>
+
+```shell
+curl -F "destination=<destination-ID>" \
+     --url "https://example.com/folders/<source-ID>/copy" \
+     --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`"
+```
+
+Um einen Ordner zu kopieren, wird diese Route verwendet, die
+allerdings nicht JSON-API-konform ist. Dazu wird ein POST-Request an
+die Route des Ordners geschickt, in deren Request-Body der Zielordner
+spezifiziert wird. Der Request-Body muss vom
+"multipart/form-data"-kodiert sein.
+
+### HTTP Request
+
+`POST /folders/{id}/copy`
+
+Der "Content-Type" des Requests muss "multipart/form-data" sein. Im
+Request-Body muss unter dem Schlüssel "destination" die ID des
+Zielordners enthalten.
+
+Wenn der Request erfolgreich war, bekommt man einen Status-Code 201
+und einen `Location`-Header, der auf den neuen, kopierten Ordner
+zeigt.
+
+### Authorisierung
+Jeder Nutzer, der den Quellordner öffnen und im Zielordner schreiben
+darf, kann diese Route aufrufen.
+
+
 ## Einen Ordner erstellen
 ```shell
 curl --request POST \
