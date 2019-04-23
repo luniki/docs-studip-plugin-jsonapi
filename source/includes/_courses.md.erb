@@ -120,7 +120,7 @@ Jeder Teilnehmer des Kurses oder Root kann diese Route nutzen.
    ```shell
    curl --request GET \
        --url https://example.com/courses/<course-id> \
-       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
 
 ## Alle Veranstaltungen eines Nutzers
@@ -143,7 +143,7 @@ Jeder eingeloggte Nutzer kann diese Route nutzen.
    ```shell
    curl --request GET \
        --url https://example.com/users/<user-id>/courses \
-       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
 
 ## Teilnahmen einer Veranstaltung
@@ -166,7 +166,7 @@ Nutzer mit mindestens Adminstatus oder Teilnehmer des Kurses können diese Route
    ```shell
    curl --request GET \
        --url https://example.com/courses/<course-id>/memberships \
-       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
 
 ## IDs der Teilnahmen
@@ -189,5 +189,59 @@ Nutzer mit mindestens Adminstatus oder Teilnehmer des Kurses können diese Route
    ```shell
    curl --request GET \
        --url https://example.com/courses/<course-id>/relationships/memberships \
-       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
    ```
+
+## Eine Teilnahme auslesen
+
+   ```shell
+   curl --request GET \
+       --url https://example.com/course-memberships/<ID> \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+   ```
+
+Gibt eine Teilnahme wieder.
+
+### HTTP Request
+   `GET /course-memberships/{id}`
+
+### Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | ID der Teilnahme
+
+### Autorisierung
+
+Nur der Teilnehmer selbst kann die Teilnahme auslesen
+
+
+## Eine Teilnahme ändern
+
+```shell
+   curl --request PATCH \
+       --url https://example.com/course-memberships/<ID> \
+       --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`" \
+       --header "Content-Type: application/vnd.api+json" \
+       --data '{"data": {
+           "type": "course-memberships",
+           "id": "<ID>",
+           "attributes": {"group":2,"visible":"no"}
+       }}'
+```
+
+Mit dieser Route kann man die Attribute einer Teilnahme an einer
+Veranstaltung ändern.
+
+### HTTP Request
+   `PATCH /course-memberships/{id}`
+
+### Parameter
+
+Parameter |  Beschreibung
+--------- | -------
+id        | ID der Teilnahme
+
+### Autorisierung
+
+Nur der Teilnehmer selbst kann die Teilnahme ändern.
