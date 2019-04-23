@@ -21,33 +21,61 @@
         "family-name": "Studip",
         "given-name": "Root",
         "name-prefix": "",
-        "name-suffix": ""
+        "name-suffix": "",
+        "global-permission": "root",
+        "email": "root@localhost",
+        "phone": null,
+        "homepage": null,
+        "address": null
       },
       "relationships": {
         "activitystream": {
           "links": {
-            "related": "https://example.com/users/76ed43ef286fb55cf9e41beadb484a9f/activitystream"
+            "related": "jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/activitystream"
           }
         },
         "blubber-postings": {
           "links": {
-            "related": "https://example.com/blubber-postings?filter[user]=76ed43ef286fb55cf9e41beadb484a9f"
+            "related": "jsonapi.php/v1/blubber-postings?filter[user]=76ed43ef286fb55cf9e41beadb484a9f"
           }
         },
         "contacts": {
           "links": {
-            "related": "https://example.com/users/76ed43ef286fb55cf9e41beadb484a9f/contacts"
+            "related": "jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/contacts"
           }
         },
         "courses": {
           "links": {
-            "related": "https://example.com/users/76ed43ef286fb55cf9e41beadb484a9f/courses"
+            "related": "jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/courses"
+          }
+        },
+        "course-memberships": {
+          "links": {
+            "related": "jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/course-memberships"
+          }
+        },
+        "events": {
+          "links": {
+            "related": "jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/events"
+          }
+        },
+        "institute-memberships": {
+          "links": {
+            "related": "jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/institute-memberships"
+          }
+        },
+        "schedule": {
+          "links": {
+            "related": "jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/schedule"
           }
         }
       },
       "links": {
-        "self": "https://example.com/users/76ed43ef286fb55cf9e41beadb484a9f"
-      }
+        "self": "jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f"
+      },
+      "meta": [
+
+      ]
     },
     "[...]"
   ]
