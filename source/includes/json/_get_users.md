@@ -22,7 +22,7 @@
         "given-name": "Root",
         "name-prefix": "",
         "name-suffix": "",
-        "global-permission": "root",
+        "permission": "root",
         "email": "root@localhost",
         "phone": null,
         "homepage": null,

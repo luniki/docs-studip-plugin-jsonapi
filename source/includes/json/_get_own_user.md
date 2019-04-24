@@ -10,7 +10,7 @@
       "given-name": "Testaccount",
       "name-prefix": "",
       "name-suffix": "",
-      "global-permission": "dozent",
+      "permission": "dozent",
       "email": "dozent@studip.de",
       "phone": null,
       "homepage": null,
