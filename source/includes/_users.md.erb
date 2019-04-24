@@ -113,3 +113,26 @@ Es werden keine Query-Parameter unterstützt.
 ### Authorisierung
 
 Diese Route kann von jedem authorisierten Nutzer verwendet werden.
+
+
+## GET /users/{id}/institute-memberships
+
+```shell
+curl --request GET \
+    --url https://example.com/users/<ID>/institute-memberships \
+    --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`"
+```
+
+Mit dieser Route erhält man die Mitgliedschaften in Einrichtungen eines Nutzers.
+
+### HTTP Request
+
+`GET http://example.com/api/users/{id}/institute-memberships`
+
+### Query-Parameter
+
+Es werden keine Query-Parameter unterstützt.
+
+### Authorisierung
+
+Ein Nutzer kann nur die eigenen Mitgliedschaften in Einrichtungen einsehen.
