@@ -140,6 +140,33 @@ Man kann sich selbst sehen. "root" darf jeden Nutzer sehen. Gesperrte
 und unsichtbare Nutzer sind ansonsten nicht sichtbar.
 
 
+## Einen Nutzer löschen
+
+```shell
+curl --request DELETE \
+    --url https://example.com/users/<ID> \
+    --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`"
+```
+
+Diese Route löscht einen beliebigen Nutzer.
+
+### HTTP Request
+
+`DELETE /users/{id}`
+
+### Query-Parameter
+
+Es werden keine Query-Parameter unterstützt.
+
+### Autorisierung
+
+Diese Route ist nur aktiviert, wenn die Stud.IP-Konfiguration
+"JSONAPI_DANGEROUS_ROUTES_ALLOWED" gesetzt ist.
+
+Ist das der Fall, dürfen Nutzer der Rechtestufe "root" andere Nutzer
+löschen. Man kann sich selbst **nicht** löschen.
+
+
 ## GET /users/{id}/institute-memberships
 
 ```shell
