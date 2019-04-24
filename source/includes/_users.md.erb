@@ -48,7 +48,7 @@ institute-memberships | die Institute der Nutzers
 schedule              | der Stundenplan des Nutzers
 
 
-## GET /users
+## Alle Nutzer
 
 <aside class="notice">
     Diese Route können aktuell nur Nutzer der Rechtestufe "root" verwenden. Andere
@@ -72,7 +72,7 @@ Offset und Limit weitergeblättert werden.
 
 ### HTTP Request
 
-`GET http://example.com/api/users`
+`GET /users`
 
 ### Query-Parameter
 
@@ -81,13 +81,13 @@ Parameter    | Default | Beschreibung
 page[offset] | 0       | der Offset
 page[limit]  | 30      | das Limit
 
-### Authorisierung
+### Autorisierung
 
 Diese Route kann nur von Nutzern der Rechtestufe "root" verwendet werden.
 
 
 
-## GET /users/me
+## Sich selbst auslesen
 
 ```shell
 curl --request GET \
@@ -100,19 +100,44 @@ curl --request GET \
 <%= partial "includes/json/get_own_user" %>
 
 Mit diesem Endpoint bekommt man denjenigen Stud.IP Nutzer, der
-authorisiert auf diesen Endpoint zugreift – also sich selbst.
+autorisiert auf diesen Endpoint zugreift – also sich selbst.
 
 ### HTTP Request
 
-`GET http://example.com/api/users/me`
+`GET /users/me`
 
 ### Query-Parameter
 
 Es werden keine Query-Parameter unterstützt.
 
-### Authorisierung
+### Autorisierung
 
-Diese Route kann von jedem authorisierten Nutzer verwendet werden.
+Diese Route kann von jedem autorisierten Nutzer verwendet werden.
+
+
+## Einen Nutzer auslesen
+
+```shell
+curl --request GET \
+    --url https://example.com/users/<ID> \
+    --header "Authorization: Basic `echo -ne "test_dozent:testing" | base64`"
+```
+
+Diese Route liefert einen beliebigen Nutzer zurück. Unsichtbare Nutzer
+können sich allerdings nur selbst sehen.
+
+### HTTP Request
+
+`GET /users/{id}`
+
+### Query-Parameter
+
+Es werden keine Query-Parameter unterstützt.
+
+### Autorisierung
+
+Man kann sich selbst sehen. "root" darf jeden Nutzer sehen. Gesperrte
+und unsichtbare Nutzer sind ansonsten nicht sichtbar.
 
 
 ## GET /users/{id}/institute-memberships
@@ -133,6 +158,6 @@ Mit dieser Route erhält man die Mitgliedschaften in Einrichtungen eines Nutzers
 
 Es werden keine Query-Parameter unterstützt.
 
-### Authorisierung
+### Autorisierung
 
 Ein Nutzer kann nur die eigenen Mitgliedschaften in Einrichtungen einsehen.
