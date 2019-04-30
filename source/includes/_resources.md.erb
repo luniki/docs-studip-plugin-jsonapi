@@ -106,6 +106,15 @@ Parameter | Beschreibung
 --------- | ------------
 id        | die ID des Ressourcenobjekts
 
+### URL-Parameter
+
+Parameter     | Default  | Beschreibung
+---------     | -------  | ------------
+filter[start] | (heute)  | optional; Zeitpunkt (in Sekunden seit 1.1.1970), ab dem die Belegungen angezeigt werden sollen
+filter[end]   | (morgen)  | optional; Zeitpunkt (in Sekunden seit 1.1.1970), bis zu dem die Belegungen angezeigt werden sollen
+
+Die Parameter "filter[start]" und "filter[end]" müssen als Integer angegeben werden (Sekunden seit 1.1.1970 00:00:00 UTC). Werden sie nicht angegeben, werden die Belegungen des heutigen Tages angezeigt.
+
 ### Autorisierung
 
 Jeder eingeloggte Nutzer kann die Liste der Ressourcenbelegungen sehen.
