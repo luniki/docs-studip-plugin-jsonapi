@@ -232,10 +232,19 @@
                     <a href="#schema" class="toc-h2 toc-link" data-title="Schema">Schema</a>
                   </li>
                   <li>
-                    <a href="#get-users" class="toc-h2 toc-link" data-title="GET /users">GET /users</a>
+                    <a href="#alle-nutzer" class="toc-h2 toc-link" data-title="Alle Nutzer">Alle Nutzer</a>
                   </li>
                   <li>
-                    <a href="#get-users-me" class="toc-h2 toc-link" data-title="GET /users/me">GET /users/me</a>
+                    <a href="#sich-selbst-auslesen" class="toc-h2 toc-link" data-title="Sich selbst auslesen">Sich selbst auslesen</a>
+                  </li>
+                  <li>
+                    <a href="#einen-nutzer-auslesen" class="toc-h2 toc-link" data-title="Einen Nutzer auslesen">Einen Nutzer auslesen</a>
+                  </li>
+                  <li>
+                    <a href="#einen-nutzer-loschen" class="toc-h2 toc-link" data-title="Einen Nutzer löschen">Einen Nutzer löschen</a>
+                  </li>
+                  <li>
+                    <a href="#get-users-id-institute-memberships" class="toc-h2 toc-link" data-title="GET /users/{id}/institute-memberships">GET /users/{id}/institute-memberships</a>
                   </li>
               </ul>
           </li>
@@ -328,7 +337,7 @@
                     <a href="#beitrag-auslesen" class="toc-h2 toc-link" data-title="Beitrag auslesen">Beitrag auslesen</a>
                   </li>
                   <li>
-                    <a href="#offentlichen-blubber-beitrag-anlegen" class="toc-h2 toc-link" data-title="Öffentlichen Blubber-Beitrag anlegen">Öffentlichen Blubber-Beitrag anlegen</a>
+                    <a href="#beitrag-anlegen" class="toc-h2 toc-link" data-title="Beitrag anlegen">Beitrag anlegen</a>
                   </li>
                   <li>
                     <a href="#beitrag-editieren" class="toc-h2 toc-link" data-title="Beitrag editieren">Beitrag editieren</a>
@@ -359,12 +368,6 @@
                   </li>
                   <li>
                     <a href="#relation-39-resharers-39" class="toc-h2 toc-link" data-title="Relation 'resharers'">Relation 'resharers'</a>
-                  </li>
-                  <li>
-                    <a href="#beitrag-in-veranstaltung-anlegen" class="toc-h2 toc-link" data-title="Beitrag in Veranstaltung anlegen">Beitrag in Veranstaltung anlegen</a>
-                  </li>
-                  <li>
-                    <a href="#beitrag-im-profil-anlegen" class="toc-h2 toc-link" data-title="Beitrag im Profil anlegen">Beitrag im Profil anlegen</a>
                   </li>
                   <li>
                     <a href="#blubber-stream-auslesen" class="toc-h2 toc-link" data-title="Blubber-Stream auslesen">Blubber-Stream auslesen</a>
@@ -506,6 +509,12 @@
                     <a href="#eine-datei-erstellen" class="toc-h2 toc-link" data-title="Eine Datei erstellen">Eine Datei erstellen</a>
                   </li>
                   <li>
+                    <a href="#eine-datei-kopieren" class="toc-h2 toc-link" data-title="Eine Datei kopieren">Eine Datei kopieren</a>
+                  </li>
+                  <li>
+                    <a href="#einen-ordner-kopieren" class="toc-h2 toc-link" data-title="Einen Ordner kopieren">Einen Ordner kopieren</a>
+                  </li>
+                  <li>
                     <a href="#einen-ordner-erstellen-2" class="toc-h2 toc-link" data-title="Einen Ordner erstellen">Einen Ordner erstellen</a>
                   </li>
                   <li>
@@ -573,10 +582,16 @@
                     <a href="#schema-39-institutes-39" class="toc-h2 toc-link" data-title="Schema 'institutes'">Schema 'institutes'</a>
                   </li>
                   <li>
-                    <a href="#alle-institute" class="toc-h2 toc-link" data-title="Alle Institute">Alle Institute</a>
+                    <a href="#schema-39-institute-memberships-39" class="toc-h2 toc-link" data-title="Schema 'institute-memberships'">Schema 'institute-memberships'</a>
                   </li>
                   <li>
-                    <a href="#ein-institut" class="toc-h2 toc-link" data-title="Ein Institut">Ein Institut</a>
+                    <a href="#alle-einrichtungen" class="toc-h2 toc-link" data-title="Alle Einrichtungen">Alle Einrichtungen</a>
+                  </li>
+                  <li>
+                    <a href="#eine-einrichtung" class="toc-h2 toc-link" data-title="Eine Einrichtung">Eine Einrichtung</a>
+                  </li>
+                  <li>
+                    <a href="#eine-mitgliedschaft" class="toc-h2 toc-link" data-title="Eine Mitgliedschaft">Eine Mitgliedschaft</a>
                   </li>
               </ul>
           </li>
@@ -584,13 +599,13 @@
             <a href="#kontakte" class="toc-h1 toc-link" data-title="Kontakte">Kontakte</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#alle-kontakte-eines-nutzers" class="toc-h2 toc-link" data-title="Alle Kontakte eines Nutzers">Alle Kontakte eines Nutzers</a>
+                    <a href="#alle-kontakte" class="toc-h2 toc-link" data-title="Alle Kontakte">Alle Kontakte</a>
                   </li>
                   <li>
                     <a href="#alle-kontakt-ids-eines-nutzer" class="toc-h2 toc-link" data-title="Alle Kontakt-IDs eines Nutzer">Alle Kontakt-IDs eines Nutzer</a>
                   </li>
                   <li>
-                    <a href="#alle-kontakte-eines-nutzers-setzen" class="toc-h2 toc-link" data-title="Alle Kontakte eines Nutzers setzen">Alle Kontakte eines Nutzers setzen</a>
+                    <a href="#kontakte-eines-nutzers-setzen" class="toc-h2 toc-link" data-title="Kontakte eines Nutzers setzen">Kontakte eines Nutzers setzen</a>
                   </li>
                   <li>
                     <a href="#kontakte-eines-nutzers-hinzufugen" class="toc-h2 toc-link" data-title="Kontakte eines Nutzers hinzufügen">Kontakte eines Nutzers hinzufügen</a>
@@ -707,6 +722,12 @@
                   <li>
                     <a href="#ids-der-teilnahmen" class="toc-h2 toc-link" data-title="IDs der Teilnahmen">IDs der Teilnahmen</a>
                   </li>
+                  <li>
+                    <a href="#eine-teilnahme-auslesen" class="toc-h2 toc-link" data-title="Eine Teilnahme auslesen">Eine Teilnahme auslesen</a>
+                  </li>
+                  <li>
+                    <a href="#eine-teilnahme-andern" class="toc-h2 toc-link" data-title="Eine Teilnahme ändern">Eine Teilnahme ändern</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -771,7 +792,7 @@
 kann auf viele Daten einer Stud.IP-Installation zugegriffen werden.
 Die API basiert auf der <a href="http://jsonapi.org/">JSON:API-Spezifikation</a>, ...</p>
 <h1 id='authentifizierung'>Authentifizierung</h1>
-<p>Stud.IP JSON:API verwendet zwei verschiedene Verfahren um Nutzer
+<p>Stud.IP JSON:API verwendet drei verschiedene Verfahren um Nutzer
 zu authentifizieren:</p>
 
 <ul>
@@ -821,13 +842,32 @@ entspricht der in Stud.IP verwendeten <code>user_id</code>. Der Typ ist <code>us
 <td>evtl. nachgestellte Titel</td>
 </tr>
 <tr>
-<td>global-permission</td>
+<td>permission</td>
 <td>die globale Berechtigungsstufe</td>
+</tr>
+<tr>
+<td>email</td>
+<td>die E-Mail-Adresse des Nutzers</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>die Telefonnummer des Nutzers</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td>die URL der Homepage des Nutzers</td>
+</tr>
+<tr>
+<td>address</td>
+<td>die private Adresse des Nutzers</td>
 </tr>
 </tbody></table>
 
 <p>Die Berechtigungsstufe kann eine der folgenden sein: root, admin,
 dozent, tutor, autor</p>
+
+<p>Die Sichtbarkeit der Attribute &quot;phone&quot;, &quot;homepage&quot;, &quot;address&quot; folgt
+den Sichtbarkeitseinstellungen, die der Nutzer vorgenommen hat.</p>
 <h3 id='relationen'>Relationen</h3>
 <aside class="notice">
     Nicht alle Relationen sind für jeden Betrachter zugänglich.
@@ -860,11 +900,19 @@ dozent, tutor, autor</p>
 <td>die Veranstaltungen der Nutzers (als Teilnehmer)</td>
 </tr>
 <tr>
+<td>events</td>
+<td>der Terminkalender des Nutzers</td>
+</tr>
+<tr>
 <td>institute-memberships</td>
 <td>die Institute der Nutzers</td>
 </tr>
+<tr>
+<td>schedule</td>
+<td>der Stundenplan des Nutzers</td>
+</tr>
 </tbody></table>
-<h2 id='get-users'>GET /users</h2>
+<h2 id='alle-nutzer'>Alle Nutzer</h2>
 <aside class="notice">
     Diese Route können aktuell nur Nutzer der Rechtestufe "root" verwenden. Andere
     Rechtestufen erhalten einen Fehler-Code 403.
@@ -899,33 +947,61 @@ dozent, tutor, autor</p>
         </span><span class="s2">&quot;family-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Studip&quot;</span><span class="p">,</span><span class="w">
         </span><span class="s2">&quot;given-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root&quot;</span><span class="p">,</span><span class="w">
         </span><span class="s2">&quot;name-prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;name-suffix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">
+        </span><span class="s2">&quot;name-suffix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;permission&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;root@localhost&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;homepage&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">&quot;activitystream&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/users/76ed43ef286fb55cf9e41beadb484a9f/activitystream&quot;</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/activitystream&quot;</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">&quot;blubber-postings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/blubber-postings?filter[user]=76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/blubber-postings?filter[user]=76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/users/76ed43ef286fb55cf9e41beadb484a9f/contacts&quot;</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/contacts&quot;</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">&quot;courses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/users/76ed43ef286fb55cf9e41beadb484a9f/courses&quot;</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/courses&quot;</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;course-memberships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/course-memberships&quot;</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/events&quot;</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;institute-memberships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/institute-memberships&quot;</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;schedule&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f/schedule&quot;</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/users/76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+        </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
+
+<p></span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">&quot;[...]&quot;</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -937,7 +1013,7 @@ JSON:API-Nutzer mit seinen <code>credentials</code> auch im Stud.IP selbst
 sehen darf. Die Ausgabe erfolgt paginiert und kann durch Angabe von
 Offset und Limit weitergeblättert werden.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/users</code></p>
+<p><code>GET /users</code></p>
 <h3 id='query-parameter'>Query-Parameter</h3>
 <table><thead>
 <tr>
@@ -957,9 +1033,9 @@ Offset und Limit weitergeblättert werden.</p>
 <td>das Limit</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung'>Authorisierung</h3>
+<h3 id='autorisierung'>Autorisierung</h3>
 <p>Diese Route kann nur von Nutzern der Rechtestufe &quot;root&quot; verwendet werden.</p>
-<h2 id='get-users-me'>GET /users/me</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+<h2 id='sich-selbst-auslesen'>Sich selbst auslesen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
     --url https://example.com/users/me <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_dozent:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
 </code></pre>
@@ -977,45 +1053,112 @@ Offset und Limit weitergeblättert werden.</p>
       </span><span class="s2">"family-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dozent"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"given-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testaccount"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name-prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name-suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="s2">"name-suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dozent"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dozent@studip.de"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"activitystream"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/users/205f3efb7997a0fc9755da2b535038da/activitystream"</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsonapi.php/v1/users/205f3efb7997a0fc9755da2b535038da/activitystream"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"blubber-postings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/blubber-postings?filter[user]=205f3efb7997a0fc9755da2b535038da"</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsonapi.php/v1/blubber-postings?filter[user]=205f3efb7997a0fc9755da2b535038da"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/users/205f3efb7997a0fc9755da2b535038da/contacts"</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsonapi.php/v1/users/205f3efb7997a0fc9755da2b535038da/contacts"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"courses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/users/205f3efb7997a0fc9755da2b535038da/courses"</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsonapi.php/v1/users/205f3efb7997a0fc9755da2b535038da/courses"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"course-memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsonapi.php/v1/users/205f3efb7997a0fc9755da2b535038da/course-memberships"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsonapi.php/v1/users/205f3efb7997a0fc9755da2b535038da/events"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"institute-memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsonapi.php/v1/users/205f3efb7997a0fc9755da2b535038da/institute-memberships"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsonapi.php/v1/users/205f3efb7997a0fc9755da2b535038da/schedule"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/users/205f3efb7997a0fc9755da2b535038da"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsonapi.php/v1/users/205f3efb7997a0fc9755da2b535038da"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>Mit diesem Endpoint bekommt man denjenigen Stud.IP Nutzer, der
-authorisiert auf diesen Endpoint zugreift – also sich selbst.</p>
+autorisiert auf diesen Endpoint zugreift – also sich selbst.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/api/users/me</code></p>
+<p><code>GET /users/me</code></p>
 <h3 id='query-parameter-2'>Query-Parameter</h3>
 <p>Es werden keine Query-Parameter unterstützt.</p>
-<h3 id='authorisierung-2'>Authorisierung</h3>
-<p>Diese Route kann von jedem authorisierten Nutzer verwendet werden.</p>
+<h3 id='autorisierung-2'>Autorisierung</h3>
+<p>Diese Route kann von jedem autorisierten Nutzer verwendet werden.</p>
+<h2 id='einen-nutzer-auslesen'>Einen Nutzer auslesen</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+    --url https://example.com/users/&lt;ID&gt; <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_dozent:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre>
+<p>Diese Route liefert einen beliebigen Nutzer zurück. Unsichtbare Nutzer
+können sich allerdings nur selbst sehen.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /users/{id}</code></p>
+<h3 id='query-parameter-3'>Query-Parameter</h3>
+<p>Es werden keine Query-Parameter unterstützt.</p>
+<h3 id='autorisierung-3'>Autorisierung</h3>
+<p>Man kann sich selbst sehen. &quot;root&quot; darf jeden Nutzer sehen. Gesperrte
+und unsichtbare Nutzer sind ansonsten nicht sichtbar.</p>
+<h2 id='einen-nutzer-loschen'>Einen Nutzer löschen</h2><pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
+    --url https://example.com/users/&lt;ID&gt; <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_dozent:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre>
+<p>Diese Route löscht einen beliebigen Nutzer.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE /users/{id}</code></p>
+<h3 id='query-parameter-4'>Query-Parameter</h3>
+<p>Es werden keine Query-Parameter unterstützt.</p>
+<h3 id='autorisierung-4'>Autorisierung</h3>
+<p>Diese Route ist nur aktiviert, wenn die Stud.IP-Konfiguration
+&quot;JSONAPI_DANGEROUS_ROUTES_ALLOWED&quot; gesetzt ist.</p>
+
+<p>Ist das der Fall, dürfen Nutzer der Rechtestufe &quot;root&quot; andere Nutzer
+löschen. Man kann sich selbst <strong>nicht</strong> löschen.</p>
+<h2 id='get-users-id-institute-memberships'>GET /users/{id}/institute-memberships</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+    --url https://example.com/users/&lt;ID&gt;/institute-memberships <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_dozent:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre>
+<p>Mit dieser Route erhält man die Mitgliedschaften in Einrichtungen eines Nutzers.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET http://example.com/api/users/{id}/institute-memberships</code></p>
+<h3 id='query-parameter-5'>Query-Parameter</h3>
+<p>Es werden keine Query-Parameter unterstützt.</p>
+<h3 id='autorisierung-5'>Autorisierung</h3>
+<p>Ein Nutzer kann nur die eigenen Mitgliedschaften in Einrichtungen einsehen.</p>
 <h1 id='activity-streams'>Activity Streams</h1>
 <p>Mit Stud.IP Version 3.5 wurde eine neue API zum Erzeugen, Darstellen
 und Filtern von kontextrelevanten Aktivitäten eingeführt. Diese API
@@ -1440,40 +1583,37 @@ Es wird diskutiert ob hier Adminrechte reichen.</p>
 <p><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;news&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0e8df7da383d7515c4dc081bfe889897&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6a8be7e4859e9c781ecc47a2c3498435&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Neue News&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Eine neue News sieht das Tageslicht.&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;mkdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-19T16:08:51+02:00&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-08-15T14:22:38+02:00&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;publication-start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-19T16:08:51+02:00&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;publication-end&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2066-12-05T15:08:51+01:00&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;comments-allowed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A testing title&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lorem ipsum dolor sit amet, consectetur adipisicing elit&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;mkdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-04-23T12:10:26+02:00&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-04-23T12:10:26+02:00&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;publication-start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-04-23T12:10:26+02:00&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;publication-end&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-05-07T12:10:26+02:00&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;comments-allowed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;users&quot;</span><span class="p">,</span><span class="w">
-          </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
+          </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e7a0a84b161f3e8c09b4a0a2e8a58147&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/users/76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
+          </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/e7a0a84b161f3e8c09b4a0a2e8a58147&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">&quot;ranges&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;courses&quot;</span><span class="p">,</span><span class="w">
-          </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1b7d3834e42c1569947e0eab7b63ed19&quot;</span><span class="w">
+        </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
+
+<p></span><span class="p">],</span><span class="w">
+        </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/news/6a8be7e4859e9c781ecc47a2c3498435/relationships/ranges&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/news/0e8df7da383d7515c4dc081bfe889897/relationships/ranges&quot;</span><span class="w">
-          </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/news/0e8df7da383d7515c4dc081bfe889897&quot;</span><span class="w">
+      </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/news/6a8be7e4859e9c781ecc47a2c3498435&quot;</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1505,40 +1645,37 @@ Es wird diskutiert ob hier Adminrechte reichen.</p>
 <p><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;news&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0e8df7da383d7515c4dc081bfe889897&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6a8be7e4859e9c781ecc47a2c3498435&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Neue News&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Eine neue News sieht das Tageslicht.&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;mkdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-19T16:08:51+02:00&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-08-15T14:22:38+02:00&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;publication-start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-19T16:08:51+02:00&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;publication-end&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2066-12-05T15:08:51+01:00&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;comments-allowed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A testing title&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lorem ipsum dolor sit amet, consectetur adipisicing elit&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;mkdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-04-23T12:10:26+02:00&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-04-23T12:10:26+02:00&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;publication-start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-04-23T12:10:26+02:00&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;publication-end&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-05-07T12:10:26+02:00&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;comments-allowed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;users&quot;</span><span class="p">,</span><span class="w">
-          </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
+          </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e7a0a84b161f3e8c09b4a0a2e8a58147&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/users/76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
+          </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/e7a0a84b161f3e8c09b4a0a2e8a58147&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">&quot;ranges&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;courses&quot;</span><span class="p">,</span><span class="w">
-          </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1b7d3834e42c1569947e0eab7b63ed19&quot;</span><span class="w">
+        </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></p>
+
+<p></span><span class="p">],</span><span class="w">
+        </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/news/6a8be7e4859e9c781ecc47a2c3498435/relationships/ranges&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/news/0e8df7da383d7515c4dc081bfe889897/relationships/ranges&quot;</span><span class="w">
-          </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/news/0e8df7da383d7515c4dc081bfe889897&quot;</span><span class="w">
+      </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/news/6a8be7e4859e9c781ecc47a2c3498435&quot;</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1966,21 +2103,34 @@ gefiltert werden. Möglich sind folgende Filter:</p>
 <pre class="highlight shell tab-shell"><code>   curl --request GET <span class="se">\</span>
        --url https://example.com/blubber-postings/&lt;posting-id&gt; <span class="se">\</span>
        --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
-</code></pre><h2 id='offentlichen-blubber-beitrag-anlegen'>Öffentlichen Blubber-Beitrag anlegen</h2>
-<p>Einen Blubber-Beitrag anlegen, der für alle sichtbar ist.</p>
+</code></pre><h2 id='beitrag-anlegen'>Beitrag anlegen</h2><pre class="highlight shell tab-shell"><code>   curl --request POST <span class="se">\</span>
+       --url https://example.com/blubber-postings <span class="se">\</span>
+       --header <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+       --data <span class="se">\</span>
+       <span class="s1">'{"data":{"type":"blubber-postings","attributes":{"context-type":"course","content":"Ein neuer blubberpost"},"relationships":{"context":{"data":{"type":"courses","id":"&lt;CID&gt;"}}}}}'</span>
+</code></pre>
+<p>Mit dieser Route kann ein Blubber-Beitrag angelegt werden. Dies kann
+ein öffentlicher oder privater Beitrag sein, aber auch Blubber in
+Veranstaltungen können darüber angelegt werden.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST /blubber-postings</code></p>
+<h3 id='http-request-body'>HTTP Request Body</h3>
+<p>Im Request-Body muss der neue Beitrag als <code>resource object</code>  vom Typ
+&quot;blubber-postings&quot; sein.</p>
+
+<p>Notwendig sind die Attribute &quot;content&quot; und &quot;context-type&quot;.</p>
+
+<p>Abhängig vom Wert des Attributs &quot;context-type&quot;, muss außerdem eine
+&quot;context&quot;-Relation angegeben werden.</p>
+
+<p>Hat dieses Attribut den Wert &quot;course&quot;, muss als &quot;context&quot;-Relation
+eine Veranstaltung als <code>resource identifiert</code> angegeben werden.</p>
 <h3 id='parameter-2'>Parameter</h3>
 <p>Bei diesem Request sind keine Parameter notwendig.</p>
 <h3 id='authorisierung-2'>Authorisierung</h3>
 <p>Diese Route kann von allen Nutzern verwendet werden.</p>
-<pre class="highlight shell tab-shell"><code>   curl --request POST <span class="se">\</span>
-       --url https://example.com/blubber-postings <span class="se">\</span>
-       --header <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
-       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
-       --data
-       <span class="s1">'{"data":{"type":"blubber-postings","attributes":{"context-type":"public","content":"Ein neuer blubberpost"}, "relationships":{"context":{"data":{"type":"public"}}}}}'</span>
-</code></pre><h2 id='beitrag-editieren'>Beitrag editieren</h2>
+<h2 id='beitrag-editieren'>Beitrag editieren</h2>
 <p>Aktualisiert einen Blubber-Beitrag.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PATCH /blubber-postings/{id}</code></p>
@@ -2194,59 +2344,11 @@ gefiltert werden. Möglich sind folgende Filter:</p>
 <pre class="highlight shell tab-shell"><code>   curl --request GET <span class="se">\</span>
        --url https://example.com/blubber-postings/&lt;posting-id&gt;/relationships/resharers <span class="se">\</span>
        --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
-</code></pre><h2 id='beitrag-in-veranstaltung-anlegen'>Beitrag in Veranstaltung anlegen</h2>
-<p>Erstellt einen veranstaltungsbezogenen Blubber-Eintrag.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
-<p><code>POST /courses/{id}/blubber-postings</code></p>
-<h3 id='parameter-13'>Parameter</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Beschreibung</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>ID des Blubber-Posts</td>
-</tr>
-</tbody></table>
-<h3 id='authorisierung-13'>Authorisierung</h3>
-<p>Diese Route kann von Nutzern in der Veranstaltung oder Root genutzt werden.</p>
-<pre class="highlight shell tab-shell"><code>   curl --request POST <span class="se">\</span>
-       --url https://example.com/courses/&lt;course-id&gt;/blubber-postings <span class="se">\</span>
-       --header <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
-       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"root@studip:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
-       --data
-       <span class="s1">'{"data":{"type":"blubber-postings","attributes":{"context-type":"course","content":"Ein neuer blubberpost"}, "relationships":{"context":{"data":{"type":"courses","id":"a07535cf2f8a72df33c12ddfa4b53dde"}}}}}'</span>
-</code></pre><h2 id='beitrag-im-profil-anlegen'>Beitrag im Profil anlegen</h2>
-<p>Erstellt einen veranstaltungsbezogenen Blubber-Beitrag</p>
-<h3 id='http-request-15'>HTTP Request</h3>
-<p><code>POST /users/{id}/blubber-postings</code></p>
-<h3 id='parameter-14'>Parameter</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Beschreibung</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>ID des Blubber-Posts</td>
-</tr>
-</tbody></table>
-<h3 id='authorisierung-14'>Authorisierung</h3>
-<p>Diese Route kann vom Nutzer des betreffenden Profils oder Root genutzt werden.</p>
-<pre class="highlight shell tab-shell"><code>   curl --request POST <span class="se">\</span>
-       --url https://example.com/courses/&lt;course-id&gt;/users/&lt;user-id&gt;/blubber-postings <span class="se">\</span>
-       --header <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
-       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"root@studip:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
-       --data
-       <span class="s1">'{"data":{"type":"blubber-postings","attributes":{"context-type":"private","content":"Ein neuer blubberpost"}, "relationships":{"context":{"data":{"type":"users","id":"205f3efb7997a0fc9755da2b535038da"}}}}}'</span>
 </code></pre><h2 id='blubber-stream-auslesen'>Blubber-Stream auslesen</h2>
 <p>Gibt eine Folge von Blubber-Einträgen zurück.</p>
 
 <p><code>GET /blubber-streams/{id}</code></p>
-<h3 id='parameter-15'>Parameter</h3>
+<h3 id='parameter-13'>Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2258,7 +2360,7 @@ gefiltert werden. Möglich sind folgende Filter:</p>
 <td>ID des Blubber-Streams</td>
 </tr>
 </tbody></table>
-<h3 id='authorisierung-15'>Authorisierung</h3>
+<h3 id='authorisierung-13'>Authorisierung</h3>
 <p>Diese Route kann von allen Nutzern verwendet werden.</p>
 <pre class="highlight shell tab-shell"><code>   curl --request GET <span class="se">\</span>
        --url https://example.com/blubber-postings/&lt;posting-id&gt;/blubber-streams/&lt;stream-id&gt; <span class="se">\</span>
@@ -3615,7 +3717,7 @@ verlinkt werden.</p>
     --url https://example.com/terms-of-use/&lt;ID&gt; <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
 </code></pre>
-<p>Beschreibung</p>
+<p>Mit dieser Route kann eine beliebige Lizenz ausgelesen werden.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET /terms-of-use/{id}</code></p>
 
@@ -3944,7 +4046,7 @@ Datenübertragung zu vermeiden.</p>
 <p>Der übergeordnete Ordner der Datei entscheidet.</p>
 <h2 id='inhalt-einer-datei-aktualisieren'>Inhalt einer Datei aktualisieren</h2>
 <aside class="notice">Diese Route ist keine JSON-API-konforme Route.</aside>
-<pre class="highlight shell tab-shell"><code>curl --url https://example.com/file-refs/&lt;ID&gt;/content <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl --request POST --url https://example.com/file-refs/&lt;ID&gt;/content <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
     -F <span class="s1">'myfile=@/path/to/local/file'</span>
 </code></pre>
@@ -4127,7 +4229,7 @@ zwei Schritten passieren. Dazu kann entweder</p>
 <li>zuerst der Inhalt hochgeladen werden und dann die Metadaten (wie Beschreibung und Lizenz) angepasst werden oder</li>
 <li>erst die Datei mit den Metadaten erstellt werden und nachträglich der Inhalt hochgeladen werden.</li>
 </ul>
-<h3 id='variante-a'>Variante a.</h3><pre class="highlight shell tab-shell"><code>curl --url <span class="s2">"https://example.com/folders/&lt;ID&gt;/file-refs"</span> <span class="se">\</span>
+<h3 id='variante-a'>Variante a.</h3><pre class="highlight shell tab-shell"><code>curl --request POST --url <span class="s2">"https://example.com/folders/&lt;ID&gt;/file-refs"</span> <span class="se">\</span>
      -F <span class="s1">'file=@/pfad/zu/einer-neuen-datei.jpg'</span> <span class="se">\</span>
      --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_dozent:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
 </code></pre>
@@ -4142,10 +4244,10 @@ zwei Schritten passieren. Dazu kann entweder</p>
 <p>Über die URL aus dem erhaltenen <code>Location</code>-Header erhält man die JSON:API-Repräsentation der hochgeladenen Datei.</p>
 
 <p>Nun können mit einem (JSON:API-typischen) <code>PATCH</code>-Request an diese Route Modifikationen an den Metadaten (wie Beschreibung usw.) vorgenommen werden.</p>
-<h3 id='variante-b'>Variante b.</h3><pre class="highlight shell tab-shell"><code>curl --url https://example.com/folders/&lt;ID&gt;/file-refs <span class="se">\</span>
+<h3 id='variante-b'>Variante b.</h3><pre class="highlight shell tab-shell"><code>curl --request POST --url https://example.com/folders/&lt;ID&gt;/file-refs <span class="se">\</span>
     --header <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
-    --data <span class="s1">'{"data": { "type": "file-refs", "attributes": { "name": "iason.txt", "description": "Iasons Lebenslauf"}}}'</span>
+    --data <span class="s1">'{"data": { "type": "file-refs", "attributes": { "name": "iason.txt", "description": "Iasons Lebenslauf"}, "relationships":{"terms-of-use": {"data": {"type": "terms-of-use", "id": "FREE_LICENSE"}}}}}'</span>
 </code></pre>
 <p>Zunächst sendet man einen <code>POST</code>-Request mit <code>Content-Type: application/vnd.api+json</code> an die URL.</p>
 
@@ -4153,9 +4255,15 @@ zwei Schritten passieren. Dazu kann entweder</p>
 
 <p>Daher muss der Inhalt in einem zweiten Request hochgeladen werden. Dazu wird – wie unter &quot;Inhalt einer Datei aktualisieren&quot; beschrieben – ein <code>POST</code>-Request an die <code>download-url</code> geschickt.</p>
 <h3 id='http-request-19'>HTTP Request</h3>
-<p><code>POST https://example.com/folders/{id}/file-refs</code></p>
+<p><code>POST /folders/{id}/file-refs</code></p>
 
-<p>Im Request-Body befindet sich dann entweder eine &quot;multipart/form-data&quot;-kodierte Datei oder ein JSON-API-spezifisches &quot;resource object&quot;.</p>
+<p>Im Request-Body befindet sich dann entweder eine
+&quot;multipart/form-data&quot;-kodierte Datei oder ein JSON-API-spezifisches
+&quot;resource object&quot;.</p>
+
+<p>Wenn man ein JSON-API-&quot;resource object&quot; verschickt, <strong>muss</strong> die
+Relation <code>terms-of-use</code> (die Lizenz) enthalten sein. Ohne Lizenz
+können keine Dateien angelegt werden.</p>
 <h3 id='url-parameter-18'>URL-Parameter</h3>
 <table><thead>
 <tr>
@@ -4170,13 +4278,49 @@ zwei Schritten passieren. Dazu kann entweder</p>
 </tbody></table>
 <h3 id='authorisierung'>Authorisierung</h3>
 <p>Ob man eine Datei erstellen darf, entscheidet die Implementierung des Ordners.</p>
+<h2 id='eine-datei-kopieren'>Eine Datei kopieren</h2>
+<p>Um eine Datei zu kopieren, verwendet man die <a href="#variante-b">&quot;Variante b.&quot;</a>  für das
+Anlegen von Dateien.</p>
+
+<p>Zuerst benötigt man den &quot;resource identifier&quot; der Relation <code>file</code> der
+zu kopierenden Datei. Dann schickt man ein JSON-API-&quot;resource object&quot;
+an die URL zum Erstellen einer Datei und setzt dort diesen &quot;resource
+identifier&quot; als Relation <code>file</code> der neuen Datei.</p>
+
+<p>Wenn man selbst der Besitzer der Quelldatei ist, bleibt der Verweis
+auf das <code>file</code> bestehen. Ist man nicht der Besitzer der Quelldatei,
+wird auch das <code>file</code> kopiert und man selbst dessen Besitzer.</p>
+<h2 id='einen-ordner-kopieren'>Einen Ordner kopieren</h2>
+<aside class="notice">Diese Route ist keine JSON-API-konforme Route.</aside>
+<pre class="highlight shell tab-shell"><code>curl -F <span class="s2">"destination=&lt;destination-ID&gt;"</span> <span class="se">\</span>
+     --url <span class="s2">"https://example.com/folders/&lt;source-ID&gt;/copy"</span> <span class="se">\</span>
+     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_dozent:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre>
+<p>Um einen Ordner zu kopieren, wird diese Route verwendet, die
+allerdings nicht JSON-API-konform ist. Dazu wird ein POST-Request an
+die Route des Ordners geschickt, in deren Request-Body der Zielordner
+spezifiziert wird. Der Request-Body muss vom
+&quot;multipart/form-data&quot;-kodiert sein.</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>POST /folders/{id}/copy</code></p>
+
+<p>Der &quot;Content-Type&quot; des Requests muss &quot;multipart/form-data&quot; sein. Im
+Request-Body muss unter dem Schlüssel &quot;destination&quot; die ID des
+Zielordners enthalten.</p>
+
+<p>Wenn der Request erfolgreich war, bekommt man einen Status-Code 201
+und einen <code>Location</code>-Header, der auf den neuen, kopierten Ordner
+zeigt.</p>
+<h3 id='authorisierung-2'>Authorisierung</h3>
+<p>Jeder Nutzer, der den Quellordner öffnen und im Zielordner schreiben
+darf, kann diese Route aufrufen.</p>
 <h2 id='einen-ordner-erstellen-2'>Einen Ordner erstellen</h2><pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
     --url https://example.com/folders/&lt;ID&gt;/folders <span class="se">\</span>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
     --data <span class="s1">'{"data": { "type": "folders", "attributes": {"name":"Neuer Ordner"}}}'</span>
 </code></pre>
 <p>Mit dieser Route kann man einen neuen Ordner anlegen.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>POST /folders/{id}/folders</code></p>
 
 <table><thead>
@@ -4199,7 +4343,7 @@ zwei Schritten passieren. Dazu kann entweder</p>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
 </code></pre>
 <p>Die Dateien, die in den obigen Routen genannt werden, sind technisch gesehen nur Verweise auf tatsächliche Dateien auf der Festplatte o.ä. Auch die tatsächlichen Dateien (&quot;files&quot;) können ausgelesen werden. Dazu verwendet man diese Route.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET /files/{id}</code></p>
 
 <table><thead>
@@ -4222,7 +4366,7 @@ zwei Schritten passieren. Dazu kann entweder</p>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
 </code></pre>
 <p>Mit dieser Route können alle Dateien, die auf dieses &quot;file&quot; verweisen, ausgelesen werden.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>GET /files/{id}/file-refs</code></p>
 
 <table><thead>
@@ -4245,7 +4389,7 @@ zwei Schritten passieren. Dazu kann entweder</p>
     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
 </code></pre>
 <p>Diese Route wird verwendet, um alle IDs der Dateien zu erhalten, die auf dieses &quot;file&quot; verweisen.</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>GET /files/{id}/relationships/file-refs</code></p>
 
 <table><thead>
@@ -5251,8 +5395,58 @@ entspricht der in Stud.IP verwendeten <code>Institut_id</code>. Der Typ ist <cod
 <td>das letztes Änderungsdatum der Einrichtungsdaten in Stud.IP</td>
 </tr>
 </tbody></table>
-<h2 id='alle-institute'>Alle Institute</h2>
-<p>Dieser Endpoint liefert alle Einrichtungen im Stud.IP, die der JSON:API-Nutzer mit seinen <code>credentials</code> auch im Stud.IP selbst
+<h3 id='relationen'>Relationen</h3>
+<p>keine Relationen</p>
+<h2 id='schema-39-institute-memberships-39'>Schema &#39;institute-memberships&#39;</h2>
+<p>Die Mitgliedschaft in einer Einrichtung wird in Stud.IP mit diesem
+Schema abgebildet.</p>
+<h3 id='attribute-2'>Attribute</h3>
+<table><thead>
+<tr>
+<th>Attribut</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>permission</td>
+<td>die Rolle des Nutzers in der Einrichtung</td>
+</tr>
+<tr>
+<td>office-hours</td>
+<td>die Sprechzeiten des Nutzers bzgl. der Einrichtung</td>
+</tr>
+<tr>
+<td>location</td>
+<td>der Raum/Ort des Nutzers bzgl. der Einrichtung</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>die Telefonnummer des Nutzers bzgl. der Einrichtung</td>
+</tr>
+<tr>
+<td>fax</td>
+<td>die Faxnummer des Nutzers bzgl. der Einrichtung</td>
+</tr>
+</tbody></table>
+<h3 id='relationen-2'>Relationen</h3>
+<table><thead>
+<tr>
+<th>Relation</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>institute</td>
+<td>die Einrichtung dieser Mitgliedschaft</td>
+</tr>
+<tr>
+<td>user</td>
+<td>der Nutzer dieser Mitgliedschaft</td>
+</tr>
+</tbody></table>
+<h2 id='alle-einrichtungen'>Alle Einrichtungen</h2>
+<p>Dieser Endpoint liefert alle Einrichtungen im Stud.IP, die der
+JSON:API-Nutzer mit seinen <code>credentials</code> auch im Stud.IP selbst
 sehen darf. Die Ausgabe erfolgt paginiert und kann durch Angabe von
 Offset und Limit weitergeblättert werden.</p>
 <h3 id='http-request'>HTTP Request</h3>
@@ -5281,8 +5475,11 @@ Offset und Limit weitergeblättert werden.</p>
 </tbody></table>
 <h3 id='authorisierung'>Authorisierung</h3>
 <p>Jeder Nutzer darf diese Route verwenden.</p>
-<h2 id='ein-institut'>Ein Institut</h2>
-<p>Ein bestimmtes Institut kann einfach über diese Route ausgelesen werden.</p>
+<h2 id='eine-einrichtung'>Eine Einrichtung</h2><pre class="highlight shell tab-shell"><code>   curl --request GET <span class="se">\</span>
+       --url https://example.com/institutes/&lt;INSTITUTE-ID&gt; <span class="se">\</span>
+       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+</code></pre>
+<p>Eine bestimmte Einrichtung kann einfach über diese Route ausgelesen werden.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET /institutes/{id}</code></p>
 
@@ -5297,33 +5494,174 @@ Offset und Limit weitergeblättert werden.</p>
 <td>Die ID des Instituts</td>
 </tr>
 </tbody></table>
-<pre class="highlight shell tab-shell"><code>   curl --request GET <span class="se">\</span>
-       --url https://example.com/institutes/&lt;INSTITUTE-ID&gt; <span class="se">\</span>
-       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
-</code></pre><h3 id='url-parameter-2'>URL-Parameter</h3>
+<h3 id='url-parameter-2'>URL-Parameter</h3>
 <p>keine URL-Parameter</p>
 <h3 id='authorisierung-2'>Authorisierung</h3>
 <p>Jeder Nutzer darf diese Route verwenden.</p>
+<h2 id='eine-mitgliedschaft'>Eine Mitgliedschaft</h2><pre class="highlight shell tab-shell"><code>   curl --request GET <span class="se">\</span>
+       --url https://example.com/institute-memberships/&lt;ID&gt; <span class="se">\</span>
+       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+</code></pre>
+<p>Mit dieser Route kann man eine Mitgliedschaft in einer Einrichtung auslesen.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /institute-memberships/{id}</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Die ID der Mitgliedschaft</td>
+</tr>
+</tbody></table>
+<h3 id='url-parameter-3'>URL-Parameter</h3>
+<p>keine URL-Parameter</p>
+<h3 id='authorisierung-3'>Authorisierung</h3>
+<p>Mitgliedschaften können nur vom Nutzer selbst ausgelesen werden.</p>
 <h1 id='kontakte'>Kontakte</h1>
-<p>TODO: Einleitung</p>
-<h2 id='alle-kontakte-eines-nutzers'>Alle Kontakte eines Nutzers</h2>
-<p>GET /users/{id}/contacts</p>
-<h2 id='alle-kontakt-ids-eines-nutzer'>Alle Kontakt-IDs eines Nutzer</h2>
-<p>GET /users/{id}/relationships/contacts</p>
+<p>Nutzer können in Stud.IP sich andere Nutzer als Kontakte merken. Dafür
+ist kein neuer Ressourcentyp nötig.</p>
+<h2 id='alle-kontakte'>Alle Kontakte</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+    --url https://example.com/users/&lt;ID&gt;/contacts <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre>
+<p>Mit dieser Route können alle Kontakte eines Nutzers ausgelesen werden.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /users/{id}/contacts</code></p>
 
-<p>see http://jsonapi.org/format/#fetching-relationships</p>
-<h2 id='alle-kontakte-eines-nutzers-setzen'>Alle Kontakte eines Nutzers setzen</h2>
-<p>PATCH /users/{id}/relationships/contacts</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>die ID des Nutzers</td>
+</tr>
+</tbody></table>
+<h3 id='url-parameter'>URL-Parameter</h3>
+<p>keine URL-Parameter</p>
+<h3 id='autorisierung'>Autorisierung</h3>
+<p>Jeder Nutzer kann seine eigenen Kontakte sehen.</p>
+<h2 id='alle-kontakt-ids-eines-nutzer'>Alle Kontakt-IDs eines Nutzer</h2><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+    --url https://example.com/users/&lt;ID&gt;/relationships/contacts <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre>
+<p>Mit dieser Route können alle IDs der Kontakte eines Nutzers ausgelesen werden.</p>
 
-<p>see http://jsonapi.org/format/#crud-updating-to-many-relationships</p>
-<h2 id='kontakte-eines-nutzers-hinzufugen'>Kontakte eines Nutzers hinzufügen</h2>
-<p>POST /users/{id}/relationships/contacts</p>
+<p>(siehe http://jsonapi.org/format/#fetching-relationships)</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /users/{id}/relationships/contacts</code></p>
 
-<p>see http://jsonapi.org/format/#crud-updating-to-many-relationships</p>
-<h2 id='kontakte-eines-nutzers-loschen'>Kontakte eines Nutzers löschen</h2>
-<p>DELETE /users/{id}/relationships/contacts</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>die ID des Nutzers</td>
+</tr>
+</tbody></table>
+<h3 id='url-parameter-2'>URL-Parameter</h3>
+<p>keine URL-Parameter</p>
+<h3 id='autorisierung-2'>Autorisierung</h3>
+<p>Jeder Nutzer kann seine eigenen Kontakte sehen.</p>
+<h2 id='kontakte-eines-nutzers-setzen'>Kontakte eines Nutzers setzen</h2><pre class="highlight shell tab-shell"><code>curl --request PATCH <span class="se">\</span>
+    --url https://example.com/users/&lt;ID&gt;/relationships/contacts <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+    --header <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+    --data <span class="s1">'{"data": [ \
+        {"type": "users","id":"&lt;id1&gt;"}, \
+        {"type": "users","id":"&lt;id2&gt;"}, \
+        {"type": "users","id":"&lt;id3&gt;"} \
+        ]}'</span>
+</code></pre>
+<p>Mit dieser Route kann man die alle Kontakte eines Nutzers setzen.</p>
 
-<p>see http://jsonapi.org/format/#crud-updating-to-many-relationships</p>
+<p>(siehe http://jsonapi.org/format/#crud-updating-to-many-relationships)</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PATCH /users/{id}/relationships/contacts</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>die ID des Nutzers</td>
+</tr>
+</tbody></table>
+<h3 id='url-parameter-3'>URL-Parameter</h3>
+<p>keine URL-Parameter</p>
+<h3 id='autorisierung-3'>Autorisierung</h3>
+<p>Jeder Nutzer kann seine eigenen Kontakte setzen.</p>
+<h2 id='kontakte-eines-nutzers-hinzufugen'>Kontakte eines Nutzers hinzufügen</h2><pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+    --url https://example.com/users/&lt;ID&gt;/relationships/contacts <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+    --header <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+    --data <span class="s1">'{"data": [ \
+        {"type": "users","id":"&lt;id4&gt;"} \
+        ]}'</span>
+</code></pre>
+<p>Mit dieser Route kann man Kontakte eines Nutzers hinzufügen.</p>
+
+<p>(siehe http://jsonapi.org/format/#crud-updating-to-many-relationships)</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST /users/{id}/relationships/contacts</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>die ID des Nutzers</td>
+</tr>
+</tbody></table>
+<h3 id='url-parameter-4'>URL-Parameter</h3>
+<p>keine URL-Parameter</p>
+<h3 id='autorisierung-4'>Autorisierung</h3>
+<p>Jeder Nutzer kann seine eigenen Kontakte setzen.</p>
+<h2 id='kontakte-eines-nutzers-loschen'>Kontakte eines Nutzers löschen</h2><pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
+    --url https://example.com/users/&lt;ID&gt;/relationships/contacts <span class="se">\</span>
+    --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+    --header <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+    --data <span class="s1">'{"data": [ \
+        {"type": "users","id":"&lt;id1&gt;"}, \
+        {"type": "users","id":"&lt;id4&gt;"} \
+        ]}'</span>
+</code></pre>
+<p>Mit dieser Route kann man Kontakte eines Nutzers löschen.</p>
+
+<p>(siehe http://jsonapi.org/format/#crud-updating-to-many-relationships)</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE /users/{id}/relationships/contacts</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>die ID des Nutzers</td>
+</tr>
+</tbody></table>
+<h3 id='url-parameter-5'>URL-Parameter</h3>
+<p>keine URL-Parameter</p>
+<h3 id='autorisierung-5'>Autorisierung</h3>
+<p>Jeder Nutzer kann seine eigenen Kontakte löschen.</p>
 <h1 id='nachrichten'>Nachrichten</h1>
 <aside class="success">
   Studip bietet die Möglichkeit Nachrichten ("messages") innerhalb des Systems zwischen Nutzern und Nutzergruppen zu versenden.
@@ -6046,6 +6384,27 @@ in den Stundenplan auslesen.</p>
 <td>die ID des Ressourcenobjekts</td>
 </tr>
 </tbody></table>
+<h3 id='url-parameter-2'>URL-Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter[start]</td>
+<td>(heute)</td>
+<td>optional; Zeitpunkt (in Sekunden seit 1.1.1970), ab dem die Belegungen angezeigt werden sollen</td>
+</tr>
+<tr>
+<td>filter[end]</td>
+<td>(morgen)</td>
+<td>optional; Zeitpunkt (in Sekunden seit 1.1.1970), bis zu dem die Belegungen angezeigt werden sollen</td>
+</tr>
+</tbody></table>
+
+<p>Die Parameter &quot;filter[start]&quot; und &quot;filter[end]&quot; müssen als Integer angegeben werden (Sekunden seit 1.1.1970 00:00:00 UTC). Werden sie nicht angegeben, werden die Belegungen des heutigen Tages angezeigt.</p>
 <h3 id='autorisierung-2'>Autorisierung</h3>
 <p>Jeder eingeloggte Nutzer kann die Liste der Ressourcenbelegungen sehen.</p>
 <h1 id='semester'>Semester</h1>
@@ -6173,7 +6532,7 @@ Sie dienen auch als Filter für Veranstaltungen und Suchen.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>status</td>
+<td>permission</td>
 <td>Rolle des Nutzers (Autor, Dozent, etc...)</td>
 </tr>
 <tr>
@@ -6305,7 +6664,7 @@ Veranstaltung zu sehen.</p>
 <p>Jeder Teilnehmer des Kurses oder Root kann diese Route nutzen.</p>
 <pre class="highlight shell tab-shell"><code>   curl --request GET <span class="se">\</span>
        --url https://example.com/courses/&lt;course-id&gt; <span class="se">\</span>
-       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
 </code></pre><h2 id='alle-veranstaltungen-eines-nutzers'>Alle Veranstaltungen eines Nutzers</h2>
 <p>Gibt alle Veranstaltungen eines Nutzers zurück.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
@@ -6326,7 +6685,7 @@ Veranstaltung zu sehen.</p>
 <p>Jeder eingeloggte Nutzer kann diese Route nutzen.</p>
 <pre class="highlight shell tab-shell"><code>   curl --request GET <span class="se">\</span>
        --url https://example.com/users/&lt;user-id&gt;/courses <span class="se">\</span>
-       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
 </code></pre><h2 id='teilnahmen-einer-veranstaltung'>Teilnahmen einer Veranstaltung</h2>
 <p>Gibt alle Kurse mit dem jeweiligen Teilnehmerstatus eines Nutzers zurück.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
@@ -6347,7 +6706,7 @@ Veranstaltung zu sehen.</p>
 <p>Nutzer mit mindestens Adminstatus oder Teilnehmer des Kurses können diese Route benutzen.</p>
 <pre class="highlight shell tab-shell"><code>   curl --request GET <span class="se">\</span>
        --url https://example.com/courses/&lt;course-id&gt;/memberships <span class="se">\</span>
-       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
 </code></pre><h2 id='ids-der-teilnahmen'>IDs der Teilnahmen</h2>
 <p>Gibt die Referenzen auf die Teilnehmer eines Kurses zurück.</p>
 <h3 id='http-request-5'>HTTP-Request</h3>
@@ -6368,8 +6727,57 @@ Veranstaltung zu sehen.</p>
 <p>Nutzer mit mindestens Adminstatus oder Teilnehmer des Kurses können diese Route benutzen.</p>
 <pre class="highlight shell tab-shell"><code>   curl --request GET <span class="se">\</span>
        --url https://example.com/courses/&lt;course-id&gt;/relationships/memberships <span class="se">\</span>
+       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre><h2 id='eine-teilnahme-auslesen'>Eine Teilnahme auslesen</h2><pre class="highlight shell tab-shell"><code>   curl --request GET <span class="se">\</span>
+       --url https://example.com/course-memberships/&lt;ID&gt; <span class="se">\</span>
+       --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre>
+<p>Gibt eine Teilnahme wieder.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET /course-memberships/{id}</code></p>
+<h3 id='parameter-7'>Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>ID der Teilnahme</td>
+</tr>
+</tbody></table>
+<h3 id='autorisierung-7'>Autorisierung</h3>
+<p>Nur der Teilnehmer selbst kann die Teilnahme auslesen</p>
+<h2 id='eine-teilnahme-andern'>Eine Teilnahme ändern</h2><pre class="highlight shell tab-shell"><code>   curl --request PATCH <span class="se">\</span>
+       --url https://example.com/course-memberships/&lt;ID&gt; <span class="se">\</span>
        --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
-</code></pre><h1 id='wiki'>Wiki</h1>
+       --header <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+       --data <span class="s1">'{"data": {
+           "type": "course-memberships",
+           "id": "&lt;ID&gt;",
+           "attributes": {"group":2,"visible":"no"}
+       }}'</span>
+</code></pre>
+<p>Mit dieser Route kann man die Attribute einer Teilnahme an einer
+Veranstaltung ändern.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>PATCH /course-memberships/{id}</code></p>
+<h3 id='parameter-8'>Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Beschreibung</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>ID der Teilnahme</td>
+</tr>
+</tbody></table>
+<h3 id='autorisierung-8'>Autorisierung</h3>
+<p>Nur der Teilnehmer selbst kann die Teilnahme ändern.</p>
+<h1 id='wiki'>Wiki</h1>
 <aside class="success">
   Wiki's bieten Dozenten und Studenten die Möglichkeit, gemeinsame Dokumente zu
   erstellen. Zu verschiedenen Themen in der Veranstaltungen können Wikis erstellt und
@@ -6444,205 +6852,79 @@ Veranstaltung zu sehen.</p>
 </blockquote>
 
 <p><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;offset&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;first&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/?page[offset]=0&amp;page[limit]=30&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;last&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/?page[offset]=0&amp;page[limit]=30&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wiki&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536_TESTING&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wiki-pages&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a07535cf2f8a72df33c12ddfa4b53dde_ulyq&quot;</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;keyword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TESTING&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is testing&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-05-30T13:48:42+02:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;keyword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ulyq&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Es gibt im Moment in diese Mannschaft, oh, einige Spieler vergessen ihren Profi was sie sind. Ich lese nicht sehr viele Zeitungen, aberich habe geh</span><span class="se">\u</span><span class="s2">00f6rt viele Situationen. Erstens: Wir haben nicht offensivgespielt.&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-04-23T12:10:26+02:00&quot;</span><span class="p">,</span><span class="w">
         </span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;users&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
+            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e7a0a84b161f3e8c09b4a0a2e8a58147&quot;</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/users/76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/e7a0a84b161f3e8c09b4a0a2e8a58147&quot;</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">&quot;range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;courses&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
+            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a07535cf2f8a72df33c12ddfa4b53dde&quot;</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/courses/a07535cf2f8a72df33c12ddfa4b53dde&quot;</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536/wiki/TESTING&quot;</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wiki&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536_TESTING2&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wiki-pages&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a07535cf2f8a72df33c12ddfa4b53dde_yxilo&quot;</span><span class="p">,</span><span class="w">
       </span><span class="s2">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;keyword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TESTING2&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is testing&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-05-30T14:54:07+02:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;keyword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;yxilo&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Es gibt im Moment in diese Mannschaft, oh, einige Spieler vergessen ihren Profi was sie sind. Ich lese nicht sehr viele Zeitungen, aberich habe geh</span><span class="se">\u</span><span class="s2">00f6rt viele Situationen. Erstens: Wir haben nicht offensivgespielt.&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-04-23T12:10:26+02:00&quot;</span><span class="p">,</span><span class="w">
         </span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;users&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
+            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e7a0a84b161f3e8c09b4a0a2e8a58147&quot;</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/users/76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/users/e7a0a84b161f3e8c09b4a0a2e8a58147&quot;</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">&quot;range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;courses&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
+            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a07535cf2f8a72df33c12ddfa4b53dde&quot;</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
+            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jsonapi.php/v1/courses/a07535cf2f8a72df33c12ddfa4b53dde&quot;</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536/wiki/TESTING2&quot;</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wiki&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536_TESTING3&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;keyword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TESTING3&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;content changed?!?!&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-05T14:58:50+02:00&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;users&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/users/76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">&quot;range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;courses&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536/wiki/TESTING3&quot;</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wiki&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536_test&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;keyword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tastfdsfdsfdsfyTest&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is dsdsadsad&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-05T14:15:22+02:00&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;users&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/users/76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">&quot;range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;courses&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536/wiki/test&quot;</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wiki&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536_tastyTest&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;keyword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tastyTest&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is dsdsadsad&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-05T14:12:29+02:00&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;users&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/users/76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">&quot;range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;courses&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536/wiki/tastyTest&quot;</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wiki&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536_testCreateWiki&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;keyword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;testCreateWiki&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;testCongfgcxycxycxycxycfdgfdgfdgfdgtent&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;chdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-06T16:50:03+02:00&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;users&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/users/76ed43ef286fb55cf9e41beadb484a9f&quot;</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">&quot;range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;courses&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">&quot;related&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536&quot;</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">&quot;links&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;self&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/stud35/plugins.php/argonautsplugin/courses/48101a5a47c34f80999cc01266b32536/wiki/testCreateWiki&quot;</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="s2">&quot;[...]&quot;</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></p>
