@@ -76,10 +76,17 @@ Offset und Limit weitergeblättert werden.
 
 ### Query-Parameter
 
-Parameter    | Default | Beschreibung
----------    | ------- | ------------
-page[offset] | 0       | der Offset
-page[limit]  | 30      | das Limit
+```shell
+curl --request GET \
+     --url 'https://example.com/users?filter[search]=test_autor'\
+     --header "Authorization: Basic `echo -ne "test_autor:testing" | base64`"
+```
+
+Parameter      | Default | Beschreibung
+---------      | ------- | ------------
+page[offset]   | 0       | der Offset
+page[limit]    | 30      | das Limit
+filter[search] | %%%     | der Suchbegriff, um Nutzer zu finden; mind. 3 Zeichen
 
 ### Autorisierung
 
