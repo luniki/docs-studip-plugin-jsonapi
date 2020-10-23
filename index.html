@@ -1014,7 +1014,10 @@ sehen darf. Die Ausgabe erfolgt paginiert und kann durch Angabe von
 Offset und Limit weitergeblättert werden.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /users</code></p>
-<h3 id='query-parameter'>Query-Parameter</h3>
+<h3 id='query-parameter'>Query-Parameter</h3><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+     --url <span class="s1">'https://example.com/users?filter[search]=test_autor'</span><span class="se">\</span>
+     --header <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="nb">echo</span> -ne <span class="s2">"test_autor:testing"</span> | base64<span class="sb">`</span><span class="s2">"</span>
+</code></pre>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1031,6 +1034,11 @@ Offset und Limit weitergeblättert werden.</p>
 <td>page[limit]</td>
 <td>30</td>
 <td>das Limit</td>
+</tr>
+<tr>
+<td>filter[search]</td>
+<td>%%%</td>
+<td>der Suchbegriff, um Nutzer zu finden; mind. 3 Zeichen</td>
 </tr>
 </tbody></table>
 <h3 id='autorisierung'>Autorisierung</h3>
